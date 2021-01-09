@@ -20,7 +20,6 @@ class Upgrade extends Model
     protected $with = [
         'uspecials',
         'urestricteds',
-        'minis',
     ];
 
     public function minis() {
