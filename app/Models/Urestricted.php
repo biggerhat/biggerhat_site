@@ -10,5 +10,9 @@ class Urestricted extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function upgrades() {
+        return $this->belongsToMany(Upgrade::class);
+    }
     
 }

@@ -26,6 +26,17 @@ class Mini extends Model
         'hidden_keyword_id',
     ];
 
+    protected $with = [
+        'factions',
+        'keywords',
+        'characteristics',
+        'abilities',
+        'station',
+        'actions',
+        'upgrades',
+        'cards',
+    ];
+
     public function factions()
     {
         return $this->belongsToMany(Faction::class);
@@ -62,7 +73,7 @@ class Mini extends Model
     }
 
     public function cards() {
-        return $this->hasMany(Card::class);
+        return $this->hasMany(Card::class, 'mini_id', 'id');
     }
 
     

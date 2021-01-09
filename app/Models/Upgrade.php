@@ -17,7 +17,21 @@ class Upgrade extends Model
         'tactica',
     ];
 
+    protected $with = [
+        'uspecials',
+        'urestricteds',
+        'minis',
+    ];
+
     public function minis() {
         return $this->belongsToMany(Mini::class);
+    }
+
+    public function uspecials() {
+        return $this->belongsToMany(Uspecial::class);
+    }
+
+    public function urestricteds() {
+        return $this->belongsToMany(Urestricted::class);
     }
 }
