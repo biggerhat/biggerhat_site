@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $mini = App\Models\Mini::find(512);
+    return view('welcome',compact('mini'));
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

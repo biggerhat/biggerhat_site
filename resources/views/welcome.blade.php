@@ -163,10 +163,10 @@
             <div class="min-h-0 m-0 mx-auto bg-gray-300 rounded-lg w-min">
                 <div class="mx-auto card__image">
                     <div class="card__image--front">
-                        <img src="https://www.biggerhat.net/images/cards/m3e_cornelius_basse_front_1566751237.png" class="rounded-lg" />
+                        <img src=".\storage\{{$mini->cards[0]->front}}" class="rounded-lg" />
                     </div>
                     <div class="card__image--back">
-                        <img src="https://www.biggerhat.net/images/cards/m3e_cornelius_basse_back_1566751237.png" class="rounded-lg" />
+                        <img src=".\storage\{{$mini->cards[0]->back}}" class="rounded-lg" />
                     </div>
                 </div>
             </div>
@@ -333,14 +333,9 @@
 </main>
 <footer class="py-3 bg-gray-700 border-t border-gray-700">
     <div class="container grid w-full grid-cols-8 gap-0 px-2 mx-auto lg:px-0 lg:gap-16">
-        <div><a href=""><img src="./images/faction_arcanist.png"></a></div>
-        <div><a href=""><img src="./images/faction_bayou.png"></a></div>
-        <div><a href=""><img src="./images/faction_explorers.PNG"></a></div>
-        <div><img src="./images/faction_guild.png"></div>
-        <div><img src="./images/faction_neverborn.png"></div>
-        <div><img src="./images/faction_outcasts.png"></div>
-        <div><img src="./images/faction_resurrectionist.png"></div>
-        <div><img src="./images/faction_tenthunders.png"></div>
+        @foreach($footerFactions as $footerFaction)
+            <div><a href="./factions/{{Str::slug($footerFaction->name,'-')}}"><img src=".\storage\{{$footerFaction->image}}" alt="{{$footerFaction->name}}"></a></div>
+        @endforeach    
     </div>
     <div class="container grid grid-cols-1 gap-3 mx-auto mt-3 lg:grid-cols-10 auto-cols-auto">
         <div class="w-full mx-auto">
