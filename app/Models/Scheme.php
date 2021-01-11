@@ -11,8 +11,14 @@ class Scheme extends Model
             'name',
             'number',
             'description',
+            'reveal',
+            'end',
             'tactica',
             'season_id',
             'image',
        ];
+
+       public function season() {
+            return $this->belongsTo(Season::class);
+       }
 }

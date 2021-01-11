@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $mini = App\Models\Mini::find(512);
-    return view('welcome',compact('mini'));
+    return view('main',compact('mini'));
+});
+
+Route::get('/artemis', function() {
+    $mini = App\Models\Mini::find(512);
+    return view('character',compact('mini'));
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -23,6 +28,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
+
+//Voyager Routes for Admin Panel
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

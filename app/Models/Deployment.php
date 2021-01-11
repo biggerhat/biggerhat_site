@@ -14,4 +14,8 @@ class Deployment extends Model
         'image',
         'season_id',
     ];
+
+    public function season() {
+        return $this->belongsTo(Season::class);
+    }
 }

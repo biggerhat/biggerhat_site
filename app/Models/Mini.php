@@ -35,6 +35,8 @@ class Mini extends Model
         'actions',
         'upgrades',
         'cards',
+        'erratas',
+        'markers',
     ];
 
     public function factions()
@@ -74,6 +76,14 @@ class Mini extends Model
 
     public function cards() {
         return $this->hasMany(Card::class, 'mini_id', 'id');
+    }
+
+    public function erratas() {
+        return $this->hasMany(Errata::class, 'mini_id', 'id');
+    }
+
+    public function markers() {
+        return $this->belongsToMany(Marker::class);
     }
 
     

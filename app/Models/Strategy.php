@@ -15,4 +15,8 @@ class Strategy extends Model
         'season_id',
         'image',
     ];
+
+    public function season() {
+        return $this->belongsTo(Season::class);
+    }
 }

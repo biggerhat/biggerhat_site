@@ -33,4 +33,8 @@ class Upgrade extends Model
     public function urestricteds() {
         return $this->belongsToMany(Urestricted::class);
     }
+
+    public function erratas() {
+        return $this->hasMany(Errata::class);
+    }
 }
