@@ -13,12 +13,14 @@
 <body class="flex flex-col min-h-screen antialiased bg-gray-300">
 <header>
     <nav class="px-5 bg-gray-900">
-        <ul class="flex flex-wrap items-center justify-between font-sans list-none menu lg:flex-nowrap">
-            <li class="my-auto text-xl logo"><a href="/" class="block text-white">Bigger Hat</a></li>
+        <ul class="flex flex-wrap items-center justify-between font-sans list-none md:py-0 menu lg:flex-nowrap">
+            <li class="py-4 my-auto text-xl logo"><a href="/" class="block text-white">Bigger Hat</a></li>
             <li class="flex w-1/2 my-auto lg:w-1/3">
                 <div class="flex w-full h-full my-auto text-sm bg-gray-900 rounded-full">
-                    <input type="search" name="search" placeholder="Search" class="w-full h-10 px-2 my-auto text-sm bg-gray-200 rounded-l-full rounded-r-full focus:outline-none" autocomplete="off" />
-                    <a class="block px-1 py-4" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 30px; width: 30px;" class="block m-auto"><g class="" transform="translate(0,0)" style=""><path d="M87 32v71h18V32H87zm160 0v345h18V32h-18zm160 0v167h18V32h-18zM50 121c-5.14 0-9 3.9-9 9v28c0 5.1 3.86 9 9 9h92c5.1 0 9-3.9 9-9v-28c0-5.1-3.9-9-9-9H50zm37 64v295h18V185H87zm283 32c-5.1 0-9 3.9-9 9v28c0 5.1 3.9 9 9 9h92c5.1 0 9-3.9 9-9v-28c0-5.1-3.9-9-9-9h-92zm37 64v199h18V281h-18zM210 395c-5.1 0-9 3.9-9 9v28c0 5.1 3.9 9 9 9h92c5.1 0 9-3.9 9-9v-28c0-5.1-3.9-9-9-9h-92zm37 64v21h18v-21h-18z" fill="#ffffff" fill-opacity="1" transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)"></path></g></svg></a>
+                    @if(Request::path() != "/")
+                        <input type="search" name="search" placeholder="Search" class="w-full h-10 px-2 my-auto text-sm bg-gray-200 rounded-l-full rounded-r-full focus:outline-none" autocomplete="off" />
+                        <a class="block px-1 py-4" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 30px; width: 30px;" class="block m-auto"><g class="" transform="translate(0,0)" style=""><path d="M87 32v71h18V32H87zm160 0v345h18V32h-18zm160 0v167h18V32h-18zM50 121c-5.14 0-9 3.9-9 9v28c0 5.1 3.86 9 9 9h92c5.1 0 9-3.9 9-9v-28c0-5.1-3.9-9-9-9H50zm37 64v295h18V185H87zm283 32c-5.1 0-9 3.9-9 9v28c0 5.1 3.9 9 9 9h92c5.1 0 9-3.9 9-9v-28c0-5.1-3.9-9-9-9h-92zm37 64v199h18V281h-18zM210 395c-5.1 0-9 3.9-9 9v28c0 5.1 3.9 9 9 9h92c5.1 0 9-3.9 9-9v-28c0-5.1-3.9-9-9-9h-92zm37 64v21h18v-21h-18z" fill="#ffffff" fill-opacity="1" transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)"></path></g></svg></a>
+                    @endif
                 </div>
             </li>
             <li class="order-3 hidden w-full p-2 text-center item has-submenu lg:block lg:w-auto lg:relative">
@@ -73,6 +75,8 @@
 <main class="flex-grow min-h-screen pt-5 pb-5">
     
     @yield('content')
+
+    @fauxdown({{plus}})
     
 </main>
 <footer class="py-3 bg-gray-700 border-t border-gray-700">

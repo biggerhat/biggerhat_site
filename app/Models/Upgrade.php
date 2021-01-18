@@ -37,4 +37,8 @@ class Upgrade extends Model
     public function erratas() {
         return $this->hasMany(Errata::class);
     }
+
+    public function factions() {
+        return $this->belongsToMany(Faction::class);
+    }
 }

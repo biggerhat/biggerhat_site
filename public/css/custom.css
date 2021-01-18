@@ -38,7 +38,7 @@
     .card__image {
         width: 412px;
         height: 712px;
-    }
+    }    
 }
 
 @media screen and (min-width: 1536px) {
@@ -81,4 +81,22 @@
     .submenu-active {
         border-radius: 0;
     }
+}
+
+.icon {
+    display: inline-flex;
+    align-self: center;
+}
+
+.icon svg, .icon img {
+    height: 1.15em;
+    width: 1.15em;
+    fill: currentColor;
+}
+
+.icon.baseline svg, .icon img {
+    top: .125em;
+    position: relative;
+    padding: 0;
+    margin: 0;
 }

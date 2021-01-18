@@ -6,11 +6,11 @@
             <div class="p-0 m-0 mb-3 md:col-span-2 lg:col-span-1">
                 <div class="min-h-0 m-0 mx-auto bg-gray-300 rounded-lg w-min">
                     <div class="mx-auto card__image">
-                        <div class="card__image--front">
-                            <img src=".\storage\{{$mini->cards[0]->front}}" class="rounded-lg" />
+                        <div class="w-full h-full card__image--front">
+                            <img src=".\storage\{{$mini->cards[0]->front}}" class="w-full h-full rounded-lg" />
                         </div>
-                        <div class="card__image--back">
-                            <img src=".\storage\{{$mini->cards[0]->back}}" class="rounded-lg" />
+                        <div class="w-full h-full card__image--back">
+                            <img src=".\storage\{{$mini->cards[0]->back}}" class="w-full h-full rounded-lg" />
                         </div>
                     </div>
                 </div>
@@ -19,10 +19,9 @@
                 </div>
             </div>
 
-
             <div class="mx-1 mb-3 sm:my-3 md:m-0">
                 <div class="mb-2 bg-gray-200 border-2 border-black rounded shadow-md">
-                    <div class="block p-1 mb-2 text-2xl font-medium text-white border-b border-black bg-gradient-to-r from-guild-light to-exso-light">Cornelius Basse</div>
+                    <div class="block p-1 mb-2 text-2xl font-medium text-white border-b border-black bg-gradient-to-r from-guild-light to-exso-light">{{$mini->name}}</div>
                     <div class="mx-2 mb-2">
                         <p class="pb-1 mb-1 text-xl font-semibold">Station: <span class="inline-block text-center p-0.5 text-white rounded-full bg-gradient-to-r from-guild-light to-exso-light px-2 py-1 text-sm font-bold mr-3">MASTER</span></p>
                         <div class="block my-1 border-b border-gray-400 border-dashed"></div>

@@ -16,5 +16,9 @@ class Ability extends Model
     {
         return $this->belongsToMany(Mini::class);
     }
+
+    public function questions() {
+        return $this->hasMany(Question::class);
+    }
     
 }

@@ -18,8 +18,8 @@ Route::get('/', function () {
     return view('main',compact('mini'));
 });
 
-Route::get('/artemis', function() {
-    $mini = App\Models\Mini::find(512);
+Route::get('/{id}', function($id) {
+    $mini = App\Models\Mini::find($id);
     return view('character',compact('mini'));
 });
 
