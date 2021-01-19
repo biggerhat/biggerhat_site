@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\CharacterPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,8 @@ Route::get('/', function () {
     return view('main',compact('mini'));
 });
 
-Route::get('/{id}', function($id) {
-    $mini = App\Models\Mini::find($id);
-    return view('character',compact('mini'));
-});
+
+Route::get('/characters/{id}', CharacterPage::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
