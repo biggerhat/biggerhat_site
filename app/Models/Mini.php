@@ -40,6 +40,8 @@ class Mini extends Model
         'questions',
         'tokens',
         'promos',
+        'instructions',
+        'boxes',
     ];
 
     public function factions()
@@ -50,6 +52,11 @@ class Mini extends Model
     public function keywords()
     {
         return $this->belongsToMany(Keyword::class);
+    }
+
+    public function hiddenKeyword()
+    {
+        return $this->belongsTo(Keyword::class, 'hidden_keyword_id', 'id');
     }
 
     public function characteristics()
@@ -99,6 +106,14 @@ class Mini extends Model
      
     public function promos() {
         return $this->hasMany(Promo::class, 'mini_id', 'id');
+    }
+
+    public function instructions() {
+        return $this->belongsToMany(Instruction::class);
+    }
+
+    public function boxes() {
+        return $this->belongsToMany(Box::class);
     }
     
 }

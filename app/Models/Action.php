@@ -23,6 +23,11 @@ class Action extends Model
         'range_type',
     ];
 
+    protected $with = [
+        'questions',
+        'triggers',
+    ];
+
     public function minis()
     {
         return $this->belongsToMany(Mini::class);

@@ -14,6 +14,10 @@ class Errata extends Model
         'mini_id',
     ];
 
+    protected $with = [
+        'season'
+    ];
+
     public function upgrade() {
         return $this->belongsTo(Upgrade::class);
     }

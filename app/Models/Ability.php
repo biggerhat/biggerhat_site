@@ -12,6 +12,10 @@ class Ability extends Model
         'description',
     ];
 
+    protected $with = [
+        'questions',
+    ];
+
     public function minis()
     {
         return $this->belongsToMany(Mini::class);

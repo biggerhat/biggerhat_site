@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CharacterPage;
+use App\Http\Livewire\FactionPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,12 @@ use App\Http\Livewire\CharacterPage;
 */
 
 Route::get('/', function () {
-    $mini = App\Models\Mini::find(512);
-    return view('main',compact('mini'));
+    return view('main');
 });
 
 
-Route::get('/characters/{id}', CharacterPage::class);
+Route::get('/characters/{id}/{name}', CharacterPage::class);
+Route::get('/factions/{id}/{name}', FactionPage::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
