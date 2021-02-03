@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('/characters/{id}/{name}', CharacterPage::class);
 Route::get('/factions/{id}/{name}', FactionPage::class);
+Route::get('/user/logout', 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

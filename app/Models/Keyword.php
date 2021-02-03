@@ -21,4 +21,9 @@ class Keyword extends Model
     public function hiddenKeywords() {
         return $this->hasMany(Mini::class, 'hidden_keyword_id', 'id');
     }
+
+    public function episodes()
+    {
+        return $this->belongsToMany(Episode::class);
+    }
 }

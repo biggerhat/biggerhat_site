@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Faction;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;
+use App\Models\ResourceType;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $footerFactions = Faction::where('hidden','1')->get();
         View::share('footerFactions',$footerFactions);
+
+        $footerResourceTypes = ResourceType::orderBy('name','ASC')->get();
+        View::share('footerResourceTypes',$footerResourceTypes);
 
         Blade::directive('fauxdown', function ($expression) {
             $expression = str_replace(array('{{aura}}',

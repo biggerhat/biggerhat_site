@@ -8,10 +8,12 @@
         <div class="w-full mx-auto">
             <div class="w-32 mx-auto font-semibold text-center text-gray-400 border-b border-gray-400 lg:text-left text-md lg:w-full">Characters</div>
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Advanced Search</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Keywords</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Upgrades</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Alts & Promos</a></li>
+                <li class="text-sm"><a href="/advanced" class="hover:text-white hover:underline">Advanced Search</a></li>
+                <li class="text-sm"><a href="/random" class="hover:text-white hover:underline">Random Character</a></li>
+                <li class="text-sm"><a href="/masters" class="hover:text-white hover:underline">Masters</a></li>
+                <li class="text-sm"><a href="/keywords" class="hover:text-white hover:underline">Keywords</a></li>
+                <li class="text-sm"><a href="/upgrades" class="hover:text-white hover:underline">Upgrades</a></li>
+                <li class="text-sm"><a href="/promos" class="hover:text-white hover:underline">Alts & Promos</a></li>
             </ul>
         </div>
         <div class="w-full mx-auto">
@@ -30,10 +32,9 @@
         <div class="w-full mx-auto">
             <div class="w-32 mx-auto font-semibold text-center text-gray-400 border-b border-gray-400 lg:text-left text-md lg:w-auto">Resources</div>
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Podcasts</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Blogs</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">YouTube</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Discussion Groups</a></li>
+                @foreach($footerResourceTypes as $resourceType)
+                    <li class="text-sm"><a href="/resources/{{ Str::slug($resourceType->name,'-') }}" class="hover:text-white hover:underline">{{$resourceType->name}}</a></li>
+                @endforeach
             </ul>
         </div>
         <div class="w-full mx-auto">
@@ -41,13 +42,22 @@
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Game Generator</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Crew Builder</a></li>
+                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Model Collection</a></li>
+                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Model Gallery</a></li>
+                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Game Logging</a></li>
             </ul>
         </div>
         <div class="w-full mx-auto">
             <div class="w-32 mx-auto font-semibold text-center text-gray-400 border-b border-gray-400 lg:text-left text-md lg:w-auto">Account</div>
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Login</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Register</a></li>
+                @if(Auth::guest())
+                    <li class="text-sm"><a href="/login" class="hover:text-white hover:underline">Login</a></li>
+                    <li class="text-sm"><a href="/register" class="hover:text-white hover:underline">Register</a></li>
+                @else
+                    <li class="text-sm"><a href="/user/profile" class="hover:text-white hover:underline">Profile</a></li>
+                    <li class="text-sm"><a href="/user/logout" class="hover:text-white hover:underline">Logout</a></li>
+                    
+                @endif
             </ul>
         </div>
         <div class="w-full mx-auto">
@@ -55,6 +65,7 @@
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">About</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Donate to Us</a></li>
+                <li class="text-sm"><a href="https://discord.gg/AT236KeAWT" class="hover:text-white hover:underline">Discord Server</a></li>
                 <li class="text-sm"><a href="https://www.facebook.com/biggerhat/" class="hover:text-white hover:underline">Facebook</a></li>
                 <li class="text-sm"><a href="https://www.reddit.com/user/Biggerhat" class="hover:text-white hover:underline">Reddit</a></li>
             </ul>

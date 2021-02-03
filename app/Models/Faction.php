@@ -24,5 +24,10 @@ class Faction extends Model
     public function upgrades() {
         return $this->belongsToMany(Upgrade::class);
     }
+
+    public function episodes()
+    {
+        return $this->belongsToMany(Episode::class);
+    }
     
 }

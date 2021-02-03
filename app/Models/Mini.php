@@ -42,6 +42,7 @@ class Mini extends Model
         'promos',
         'instructions',
         'boxes',
+        'episodes',
     ];
 
     public function factions()
@@ -114,6 +115,11 @@ class Mini extends Model
 
     public function boxes() {
         return $this->belongsToMany(Box::class);
+    }
+
+    public function episodes()
+    {
+        return $this->belongsToMany(Episode::class);
     }
     
 }
