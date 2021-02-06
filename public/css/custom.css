@@ -1,4 +1,17 @@
 
+@font-face {
+    font-family: 'Acknowledgement';
+    src: url('/fonts/Acknowledgement.eot');
+    src: url('/fonts/Acknowledgement.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/Acknowledgement.woff2') format('woff2'),
+        url('/fonts/Acknowledgement.woff') format('woff'),
+        url('/fonts/Acknowledgement.ttf') format('truetype'),
+        url('/fonts/Acknowledgement.svg#Acknowledgement') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 .card__image.is-flipped {
     transform: rotateY(180deg);
 }
@@ -102,4 +115,14 @@
     position: relative;
     padding: 0;
     margin: 0;
+}
+
+.average {
+    /* Prefix required. Even Firefox only supports the -webkit- prefix 
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #1a202c; */
+    text-shadow: -1px 0 #1a202c, 0 1px #1a202c, 1px 0 #1a202c, 0 -1px #1a202c;
+    font-family: 'Acknowledgement';
+    font-weight: bold;
+    font-style: normal;
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CharacterPage;
 use App\Http\Livewire\FactionPage;
+use App\Http\Livewire\MasterPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::get('/', function () {
 
 Route::get('/characters/{id}/{name}', CharacterPage::class);
 Route::get('/factions/{id}/{name}', FactionPage::class);
+Route::get('/masters/{id}/{name}', MasterPage::class);
+
 Route::get('/user/logout', 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
