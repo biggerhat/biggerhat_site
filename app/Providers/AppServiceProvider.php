@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $footerFactions = Faction::where('hidden','1')->get();
+        $footerFactions = Faction::where('hidden','1')->orderBy('name','ASC')->get();
         View::share('footerFactions',$footerFactions);
 
         $footerResourceTypes = ResourceType::orderBy('name','ASC')->get();

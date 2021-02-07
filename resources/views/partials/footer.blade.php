@@ -1,7 +1,7 @@
 <footer class="py-3 bg-gray-700 border-t border-gray-700">
     <div class="container grid w-full grid-cols-8 gap-0 px-2 mx-auto lg:px-0 lg:gap-16">
         @foreach($footerFactions as $footerFaction)
-            <div><a href="/factions/{{$footerFaction->id}}/{{Str::slug($footerFaction->name,'-')}}"><img src="\storage\{{$footerFaction->image}}" alt="{{$footerFaction->name}}"></a></div>
+            <div><a href="/factions/{{$footerFaction->slug}}"><img src="\storage\{{$footerFaction->image}}" alt="{{$footerFaction->name}}"></a></div>
         @endforeach    
     </div>
     <div class="container grid grid-cols-1 gap-3 mx-auto mt-3 lg:grid-cols-10 auto-cols-auto">

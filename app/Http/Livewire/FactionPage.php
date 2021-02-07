@@ -3,9 +3,11 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 use App\Models\Faction;
 use App\Models\Mini;
 use App\Models\Keyword;
+use App\Models\Upgrade;
 use App\Models\Ability;
 
 class FactionPage extends Component
@@ -36,10 +38,11 @@ class FactionPage extends Component
     public $averageGunStat;
     public $averageGunRange;
 
-    public function mount($id)
+    public function mount(Faction $faction)
     {
-        $this->factions = Faction::where('hidden','1')->get();
-        $this->faction = Faction::with('minis')->find($id);
+        $this->factions = Faction::where('hidden','1')->orderBy('name','ASC')->get();
+        $this->faction = $faction;
+        $id = $this->faction->id;
         $this->minis = Mini::whereHas('factions', function($query) use ($id) {
             $query->where('faction_id','=',$id);
         })
@@ -197,5 +200,6 @@ class FactionPage extends Component
         $this->averageGunStat = floor($gunStatTotal / $gunTotal);
         $this->averageGunRange = floor($gunRangeTotal / $gunTotal);
     }
+
 }
  

@@ -5,7 +5,7 @@
 <div>
     <div class="container grid w-full grid-cols-8 gap-0 px-2 mx-auto lg:px-0 lg:gap-16">
         @foreach($factions as $headerFaction)
-            <div><a href="/factions/{{$headerFaction->id}}/{{Str::slug($headerFaction->name,'-')}}"><img src="\storage\{{$headerFaction->image}}" alt="{{$headerFaction->name}}" @if($headerFaction->id != $faction->id) class="opacity-25" @endif></a></div>
+            <div><a href="/factions/{{$headerFaction->slug}}"><img src="\storage\{{$headerFaction->image}}" alt="{{$headerFaction->name}}" @if($headerFaction->id != $faction->id) class="opacity-25" @endif></a></div>
         @endforeach    
     </div>
     <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-9 auto-cols-fr">
@@ -165,7 +165,7 @@
             </div>
             @foreach($masters as $mini)
             <div class="p-2">
-                <a href="/masters/{{$mini->id}}/{{ Str::slug($mini->name,'-') }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/masters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>
@@ -182,7 +182,7 @@
             </div>
             @foreach($henchmen as $mini)
             <div class="p-2">
-                <a href="/characters/{{$mini->id}}/{{ Str::slug($mini->name,'-') }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>
@@ -199,7 +199,7 @@
             </div>
             @foreach($enforcers as $mini)
             <div class="p-2">
-                <a href="/characters/{{$mini->id}}/{{ Str::slug($mini->name,'-') }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>
@@ -216,7 +216,7 @@
             </div>
             @foreach($minions as $mini)
             <div class="p-2">
-                <a href="/characters/{{$mini->id}}/{{ Str::slug($mini->name,'-') }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>

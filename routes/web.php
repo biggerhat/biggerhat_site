@@ -21,9 +21,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/characters/{id}/{name}', CharacterPage::class);
-Route::get('/factions/{id}/{name}', FactionPage::class);
-Route::get('/masters/{id}/{name}', MasterPage::class);
+Route::get('/characters/{mini:slug}', CharacterPage::class);
+Route::get('/factions/{faction:slug}', FactionPage::class);
+Route::get('/masters/{mini:slug}', MasterPage::class);
 
 Route::get('/user/logout', 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');
 

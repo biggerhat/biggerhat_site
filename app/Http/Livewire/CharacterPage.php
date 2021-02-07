@@ -37,9 +37,9 @@ class CharacterPage extends Component
         'closeMarkerModal',
     ];
 
-    public function mount($id)
+    public function mount(Mini $mini)
     {
-        $this->mini = Mini::find($id);
+        $this->mini = $mini;
         $this->setBackground();
         $this->setQuestions();
         $this->setTokens();

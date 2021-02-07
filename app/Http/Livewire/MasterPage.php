@@ -34,9 +34,9 @@ class MasterPage extends Component
     public $averageGunRange;
     public $currentCard;
 
-    public function mount($id)
+    public function mount(Mini $mini)
     {
-        $this->master = Mini::find($id);
+        $this->master = $mini;
         if($this->master->station_id != 1)
         {
             abort(404);
@@ -201,5 +201,60 @@ class MasterPage extends Component
         }
 
         $this->minis = $query->orderBy('station_id','ASC')->orderBy('name','ASC')->get();
+
+        $query = Mini::where('station_id',2)->whereHas('keywords', function($query) use ($keywordIds) {
+            for($i = 0;$i < count($keywordIds); $i++)
+            {
+                if($i == 0)
+                {
+                    $query->where('keyword_id','=',$keywordIds[$i]);
+                } else {
+                    $query->orWhere('keyword_id','=',$keywordIds[$i]);
+                }
+            }
+        });
+        for($i = 0;$i < count($keywordIds); $i++)
+        {
+            $query->orWhere('hidden_keyword_id','=',$keywordIds[0]);
+        }
+
+        $this->henchmen = $query->orderBy('name','ASC')->get();
+
+        $query = Mini::where('station_id',3)->whereHas('keywords', function($query) use ($keywordIds) {
+            for($i = 0;$i < count($keywordIds); $i++)
+            {
+                if($i == 0)
+                {
+                    $query->where('keyword_id','=',$keywordIds[$i]);
+                } else {
+                    $query->orWhere('keyword_id','=',$keywordIds[$i]);
+                }
+            }
+        });
+        for($i = 0;$i < count($keywordIds); $i++)
+        {
+            $query->orWhere('hidden_keyword_id','=',$keywordIds[0]);
+        }
+
+        $this->enforcers = $query->orderBy('name','ASC')->get();
+
+        $query = Mini::where('station_id',4)->whereHas('keywords', function($query) use ($keywordIds) {
+            for($i = 0;$i < count($keywordIds); $i++)
+            {
+                if($i == 0)
+                {
+                    $query->where('keyword_id','=',$keywordIds[$i]);
+                } else {
+                    $query->orWhere('keyword_id','=',$keywordIds[$i]);
+                }
+            }
+        });
+        for($i = 0;$i < count($keywordIds); $i++)
+        {
+            $query->orWhere('hidden_keyword_id','=',$keywordIds[0]);
+        }
+
+        $this->minions = $query->orderBy('name','ASC')->get();
+
     }
 }
