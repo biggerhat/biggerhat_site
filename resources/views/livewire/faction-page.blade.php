@@ -11,7 +11,7 @@
     <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-9 auto-cols-fr">
         <div class="lg:col-span-9">
             <div class="block w-full h-full py-5 text-center">
-                <span class="text-transparent  lg:text-8xl md:text-7xl text-5xl bg-clip-text bg-gradient-to-br from-{{$faction->bg_color}} via-gray-700 to-{{$faction->bg_color}} faction_header">
+                <span class="text-transparent  lg:text-8xl md:text-7xl text-4xl bg-clip-text bg-gradient-to-br from-{{$faction->bg_color}} via-gray-700 to-{{$faction->bg_color}} faction_header">
                     {{$faction->name}}
                 </span>
             </div>
