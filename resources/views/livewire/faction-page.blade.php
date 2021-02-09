@@ -165,7 +165,7 @@
             </div>
             @foreach($masters as $mini)
             <div class="p-2">
-                <a href="/masters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/masters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards->random()->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>
@@ -182,7 +182,7 @@
             </div>
             @foreach($henchmen as $mini)
             <div class="p-2">
-                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards->random()->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>
@@ -199,7 +199,7 @@
             </div>
             @foreach($enforcers as $mini)
             <div class="p-2">
-                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards->random()->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>
@@ -216,7 +216,7 @@
             </div>
             @foreach($minions as $mini)
             <div class="p-2">
-                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards->random()->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>

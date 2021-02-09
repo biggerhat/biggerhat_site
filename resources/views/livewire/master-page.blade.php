@@ -24,10 +24,10 @@
             <div class="min-h-0 m-0 mx-auto bg-gray-300 rounded-lg w-min">
                 <div class="mx-auto card__image">
                     <div class="w-full h-full card__image--front">
-                        <img src="\storage\{{$master->cards[$currentCard]->front}}" class="w-full h-full rounded-lg cursor-pointer" />
+                        <img src="\storage\{{$master->cards->random()->front}}" class="w-full h-full rounded-lg cursor-pointer" />
                     </div>
                     <div class="w-full h-full card__image--back">
-                        <img src="\storage\{{$master->cards[$currentCard]->back}}" class="w-full h-full rounded-lg cursor-pointer" />
+                        <img src="\storage\{{$master->cards->random()->back}}" class="w-full h-full rounded-lg cursor-pointer" />
                     </div>
                 </div>
             </div>
@@ -191,7 +191,7 @@
         </div>
         @foreach($henchmen as $mini)
         <div class="p-2">
-            <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+            <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards->random()->front}}" class="mx-auto rounded-lg card__image"></a>
         </div>
         @endforeach
     </div>
@@ -208,7 +208,7 @@
             </div>
             @foreach($enforcers as $mini)
             <div class="p-2">
-                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards->random()->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>
@@ -224,7 +224,7 @@
             </div>
             @foreach($minions as $mini)
             <div class="p-2">
-                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards[0]->front}}" class="mx-auto rounded-lg card__image"></a>
+                <a href="/characters/{{ $mini->slug }}" class="active:outline-none"><img src="\storage\{{$mini->cards->random()->front}}" class="mx-auto rounded-lg card__image"></a>
             </div>
             @endforeach
         </div>
