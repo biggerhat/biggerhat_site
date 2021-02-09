@@ -39,8 +39,7 @@
         "laravel": {
             "dont-discover": [
                 "laravel/telescope",
-                "barryvdh/laravel-ide-helper",
-                "tcg/voyager"
+                "barryvdh/laravel-ide-helper"
             ]
         }
     },
