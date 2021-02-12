@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\MiniSaved;
 
 
 /**
@@ -103,6 +104,11 @@ class Mini extends Model
         'tag',
         'hidden_keyword_id',
     ];
+
+    protected $dispatchesEvents = [
+        'saved' => MiniSaved::class,
+    ];
+
 
     protected $with = [
         'factions',

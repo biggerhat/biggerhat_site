@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\MiniSaved;
 
 
 /**
@@ -67,6 +68,10 @@ class Action extends Model
         'description',
         'notes',
         'range_type',
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => MiniSaved::class,
     ];
 
     protected $with = [

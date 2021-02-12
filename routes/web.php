@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CharacterPage;
 use App\Http\Livewire\FactionPage;
 use App\Http\Livewire\MasterPage;
+use App\Http\Livewire\ResourcePage;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('/characters/{mini:slug}', CharacterPage::class);
-Route::get('/factions/{faction:slug}', FactionPage::class);
-Route::get('/masters/{mini:slug}', MasterPage::class);
+Route::get('/characters/{mini:slug}', CharacterPage::class)->name("character.view");
+Route::get('/factions/{faction:slug}', FactionPage::class)->name("faction.view");
+Route::get('/masters/{mini:slug}', MasterPage::class)->name("master.view");
+Route::get('/resources/{resource:slug}', ResourcePage::class)->name("resource.view");
 
 Route::get('/user/logout', 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');
 
