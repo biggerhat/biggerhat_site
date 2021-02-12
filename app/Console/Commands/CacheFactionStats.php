@@ -5,9 +5,6 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Redis;
 use App\Models\Faction;
-use App\Models\Mini;
-use App\Models\Keyword;
-use App\Models\Ability;
 
 class CacheFactionStats extends Command
 {
@@ -16,7 +13,7 @@ class CacheFactionStats extends Command
      *
      * @var string
      */
-    protected $signature = 'cachefactionstats';
+    protected $signature = 'faction:cache-stats {--faction=all}';
 
     /**
      * The console command description.
@@ -42,32 +39,20 @@ class CacheFactionStats extends Command
      */
     public function handle()
     {
-        //Get All Factions Except DMH
-        $factions = Faction::where('hidden','1')->orderBy('name','ASC')->get();
-        foreach($factions as $faction)
-        {  
-            //set hash namespaces
-            $namespace = "factions:statistics:{$faction->slug}";
-            //Pull all the Characters from this faction except DMH
-            $id = $faction->id;
-            $minis = Mini::whereHas('factions', function($query) use ($id) {
-            $query->where('faction_id','=',$id);
-                })
-            ->whereDoesntHave('factions', function($query) {
-                $query->where('faction_id','=', 8);
-                })
-            ->orderBy('station_id','ASC')
-            ->orderBy('name','ASC')
-            ->get();
+        $factions = Faction::with("minis.actions")
+            ->where('hidden', true); // TOOD: Re-factor hidden to make sense
 
+        // If we have an option for a specific faction, apply to the query builder
+        $factionOption = $this->option('faction');
+        if ($factionOption != "all") {
+            $factions = $factions->where("id", $factionOption);
+        }
+        $factions = $factions->get();
+
+        foreach ($factions as $faction) {
             //Find Stat Averages and Set them in Redis
-            $uniqueCharacters = count($minis);
+            $uniqueCharacters = $faction->minis->count();
             $totalCharacters = 0;
-            $averageDf = 0;
-            $averageWp = 0;
-            $averageMv = 0;
-            $averageWounds = 0;
-            $averageCost = 0;
             $totalDf = 0;
             $totalWp = 0;
             $totalMv = 0;
@@ -79,12 +64,8 @@ class CacheFactionStats extends Command
             $gunTotal = 0;
             $gunRangeTotal = 0;
             $gunStatTotal = 0;
-            $averageMeleeStat = 0;
-            $averageMeleeRange = 0;
-            $averageGunStat = 0;
-            $averageGunRange = 0;
-            foreach($minis as $mini)
-            {
+
+            foreach ($faction->minis as $mini) {
                 $totalCharacters += $mini->quantity;
                 $totalDf += $mini->defense;
                 $totalWp += $mini->willpower;
@@ -92,19 +73,18 @@ class CacheFactionStats extends Command
                 $totalCost += $mini->cost;
                 $totalWd += $mini->wounds;
 
-                foreach($mini->actions as $action)
-                {
-                    if(($action->range_type == "{{melee}}") && ($action->type != "tactical"))
-                    {
-                        $meleeTotal++;
-                        $meleeRangeTotal += $action->range;
-                        $meleeStatTotal += $action->stat;
-                    }
-                    else if(($action->range_type == "{{gun}}") && ($action->type != "tactical"))
-                    {
-                        $gunTotal++;
-                        $gunRangeTotal += $action->range;
-                        $gunStatTotal += $action->stat;
+                foreach ($mini->actions as $action) {
+                    if ($action->type != "tactical") {
+                        switch ($action->range_type) {
+                            case "{{melee}}":
+                                $meleeTotal++;
+                                $meleeRangeTotal += $action->range;
+                                $meleeStatTotal += $action->stat;
+                            case "{{gun}}":
+                                $gunTotal++;
+                                $gunRangeTotal += $action->range;
+                                $gunStatTotal += $action->stat;
+                        }
                     }
                 }
             }
@@ -118,22 +98,34 @@ class CacheFactionStats extends Command
             $averageMeleeStat = floor($meleeStatTotal / $meleeTotal);
             $averageMeleeRange = floor($meleeRangeTotal / $meleeTotal);
             $averageGunStat = floor($gunStatTotal / $gunTotal);
-            $averageGunRange = floor($gunRangeTotal / $gunTotal);            
+            $averageGunRange = floor($gunRangeTotal / $gunTotal);
 
             //Insert into redis
-            Redis::hset($namespace,
-                    "uniqueCharacters",$uniqueCharacters,
-                    "totalCharacters",$totalCharacters,
-                    "averageDf",$averageDf,
-                    "averageWp",$averageWp,
-                    "averageMv",$averageMv,
-                    "averageWounds",$averageWounds,
-                    "averageCost",$averageCost,
-                    "averageMeleeStat",$averageMeleeStat,
-                    "averageMeleeRange",$averageMeleeRange,
-                    "averageGunStat",$averageGunStat,
-                    "averageGunRange",$averageGunRange);
-
+            Redis::hset(
+                "factions:statistics:{$faction->slug}",
+                "uniqueCharacters",
+                $uniqueCharacters,
+                "totalCharacters",
+                $totalCharacters,
+                "averageDf",
+                $averageDf,
+                "averageWp",
+                $averageWp,
+                "averageMv",
+                $averageMv,
+                "averageWounds",
+                $averageWounds,
+                "averageCost",
+                $averageCost,
+                "averageMeleeStat",
+                $averageMeleeStat,
+                "averageMeleeRange",
+                $averageMeleeRange,
+                "averageGunStat",
+                $averageGunStat,
+                "averageGunRange",
+                $averageGunRange
+            );
         }
 
         echo "Statistics have been calculated and Cached";
