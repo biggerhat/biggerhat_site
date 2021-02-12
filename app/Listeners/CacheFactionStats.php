@@ -27,6 +27,6 @@ class CacheFactionStats
      */
     public function handle(MiniSaved $event)
     {
-        Artisan::call('cachefactionstats');
+        Artisan::call('faction:cache-stats');
     }
 }
