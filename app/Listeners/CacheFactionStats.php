@@ -27,6 +27,8 @@ class CacheFactionStats
      */
     public function handle(MiniSaved $event)
     {
-        Artisan::call('faction:cache-stats');
+        foreach ($event->mini->factions as $faction) {
+            Artisan::call("faction:cache-stats --faction={$faction->id}");
+        }
     }
 }

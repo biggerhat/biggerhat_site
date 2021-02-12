@@ -172,7 +172,7 @@
             <div class="mb-2 bg-gray-200 border-2 border-black rounded">
                 <div
                     class="block p-1 mb-2 text-xl font-medium text-white align-middle border-b border-black bg-{{ $faction->bg_color }}">
-                    Top 10 General Abilities
+                    Top 10 Abilities
                 </div>
                 <div class="mx-2 mb-2 text-lg">
                     @foreach ($topAbilities as $ability)

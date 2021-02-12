@@ -40,12 +40,12 @@ class CacheFactionStats extends Command
     public function handle()
     {
         $factions = Faction::with("minis.actions")
-            ->where('hidden', true);// TOOD: Re-factor hidden to make sense
+            ->where('hidden', true); // TOOD: Re-factor hidden to make sense
 
         // If we have an option for a specific faction, apply to the query builder
         $factionOption = $this->option('faction');
         if ($factionOption != "all") {
-            $factions = $factions->where("name", $factionOption);
+            $factions = $factions->where("id", $factionOption);
         }
         $factions = $factions->get();
 
@@ -101,18 +101,31 @@ class CacheFactionStats extends Command
             $averageGunRange = floor($gunRangeTotal / $gunTotal);
 
             //Insert into redis
-            Redis::hset("factions:statistics:{$faction->slug}",
-                "uniqueCharacters", $uniqueCharacters,
-                "totalCharacters", $totalCharacters,
-                "averageDf", $averageDf,
-                "averageWp", $averageWp,
-                "averageMv", $averageMv,
-                "averageWounds", $averageWounds,
-                "averageCost", $averageCost,
-                "averageMeleeStat", $averageMeleeStat,
-                "averageMeleeRange", $averageMeleeRange,
-                "averageGunStat", $averageGunStat,
-                "averageGunRange", $averageGunRange);
+            Redis::hset(
+                "factions:statistics:{$faction->slug}",
+                "uniqueCharacters",
+                $uniqueCharacters,
+                "totalCharacters",
+                $totalCharacters,
+                "averageDf",
+                $averageDf,
+                "averageWp",
+                $averageWp,
+                "averageMv",
+                $averageMv,
+                "averageWounds",
+                $averageWounds,
+                "averageCost",
+                $averageCost,
+                "averageMeleeStat",
+                $averageMeleeStat,
+                "averageMeleeRange",
+                $averageMeleeRange,
+                "averageGunStat",
+                $averageGunStat,
+                "averageGunRange",
+                $averageGunRange
+            );
         }
 
         echo "Statistics have been calculated and Cached";
