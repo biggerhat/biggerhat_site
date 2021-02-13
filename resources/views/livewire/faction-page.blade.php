@@ -272,7 +272,7 @@
         <div class="lg:col-span-4">
             <div class="block w-full h-full py-2 text-center" wire:click="henchmenToggle">
                 <span
-                    class="text-transparent block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                    class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                     Henchmen
                 </span>
                 <span class="text-xs">
@@ -302,7 +302,7 @@
         <div class="lg:col-span-4">
             <div class="block w-full h-full py-2 text-center" wire:click="enforcerToggle">
                 <span
-                    class="text-transparent block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                    class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                     Enforcers
                 </span>
                 <span class="text-xs">
@@ -330,7 +330,7 @@
         <div class="lg:col-span-4">
             <div class="block w-full h-full py-2 text-center" wire:click="minionToggle">
                 <span
-                    class="text-transparent block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                    class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                     Minions
                 </span>
                 <span class="text-xs">
@@ -353,8 +353,5 @@
             @endforeach
         @endif
     </div>
-
-
-
 
 </div>

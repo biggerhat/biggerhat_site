@@ -22,6 +22,15 @@ Route::get('/', function () {
 });
 
 
+Route::get('/boxcheck', function () {
+    $minis = App\Models\Mini::with('instructions')->get();
+    foreach ($minis as $mini) {
+        if (count($mini->instructions) < 1) {
+            echo "{$mini->name} <br />";
+        }
+    }
+});
+
 Route::get('/characters/{mini:slug}', CharacterPage::class)->name("character.view");
 Route::get('/factions/{faction:slug}', FactionPage::class)->name("faction.view");
 Route::get('/masters/{mini:slug}', MasterPage::class)->name("master.view");
