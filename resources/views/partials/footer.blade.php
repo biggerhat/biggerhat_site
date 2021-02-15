@@ -1,7 +1,7 @@
 <footer class="py-3 bg-gray-700 border-t border-gray-700">
     <div class="container grid w-full grid-cols-8 gap-0 px-2 mx-auto lg:px-0 lg:gap-16">
         @foreach ($footerFactions as $footerFaction)
-            <div><a href="{{ route('faction.view', $footerFaction->slug) }}"><img
+            <div><a href="{{ route('faction.view', $footerFaction->slug) }}" class="active:outline-none"><img
                         src="\storage\{{ $footerFaction->image }}" alt="{{ $footerFaction->name }}"></a></div>
         @endforeach
     </div>

@@ -62,21 +62,32 @@ class CharacterPage extends Component
         $this->setQuestions();
         $this->setTokens();
         $this->setRelateds();
-        if (count($this->mini->cards) > 1) {
-            $this->setCards();
-        }
+        $this->setCards();
     }
 
     public function setCards()
     {
         $this->cardCount = count($this->mini->cards);
         for ($i = 0; $i < $this->cardCount; $i++) {
-            $this->cards[$i]['name'] = $this->mini->name . " " . ($i + 1);
+            if ($this->cardCount == 1) {
+                $this->cards[$i]['name'] = $this->mini->name;
+            } else {
+                $this->cards[$i]['name'] = $this->mini->name . " " . ($i + 1);
+            }
             $this->cards[$i]['front'] = $this->mini->cards[$i]->front;
             $this->cards[$i]['back'] = $this->mini->cards[$i]->back;
             $this->cards[$i]['pdf'] = $this->mini->cards[$i]->pdf;
+            $this->cards[$i]['type'] = "normal";
         }
         $this->currentCard = array_rand($this->cards);
+        foreach ($this->mini->promos as $promo) {
+            $this->cards[$i]['name'] = $promo->name;
+            $this->cards[$i]['front'] = $promo->front;
+            $this->cards[$i]['back'] = $promo->back;
+            $this->cards[$i]['pdf'] = $promo->pdf;
+            $this->cards[$i]['type'] = "promo";
+            $i++;
+        }
     }
 
     public function setNewCard($newCard)

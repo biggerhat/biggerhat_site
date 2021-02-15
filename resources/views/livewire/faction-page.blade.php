@@ -5,7 +5,7 @@
 <div>
     <div class="container grid w-full grid-cols-8 gap-0 px-2 mx-auto lg:px-0 lg:gap-16">
         @foreach ($factions as $headerFaction)
-            <div><a href="{{ route('faction.view', $headerFaction->slug) }}"><img
+            <div><a href="{{ route('faction.view', $headerFaction->slug) }}" class="active:outline-none"><img
                         src="\storage\{{ $headerFaction->image }}" alt="{{ $headerFaction->name }}" @if ($headerFaction->id != $faction->id) class="opacity-25" @endif></a></div>
         @endforeach
     </div>

@@ -36,6 +36,12 @@ Route::get('/factions/{faction:slug}', FactionPage::class)->name("faction.view")
 Route::get('/masters/{mini:slug}', MasterPage::class)->name("master.view");
 Route::get('/resources/{resource:slug}', ResourcePage::class)->name("resource.view");
 
+Route::get('/random', function () {
+    $minis = App\Models\Mini::all();
+    $mini = $minis->random();
+    return redirect()->route('character.view', $mini->slug);
+});
+
 Route::get('/user/logout', 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
