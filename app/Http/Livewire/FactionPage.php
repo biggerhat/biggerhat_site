@@ -21,7 +21,7 @@ class FactionPage extends Component
     public $showEnforcers = false;
     public $minions;
     public $showMinions = false;
-    public $topAbilities;
+    public $topAbilities = [];
     public $statistics;
     public $keywords;
 
@@ -34,6 +34,8 @@ class FactionPage extends Component
         $this->keywords = Redis::hgetall("factions:keywords:{$faction->slug}");
         arsort($this->keywords);
         $id = $this->faction->id;
+        $this->topAbilities = json_decode($this->statistics['topAbilities'], TRUE);
+
         $this->minis = Mini::whereHas('factions', function ($query) use ($id) {
             $query->where('faction_id', '=', $id);
         })
@@ -56,8 +58,6 @@ class FactionPage extends Component
         $this->minions = $this->minis->filter(function ($item) {
             return $item['station_id'] === 4;
         });
-
-        $this->topAbilities = json_decode($this->statistics['topAbilities']);
     }
 
     public function render()

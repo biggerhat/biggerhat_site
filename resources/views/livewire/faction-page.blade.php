@@ -181,11 +181,11 @@
                     Top 10 Abilities
                 </div>
                 <div class="mx-2 mb-2 text-lg">
-                    @foreach ($topAbilities as $ability)
+                    @for ($i = 0; $i < count($topAbilities); $i++)
                         <div class="pl-4 mb-1" style="text-indent: -1rem;"><span class="font-bold">
-                                {!! fauxdown($ability->name) !!}</span> ({{ $ability->count }}
-                            characters) - {!! fauxdown($ability->description) !!} </div>
-                    @endforeach
+                                {!! fauxdown($topAbilities[$i]['name']) !!}</span> ({{ $topAbilities[$i]['count'] }}
+                            characters) - {!! fauxdown($topAbilities[$i]['description']) !!} </div>
+                    @endfor
                 </div>
             </div>
         </div>
