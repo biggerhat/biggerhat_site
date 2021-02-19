@@ -5,8 +5,6 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Faction;
 use App\Models\Mini;
-use App\Models\Keyword;
-use App\Models\Upgrade;
 use App\Models\Ability;
 use Illuminate\Support\Facades\Redis;
 
@@ -23,15 +21,18 @@ class FactionPage extends Component
     public $showEnforcers = false;
     public $minions;
     public $showMinions = false;
-    public $topAbilities = [];
-    public $superTopAbilities = [];
+    public $topAbilities;
     public $statistics;
+    public $keywords;
 
     public function mount(Faction $faction)
     {
         $this->factions = Faction::where('hidden', '1')->orderBy('name', 'ASC')->get();
         $this->faction = $faction;
+        $this->faction->load('episodes');
         $this->statistics = Redis::hgetall("factions:statistics:{$faction->slug}");
+        $this->keywords = Redis::hgetall("factions:keywords:{$faction->slug}");
+        arsort($this->keywords);
         $id = $this->faction->id;
         $this->minis = Mini::whereHas('factions', function ($query) use ($id) {
             $query->where('faction_id', '=', $id);
@@ -42,43 +43,21 @@ class FactionPage extends Component
             ->orderBy('station_id', 'ASC')
             ->orderBy('name', 'ASC')
             ->get();
-        $this->masters = Mini::whereHas('factions', function ($query) use ($id) {
-            $query->where('faction_id', '=', $id);
-        })
-            ->whereDoesntHave('factions', function ($query) {
-                $query->where('faction_id', '=', 8);
-            })
-            ->where('station_id', 1)
-            ->orderBy('name', 'ASC')
-            ->get();
-        $this->henchmen = Mini::whereHas('factions', function ($query) use ($id) {
-            $query->where('faction_id', '=', $id);
-        })
-            ->whereDoesntHave('factions', function ($query) {
-                $query->where('faction_id', '=', 8);
-            })
-            ->where('station_id', 2)
-            ->orderBy('name', 'ASC')
-            ->get();
-        $this->enforcers = Mini::whereHas('factions', function ($query) use ($id) {
-            $query->where('faction_id', '=', $id);
-        })
-            ->whereDoesntHave('factions', function ($query) {
-                $query->where('faction_id', '=', 8);
-            })
-            ->where('station_id', 3)
-            ->orderBy('name', 'ASC')
-            ->get();
-        $this->minions = Mini::whereHas('factions', function ($query) use ($id) {
-            $query->where('faction_id', '=', $id);
-        })
-            ->whereDoesntHave('factions', function ($query) {
-                $query->where('faction_id', '=', 8);
-            })
-            ->where('station_id', 4)
-            ->orderBy('name', 'ASC')
-            ->get();
-        $this->getTopAbilities();
+
+        $this->masters = $this->minis->filter(function ($item) {
+            return $item['station_id'] === 1;
+        });
+        $this->henchmen = $this->minis->filter(function ($item) {
+            return $item['station_id'] === 2;
+        });
+        $this->enforcers = $this->minis->filter(function ($item) {
+            return $item['station_id'] === 3;
+        });
+        $this->minions = $this->minis->filter(function ($item) {
+            return $item['station_id'] === 4;
+        });
+
+        $this->topAbilities = json_decode($this->statistics['topAbilities']);
     }
 
     public function render()
@@ -86,40 +65,6 @@ class FactionPage extends Component
         return view('livewire.faction-page')
             ->extends('main')
             ->section('content');
-    }
-
-    public function getTopAbilities()
-    {
-        foreach ($this->minis as $mini) {
-            foreach ($mini->abilities as $ability) {
-                if (array_key_exists($ability['name'], $this->topAbilities)) {
-                    $this->topAbilities[$ability['name']] += 1;
-                } else {
-                    $this->topAbilities += [$ability['name'] => 1];
-                }
-            }
-            arsort($this->topAbilities);
-        }
-
-
-        $x = 0;
-        foreach ($this->topAbilities as $name => $count) {
-            /* if(array_search($name,$this->abilityFilter) == false)
-            {
-                unset($this->topAbilities[$name]);
-            }
-            else
-            { */
-            $this->superTopAbilities[$x]['name'] = $name;
-            $this->superTopAbilities[$x]['count'] = $count;
-            $tempAbility = Ability::where('name', $name)->first();
-            $this->superTopAbilities[$x]['description'] = $tempAbility->description;
-            $x++;
-
-
-            //} 
-        }
-        $this->topAbilities = array_slice($this->superTopAbilities, 0, 10);
     }
 
     public function masterToggle()

@@ -24,10 +24,6 @@ class Action extends Model
         'range_type',
     ];
 
-    protected $dispatchesEvents = [
-        'saved' => MiniSaved::class,
-    ];
-
     protected $with = [
         'questions',
         'triggers',

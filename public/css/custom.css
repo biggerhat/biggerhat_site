@@ -12,6 +12,10 @@
     font-display: swap;
 }
 
+a:active {
+    outline:none;
+}
+
 .card__image.is-flipped {
     transform: rotateY(180deg);
 }

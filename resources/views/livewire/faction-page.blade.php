@@ -40,17 +40,6 @@
         </div>
 
         <div class="grid w-full grid-cols-5 mx-auto mb-2 lg:px-2 auto-cols-fr auto-rows-min">
-            <div class="col-span-5 mb-2 text-lg text-center">
-                <span class="block text-lg font-semibold">Unique Characters:
-                    {{ $statistics['uniqueCharacters'] }}</span>
-                <span class="block text-lg font-semibold">Total Models: {{ $statistics['totalCharacters'] }}</span>
-                <span class="block text-lg font-semibold">Masters: {{ count($masters) }}</span>
-                <span class="block text-lg font-semibold">Henchmen: {{ count($henchmen) }}</span>
-                <span class="block text-lg font-semibold">Enforcers: {{ count($enforcers) }}</span>
-                <span class="block text-lg font-semibold">Minions: {{ count($minions) }}</span>
-
-
-            </div>
             <div class="col-span-5 mb-2 text-center">
                 <div class="block w-full h-full py-2 text-center">
                     <span
@@ -60,7 +49,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <div class="inline-block mx-auto text-sm text-center">
+                <div class="inline-block mx-auto text-sm font-bold text-center">
                     Defense
                     <div
                         class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle table-cell text-5xl text-bold border-2 border-gray-900 average font-mono">
@@ -69,7 +58,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <div class="inline-block mx-auto text-sm text-center">
+                <div class="inline-block mx-auto text-sm font-bold text-center">
                     Willpower
                     <div
                         class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle table-cell text-5xl text-bold border-2 border-gray-900 average font-mono">
@@ -78,7 +67,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <div class="inline-block mx-auto text-sm text-center">
+                <div class="inline-block mx-auto text-sm font-bold text-center">
                     Move
                     <div
                         class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle table-cell text-5xl text-bold border-2 border-gray-900 average font-mono">
@@ -87,7 +76,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <div class="inline-block mx-auto text-sm text-center">
+                <div class="inline-block mx-auto text-sm font-bold text-center">
                     Wounds
                     <div
                         class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle table-cell text-5xl text-bold border-2 border-gray-900 average font-mono">
@@ -96,7 +85,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <div class="inline-block mx-auto text-sm text-center">
+                <div class="inline-block mx-auto text-sm font-bold text-center">
                     Cost
                     <div
                         class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle table-cell text-5xl text-bold border-2 border-gray-900 average font-mono">
@@ -104,10 +93,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-5">
+            <div class="col-span-5 mb-2">
                 <div class="grid grid-cols-4 mx-auto">
                     <div class="text-center">
-                        <div class="inline-block mx-auto text-sm text-center">
+                        <div class="inline-block mx-auto text-sm font-bold text-center">
                             <div class="icon baseline" id="melee" style="margin-right: -5px;"><svg width="32"
                                     height="32" viewBox="0 0 32 32">
                                     <path id="icon-info"
@@ -121,7 +110,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <div class="inline-block mx-auto text-sm text-center">
+                        <div class="inline-block mx-auto text-sm font-bold text-center">
                             <div class="icon baseline" id="melee" style="margin-right: -5px;"><svg width="32"
                                     height="32" viewBox="0 0 32 32">
                                     <path id="icon-info"
@@ -135,7 +124,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <div class="inline-block mx-auto text-sm text-center">
+                        <div class="inline-block mx-auto text-sm font-bold text-center">
                             <div class="icon baseline" id="gun" style="margin-right: -5px;">
                                 <svg width="32" height="32" viewBox="0 0 32 32">
                                     <path id="icon-info"
@@ -150,7 +139,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <div class="inline-block mx-auto text-sm text-center">
+                        <div class="inline-block mx-auto text-sm font-bold text-center">
                             <div class="icon baseline" id="gun" style="margin-right: -5px;">
                                 <svg width="32" height="32" viewBox="0 0 32 32">
                                     <path id="icon-info"
@@ -166,6 +155,23 @@
                     </div>
                 </div>
             </div>
+            <div class="col-span-5 mb-2 text-lg text-center">
+                <div class="block w-full py-2 text-center">
+                    <span
+                        class="text-transparent lg:text-4xl text-3xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                        Totals
+                    </span>
+                </div>
+                <span class="block text-lg font-semibold">Unique Characters:
+                    {{ $statistics['uniqueCharacters'] }}</span>
+                <span class="block text-lg font-semibold">Total Models: {{ $statistics['totalCharacters'] }}</span>
+                <span class="block text-lg font-semibold">Masters: {{ count($masters) }}</span>
+                <span class="block text-lg font-semibold">Henchmen: {{ count($henchmen) }}</span>
+                <span class="block text-lg font-semibold">Enforcers: {{ count($enforcers) }}</span>
+                <span class="block text-lg font-semibold">Minions: {{ count($minions) }}</span>
+
+
+            </div>
         </div>
 
         <div>
@@ -176,9 +182,9 @@
                 </div>
                 <div class="mx-2 mb-2 text-lg">
                     @foreach ($topAbilities as $ability)
-                        <div class="pl-4 mb-1" style="text-indent: -1rem;"><span
-                                class="font-bold">{{ $ability['name'] }}</span> ({{ $ability['count'] }}
-                            characters) - {!! fauxdown($ability['description']) !!} </div>
+                        <div class="pl-4 mb-1" style="text-indent: -1rem;"><span class="font-bold">
+                                {!! fauxdown($ability->name) !!}</span> ({{ $ability->count }}
+                            characters) - {!! fauxdown($ability->description) !!} </div>
                     @endforeach
                 </div>
             </div>
@@ -232,6 +238,28 @@
             </div>
         </div>
     </div>
+
+    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+
+    <div class="container grid grid-cols-2 mx-auto lg:grid-cols-6">
+        <div class="col-span-2 mb-2 text-center lg:col-span-6">
+            <div class="block w-full h-full py-2 text-center">
+                <span
+                    class="text-transparent lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                    Keywords
+                </span>
+            </div>
+        </div>
+        @foreach ($keywords as $keyword => $count)
+            <div class="p-2 text-center"><a href="/keywords/{{ $keyword }}"
+                    class="inline-block text-center p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold ">{{ strtoupper($keyword) }}
+                    ({{ $count }})</a>
+            </div>
+        @endforeach
+
+
+    </div>
+
 
 
 

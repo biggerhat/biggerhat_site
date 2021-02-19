@@ -95,13 +95,6 @@ class CharacterPage extends Component
         $this->currentCard = $newCard;
     }
 
-    public function render()
-    {
-        return view('livewire.character-page')
-            ->extends('main')
-            ->section('content');
-    }
-
     public function openUpgradeModal($upgradeId)
     {
         $upgrade = Upgrade::find($upgradeId);
@@ -229,5 +222,13 @@ class CharacterPage extends Component
         }
 
         $this->relateds = $query->orderBy('station_id', 'ASC')->orderBy('name', 'ASC')->get();
+    }
+
+
+    public function render()
+    {
+        return view('livewire.character-page')
+            ->extends('main')
+            ->section('content');
     }
 }
