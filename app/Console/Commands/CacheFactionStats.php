@@ -118,17 +118,14 @@ class CacheFactionStats extends Command
                 Redis::hset("factions:statistics:{$faction->slug}", "topAbilities", json_encode($factionAbilities)); */
 
                 foreach ($mini->actions as $action) {
-                    if ($action->type != "tactical") {
-                        switch ($action->range_type) {
-                            case "{{melee}}":
-                                $meleeTotal++;
-                                $meleeRangeTotal += $action->range;
-                                $meleeStatTotal += $action->stat;
-                            case "{{gun}}":
-                                $gunTotal++;
-                                $gunRangeTotal += $action->range;
-                                $gunStatTotal += $action->stat;
-                        }
+                    if ($action->type != "tactical" && $action->range_type == "{{melee}}") {
+                        $meleeTotal++;
+                        $meleeRangeTotal += $action->range;
+                        $meleeStatTotal += $action->stat;
+                    } else if ($action->type != "tactical" && $action->range_type == "{{gun}}") {
+                        $gunTotal++;
+                        $gunRangeTotal += $action->range;
+                        $gunStatTotal += $action->stat;
                     }
                 }
             }
@@ -160,6 +157,7 @@ class CacheFactionStats extends Command
             $averageMeleeRange = floor($meleeRangeTotal / $meleeTotal);
             $averageGunStat = floor($gunStatTotal / $gunTotal);
             $averageGunRange = floor($gunRangeTotal / $gunTotal);
+            echo "{$faction->name} - Range Total: {$gunRangeTotal}, Gun Total: {$gunTotal} \n";
 
             //Insert into redis
             Redis::hset(
