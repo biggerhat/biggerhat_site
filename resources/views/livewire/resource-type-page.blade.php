@@ -25,8 +25,14 @@
                         {{ $resource->description }}
                     </div>
                     <div class="p-2">
-                        <a class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
-                            href="{{ route('resource.view', $resource->slug) }}">View {{ $resource->name }}</a>
+                        @if ($resourceType->is_direct_link)
+                            <a class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                                href="{{ $resource->link }}" target="_{{ $resourceType->name }}">Visit
+                                {{ $resource->name }}</a>
+                        @else
+                            <a class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                                href="{{ route('resource.view', $resource->slug) }}">View {{ $resource->name }}</a>
+                        @endif
                     </div>
                 </div>
             </div>
