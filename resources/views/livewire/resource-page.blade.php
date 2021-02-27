@@ -16,7 +16,7 @@
         <div class="pt-5 mx-auto">
             <a href="{{ $resource->link }}" alt="{{ $resource->name }} " class="inline-block active:outline-none"
                 target="{{ $resource->slug }}">
-                <img src="\storage\{{ $resource->logo }}" class="mx-auto rounded-lg" />
+                <img src="\storage\{{ $resource->logo }}" class="max-w-3xl mx-auto rounded-lg max-h-3xl" />
             </a>
         </div>
         <div class="text-xl">
@@ -44,17 +44,17 @@
                 <div class="mb-2">
                     <span class="font-bold">Tags:</span>
                     @foreach ($episode->factions as $faction)
-                        <div class="inline-block text-center"><a href="/factions/{{ $faction->slug }}"
+                        <div class="inline-block my-1 text-center"><a href="/factions/{{ $faction->slug }}"
                                 class="inline-block text-center p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold ">{{ strtoupper($faction->name) }}</a>
                         </div>
                     @endforeach
                     @foreach ($episode->keywords as $keyword)
-                        <div class="inline-block text-center"><a href="/keywords/{{ $keyword->name }}"
+                        <div class="inline-block my-1 text-center"><a href="/keywords/{{ $keyword->name }}"
                                 class="inline-block p-1 px-2 py-1 text-sm font-bold text-center text-white bg-gray-900 rounded-full ">{{ strtoupper($keyword->name) }}</a>
                         </div>
                     @endforeach
                     @foreach ($episode->minis as $mini)
-                        <div class="inline-block text-center"><a href="/characters/{{ $mini->slug }}"
+                        <div class="inline-block my-1 text-center"><a href="/characters/{{ $mini->slug }}"
                                 class="inline-block p-1 px-2 py-1 text-sm font-bold text-center text-white bg-gray-900 rounded-full ">{{ strtoupper($mini->name) }}</a>
                         </div>
                     @endforeach
