@@ -4,9 +4,6 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Mini;
-use App\Models\Keyword;
-use App\Models\Faction;
-use App\Models\Station;
 use App\Models\Upgrade;
 use App\Models\Marker;
 

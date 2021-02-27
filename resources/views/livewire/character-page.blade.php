@@ -323,7 +323,7 @@
                     <div class="mx-2 mb-2 font-semibold text-md">
                         @foreach ($mini->episodes as $episode)
                             <a href="{{ $episode->link }}" class="block mb-2 hover:underline"
-                                target="_{{ Str::slug($mini->name, '-') }}">
+                                target="_{{ $mini->slug }}">
                                 <div class="inline-block bg-gray-900 rounded-full">
                                     {!! $episode->type->icon !!}
                                 </div>
@@ -334,15 +334,6 @@
                 </div>
             </div>
         @endif
-    </div>
-
-    <div wire:loading>
-        <div class="fixed top-0 left-0 w-full h-full overflow-y-auto z-100">
-            <div class="absolute inset-0 flex items-center justify-center ">
-                <span class="p-5 bg-gray-200 border border-black rounded-full">Sending the Alps to fetch...</span>
-            </div>
-        </div>
-
     </div>
 
     @if ($upgradeModal)

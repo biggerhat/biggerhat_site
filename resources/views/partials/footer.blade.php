@@ -41,7 +41,7 @@
                 Resources</div>
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
                 @foreach ($footerResourceTypes as $resourceType)
-                    <li class="text-sm"><a href="{{ route('resource.view', Str::slug($resourceType->name, '-')) }}"
+                    <li class="text-sm"><a href="{{ route('resourcetype.view', $resourceType->slug) }}"
                             class="hover:text-white hover:underline">{{ $resourceType->name }}</a></li>
                 @endforeach
             </ul>

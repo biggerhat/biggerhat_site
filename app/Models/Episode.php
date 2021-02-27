@@ -31,16 +31,16 @@ class Episode extends Model
 
     public function minis()
     {
-        return $this->belongsToMany(Mini::class);
+        return $this->belongsToMany(Mini::class)->orderBy('name');
     }
 
     public function keywords()
     {
-        return $this->belongsToMany(Keyword::class);
+        return $this->belongsToMany(Keyword::class)->orderBy('name');
     }
 
     public function factions()
     {
-        return $this->belongsToMany(Faction::class);
+        return $this->belongsToMany(Faction::class)->orderBy('name');
     }
 }

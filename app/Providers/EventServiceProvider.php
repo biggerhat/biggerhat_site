@@ -7,7 +7,9 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use App\Events\MiniSaved;
+use App\Events\ResourceSaved;
 use App\Listeners\CacheFactionStats;
+use App\Listeners\setResourceSlug;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         MiniSaved::class => [
             CacheFactionStats::class,
+        ],
+        ResourceSaved::class => [
+            setResourceSlug::class,
         ],
 
     ];

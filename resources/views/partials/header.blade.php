@@ -1,7 +1,8 @@
 <header>
     <nav class="px-5 bg-gray-900">
         <ul class="flex flex-wrap items-center justify-between font-sans list-none md:py-0 menu lg:flex-nowrap">
-            <li class="py-4 my-auto text-xl logo"><a href="/" class="block text-white">Bigger Hat</a></li>
+            <li class="py-4 my-auto text-xl logo"><a href="/" class="block text-white faction_header">Bigger Hat</a>
+            </li>
             <li class="flex w-1/2 my-auto lg:w-1/3">
                 <div class="flex w-full h-full my-auto text-sm bg-gray-900 rounded-full">
                     @if (Request::path() != '/')
@@ -21,18 +22,19 @@
                     @endif
                 </div>
             </li>
-            <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a href="/characters"
+            <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a
+                    href="{{ route('characters') }}"
                     class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Characters</a></li>
             <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a href="/references"
                     class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">References</a></li>
-            <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a href="/resources"
+            <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a
+                    href="{{ route('resources') }}"
                     class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Resources</a></li>
             <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a href="/tools"
                     class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Tools</a></li>
 
-            <li class="order-3 hidden w-full p-2 text-center item has-submenu lg:block lg:w-auto lg:relative">
-                <a tabindex="0"
-                    class="block p-2 text-gray-200 rounded-lg cursor-pointer hover:text-white hover:bg-gray-700">
+            <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative">
+                <a href="" class="block p-2 text-gray-200 rounded-lg cursor-pointer hover:text-white hover:bg-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                         class="inline-block">
                         <g class="" transform="translate(0,0)" style="">
@@ -45,23 +47,6 @@
                     </svg>
                     <span class="inline-block lg:hidden">Account</span>
                 </a>
-                <ul class="hidden p-2 list-none bg-gray-800 submenu min-w-max">
-                    <li class="block rounded-lg cursor-pointer subitem hover:bg-gray-700"><a href="#"
-                            class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Profile</a>
-                    </li>
-                    <li class="block rounded-lg cursor-pointer subitem hover:bg-gray-700"><a href="#"
-                            class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Game Logs</a>
-                    </li>
-                    <li class="block rounded-lg cursor-pointer subitem hover:bg-gray-700"><a href="#"
-                            class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Collection</a>
-                    </li>
-                    <li class="block rounded-lg cursor-pointer subitem hover:bg-gray-700"><a href="#"
-                            class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Gallery</a>
-                    </li>
-                    <li class="block rounded-lg cursor-pointer subitem hover:bg-gray-700"><a href="se"
-                            class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Logout</a>
-                    </li>
-                </ul>
             </li>
 
             <!--toggle-->

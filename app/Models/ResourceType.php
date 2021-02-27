@@ -11,11 +11,13 @@ class ResourceType extends Model
         'name',
         'description',
         'icon',
+        'icon_large',
+        'slug',
     ];
 
     public function resources()
     {
-        return $this->belongsToMany(Resource::class, 'resource_resourcetype');
+        return $this->belongsToMany(Resource::class, 'resource_resourcetype')->orderBy('name');
     }
 
     public function episodes()

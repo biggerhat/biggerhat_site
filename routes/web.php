@@ -5,6 +5,8 @@ use App\Http\Livewire\CharacterPage;
 use App\Http\Livewire\FactionPage;
 use App\Http\Livewire\MasterPage;
 use App\Http\Livewire\ResourcePage;
+use App\Http\Livewire\ResourceTypePage;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,23 +19,19 @@ use App\Http\Livewire\ResourcePage;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', [PagesController::class, 'getHome'])->name('home');
 
 
-Route::get('/boxcheck', function () {
-    $minis = App\Models\Mini::with('instructions')->get();
-    foreach ($minis as $mini) {
-        if (count($mini->instructions) < 1) {
-            echo "{$mini->name} <br />";
-        }
-    }
-});
-
+Route::get('/resources', [PagesController::class, 'getResources'])->name('resources');
+Route::get('/upgrades', [PagesController::class, 'getUpgrades'])->name('upgrades');
+Route::get('/characters', [PagesController::class, 'getCharacters'])->name('characters');
+Route::get('/keywords', [PagesController::class, 'getKeywords'])->name('keywords');
+Route::get('/masters', [PagesController::class, 'getMasters'])->name('masters');
+Route::get('/promos', [PagesController::class, 'getPromos'])->name('promos');
 Route::get('/characters/{mini:slug}', CharacterPage::class)->name("character.view");
 Route::get('/factions/{faction:slug}', FactionPage::class)->name("faction.view");
 Route::get('/masters/{mini:slug}', MasterPage::class)->name("master.view");
+Route::get('/resources/types/{resourcetype:slug}', ResourceTypePage::class)->name("resourcetype.view");
 Route::get('/resources/{resource:slug}', ResourcePage::class)->name("resource.view");
 
 Route::get('/random', function () {

@@ -157,7 +157,6 @@ class CacheFactionStats extends Command
             $averageMeleeRange = floor($meleeRangeTotal / $meleeTotal);
             $averageGunStat = floor($gunStatTotal / $gunTotal);
             $averageGunRange = floor($gunRangeTotal / $gunTotal);
-            echo "{$faction->name} - Range Total: {$gunRangeTotal}, Gun Total: {$gunTotal} \n";
 
             //Insert into redis
             Redis::hset(
@@ -187,6 +186,6 @@ class CacheFactionStats extends Command
             );
         }
 
-        echo "Statistics have been Calculated and Cached";
+        echo "Statistics have been Calculated and Cached \n";
     }
 }
