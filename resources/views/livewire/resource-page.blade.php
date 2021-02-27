@@ -37,18 +37,20 @@
                 @foreach ($resource->episodes as $episode)
                     <div class="block px-2 mb-2 text-center lg:px-0">
                         <div class="block w-full p-2 border-2 border-gray-900 rounded">
-                            <div>
-                                {!! $episode->type->icon_large !!}
-                            </div>
                             <a href="{{ $episode->link }}" class="inline-block font-bold hover:underline"
                                 target="_{{ $resource->slug }}">
+                                <div>
+                                    {!! $episode->type->icon_large !!}
+                                </div>
                                 {{ $episode->name }}
                             </a>
                             <div class="block my-3 border-b border-gray-400 border-dashed"></div>
-                            <div class="block italic">
-                                {{ $episode->description }}
-                            </div>
-                            <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+                            @if ($episode->description)
+                                <div class="block italic">
+                                    {{ $episode->description }}
+                                </div>
+                                <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+                            @endif
                             <div class="mb-2">
                                 <span class="font-bold">Tags:</span>
                                 @foreach ($episode->factions as $faction)
