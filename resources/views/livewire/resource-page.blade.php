@@ -16,7 +16,7 @@
         <div class="pt-5 mx-auto">
             <a href="{{ $resource->link }}" alt="{{ $resource->name }} " class="inline-block active:outline-none"
                 target="{{ $resource->slug }}">
-                <img src="\storage\{{ $resource->logo }}" class="max-w-3xl mx-auto rounded-lg max-h-3xl" />
+                <img src="\storage\{{ $resource->logo }}" class="mx-auto rounded-lg lg:max-w-2xl lg:max-h-2xl" />
             </a>
         </div>
         <div class="text-xl">
