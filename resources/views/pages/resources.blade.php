@@ -28,9 +28,10 @@
                     <div class="block italic">
                         {{ $resource->description }}
                     </div>
-                    <button
-                        class="px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
-                        href="{{ route('resourcetype.view', $resource->slug) }}">View {{ $resource->name }}</button>
+                    <div class="m-4">
+                        <a class="px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                            href="{{ route('resourcetype.view', $resource->slug) }}">View {{ $resource->name }}</a>
+                    </div>
                 </div>
             </div>
         @endforeach
