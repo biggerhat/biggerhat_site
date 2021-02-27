@@ -17,8 +17,7 @@
     <div class="container grid gap-0 mx-auto lg:grid-cols-3 auto-cols-fr lg:gap-2">
         @foreach ($resources as $resource)
             <div class="block px-2 mb-2 text-center lg:px-0">
-                <div class="block w-full p-2 border-2 border-gray-900 rounded active:outline-none"
-                    href="{{ route('keywords') }}">
+                <div class="block w-full p-2 border-2 border-gray-900 rounded active:outline-none">
                     <div class="block w-full h-full py-2 text-center">
                         <span class="text-3xl text-transparent text-gray-900 lg:text-4xl faction_header">
                             {{ $resource->name }}
