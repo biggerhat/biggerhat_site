@@ -49,7 +49,7 @@
                         </div>
                     @endforeach
                     @foreach ($episode->keywords as $keyword)
-                        <div class="inline-block text-center"><a href="/keywords/{{ $keyword }}"
+                        <div class="inline-block text-center"><a href="/keywords/{{ $keyword->name }}"
                                 class="inline-block p-1 px-2 py-1 text-sm font-bold text-center text-white bg-gray-900 rounded-full ">{{ strtoupper($keyword->name) }}</a>
                         </div>
                     @endforeach
