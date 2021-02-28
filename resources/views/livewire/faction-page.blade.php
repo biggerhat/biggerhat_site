@@ -277,6 +277,9 @@
             </div>
         </div>
     </div>
+
+    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+
     <div class="container grid grid-cols-2 mx-auto lg:grid-cols-6">
         <div class="col-span-2 mb-2 text-center lg:col-span-6">
             <div class="block w-full h-full py-2 text-center">
