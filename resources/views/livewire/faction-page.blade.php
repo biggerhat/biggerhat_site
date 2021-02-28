@@ -248,16 +248,34 @@
                     class="text-transparent lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                     Keywords
                 </span>
+                <span class="block text-xs">[ Click a Keyword to Filter Images ]</span>
             </div>
         </div>
-        @foreach ($keywords as $keyword => $count)
-            <div class="p-2 text-center"><a href="/keywords/{{ $keyword }}"
-                    class="inline-block text-center p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold ">{{ strtoupper($keyword) }}
-                    ({{ $count }})</a>
+        @foreach ($keywords as $aKeyword => $count)
+            <div class="p-2 text-center"><span wire:click="filterKeyword('{{ $aKeyword }}')"
+                    class="inline-block text-center cursor-pointer p-1 text-white rounded-full @if ($aKeyword==$keyword) bg-gray-900 @else bg-{{ $faction->bg_color }} @endif px-2 py-1 text-sm font-bold">{{ strtoupper($aKeyword) }}
+                    ({{ $count }})</span>
             </div>
         @endforeach
+        <div class="col-span-2 lg:col-span-6">
+            <div class="p-2 mx-auto text-center">
+                <span wire:click="clearFilters()"
+                    class="inline-block text-center cursor-pointer p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold">
 
-
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 25px; width: 25px;"
+                        class="inline-block">
+                        <g class="" transform="translate(0,0)" style="">
+                            <path
+                                d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
+                                fill="#ffffff" fill-opacity="1"
+                                transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
+                            </path>
+                        </g>
+                    </svg>
+                    CLEAR FILTERS
+                </span>
+            </div>
+        </div>
     </div>
 
 

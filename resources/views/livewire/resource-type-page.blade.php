@@ -22,7 +22,7 @@
                     </div>
                     <img src="\storage\{{ $resource->logo }}" class="mx-auto rounded-lg" />
                     <div class="block my-2 italic">
-                        {{ $resource->description }}
+                        {!! nl2br($resource->description) !!}
                     </div>
                     <div class="p-2">
                         @if ($resourceType->is_direct_link)

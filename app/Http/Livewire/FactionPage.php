@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redis;
 
 class FactionPage extends Component
 {
+    public $factionId;
     public $faction;
     public $factions;
     public $minis;
@@ -24,6 +25,11 @@ class FactionPage extends Component
     public $topAbilities = [];
     public $statistics;
     public $keywords;
+    public $keywordFilter;
+    public $characteristicFilter;
+    public $keyword;
+    public $characteristic;
+    protected $queryString = ['keyword' => ['except' => ''], 'characteristic' => ['except' => '']];
 
     public function mount(Faction $faction)
     {
@@ -33,38 +39,14 @@ class FactionPage extends Component
         $this->statistics = Redis::hgetall("factions:statistics:{$faction->slug}");
         $this->keywords = Redis::hgetall("factions:keywords:{$faction->slug}");
         arsort($this->keywords);
-        $id = $this->faction->id;
+        $this->factionId = $this->faction->id;
         $this->topAbilities = json_decode($this->statistics['topAbilities'], TRUE);
 
-        $this->minis = Mini::whereHas('factions', function ($query) use ($id) {
-            $query->where('faction_id', '=', $id);
-        })
-            ->whereDoesntHave('factions', function ($query) {
-                $query->where('faction_id', '=', 8);
-            })
-            ->orderBy('station_id', 'ASC')
-            ->orderBy('name', 'ASC')
-            ->get();
-
-        $this->masters = $this->minis->filter(function ($item) {
-            return $item['station_id'] === 1;
-        });
-        $this->henchmen = $this->minis->filter(function ($item) {
-            return $item['station_id'] === 2;
-        });
-        $this->enforcers = $this->minis->filter(function ($item) {
-            return $item['station_id'] === 3;
-        });
-        $this->minions = $this->minis->filter(function ($item) {
-            return $item['station_id'] === 4;
-        });
-    }
-
-    public function render()
-    {
-        return view('livewire.faction-page')
-            ->extends('main')
-            ->section('content');
+        if ($this->keyword) {
+            $this->filterKeyword($this->keyword);
+        } else {
+            $this->clearFilters();
+        }
     }
 
     public function masterToggle()
@@ -101,5 +83,54 @@ class FactionPage extends Component
         } else {
             $this->showMinions = true;
         }
+    }
+
+    public function filterKeyword($name)
+    {
+        $this->keyword = $name;
+        $this->minis = Mini::inFaction($this->factionId)
+            ->filterKeyword($this->keyword)
+            ->orderBy('name', 'ASC')
+            ->get();
+        $this->stationFilter();
+        $this->showMasters = true;
+        $this->showHenchmen = true;
+        $this->showEnforcers = true;
+        $this->showMinions = true;
+    }
+
+    public function clearFilters()
+    {
+        $this->keyword = '';
+        $this->characteristic = '';
+        $this->minis = Mini::inFaction($this->factionId)
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        $this->stationFilter();
+    }
+
+    public function stationFilter()
+    {
+        $this->masters = $this->minis->filter(function ($item) {
+            return $item['station_id'] === 1;
+        });
+        $this->henchmen = $this->minis->filter(function ($item) {
+            return $item['station_id'] === 2;
+        });
+        $this->enforcers = $this->minis->filter(function ($item) {
+            return $item['station_id'] === 3;
+        });
+        $this->minions = $this->minis->filter(function ($item) {
+            return $item['station_id'] === 4;
+        });
+    }
+
+
+    public function render()
+    {
+        return view('livewire.faction-page')
+            ->extends('main')
+            ->section('content');
     }
 }

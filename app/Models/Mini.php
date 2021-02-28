@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Events\MiniSaved;
-
-
+use Illuminate\Database\Query\Builder;
 
 class Mini extends Model
 {
@@ -115,5 +114,40 @@ class Mini extends Model
     public function episodes()
     {
         return $this->belongsToMany(Episode::class);
+    }
+
+    /**
+     * Scope a query to only include minis of a given faction.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  int $id
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeInFaction($query, $id)
+    {
+        return $query->whereHas('factions', function ($q) use ($id) {
+            $q->where('id', $id);
+        })->whereDoesntHave('factions', function ($q) {
+            $q->where('id', '=', 8);
+        });
+    }
+
+    public function scopeInKeyword($query, $id)
+    {
+        return $query->whereHas('keywords', function ($q) use ($id) {
+            $q->where('id', $id);
+        });
+    }
+
+    public function scopeFilterKeyword($query, $name)
+    {
+        return $query->whereHas('keywords', function ($q) use ($name) {
+            $q->where('name', $name);
+        });
+    }
+
+    public function scopeHasStation($query, $id)
+    {
+        return $query->where('station_id', $id);
     }
 }

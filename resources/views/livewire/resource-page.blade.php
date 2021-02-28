@@ -11,7 +11,7 @@
 
         </div>
         <div class="mx-auto italic text-center">
-            {{ $resource->description }}
+            {!! nl2br($resource->description) !!}
         </div>
         <div class="pt-5 mx-auto">
             <a href="{{ $resource->link }}" alt="{{ $resource->name }} " class="inline-block active:outline-none"
