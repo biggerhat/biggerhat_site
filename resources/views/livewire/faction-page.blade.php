@@ -277,127 +277,170 @@
             </div>
         </div>
     </div>
+    <div class="container grid grid-cols-2 mx-auto lg:grid-cols-6">
+        <div class="col-span-2 mb-2 text-center lg:col-span-6">
+            <div class="block w-full h-full py-2 text-center">
+                <span
+                    class="text-transparent lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                    Characteristics
+                </span>
+                <span class="block text-xs">[ Click a Characteristic to Filter Images ]</span>
+            </div>
+        </div>
+        @foreach ($characteristics as $aCharacteristic => $count)
+            <div class="p-2 text-center"><span wire:click="filterCharacteristic('{{ $aCharacteristic }}')"
+                    class="inline-block text-center cursor-pointer p-1 text-white rounded-full @if ($aCharacteristic==$characteristic) bg-gray-900 @else bg-{{ $faction->bg_color }} @endif px-2 py-1 text-sm
+                    font-bold">{{ strtoupper($aCharacteristic) }}
+                    ({{ $count }})</span>
+            </div>
+        @endforeach
+        <div class="col-span-2 lg:col-span-6">
+            <div class="p-2 mx-auto text-center">
+                <span wire:click="clearFilters()"
+                    class="inline-block text-center cursor-pointer p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 25px; width: 25px;"
+                        class="inline-block">
+                        <g class="" transform="translate(0,0)" style="">
+                            <path
+                                d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
+                                fill="#ffffff" fill-opacity="1"
+                                transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
+                            </path>
+                        </g>
+                    </svg>
+                    CLEAR FILTERS
+                </span>
+            </div>
+        </div>
+    </div>
 
 
 
 
 
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    @if (count($masters) > 0)
+        <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
+            <div class="lg:col-span-4">
+                <div class="block w-full h-full py-2 text-center" wire:click="masterToggle">
+                    <span
+                        class="text-transparent block cursor-pointer lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                        Masters
+                    </span>
+                    <span class="text-xs">
+                        @if ($showMasters)
+                            [Click to Close]
 
-    <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-        <div class="lg:col-span-4">
-            <div class="block w-full h-full py-2 text-center" wire:click="masterToggle">
-                <span
-                    class="text-transparent block cursor-pointer lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
-                    Masters
-                </span>
-                <span class="text-xs">
-                    @if ($showMasters)
-                        [Click to Close]
-
-                    @else
-                        [Click to Expand]
-                    @endif
-                </span>
-            </div>
-        </div>
-        @if ($showMasters)
-            @foreach ($masters as $mini)
-                <div class="p-2">
-                    <a href="{{ route('master.view', $mini->slug) }}" class="active:outline-none">
-                        <img src="\storage\{{ $mini->cards->random()->front }}"
-                            class="mx-auto rounded-lg card__image"></a>
+                        @else
+                            [Click to Expand]
+                        @endif
+                    </span>
                 </div>
-            @endforeach
-        @endif
-    </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
-
-
-    <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-        <div class="lg:col-span-4">
-            <div class="block w-full h-full py-2 text-center" wire:click="henchmenToggle">
-                <span
-                    class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
-                    Henchmen
-                </span>
-                <span class="text-xs">
-                    @if ($showHenchmen)
-                        [Click to Close]
-
-                    @else
-                        [Click to Expand]
-                    @endif
-                </span>
             </div>
+            @if ($showMasters)
+                @foreach ($masters as $mini)
+                    <div class="p-2">
+                        <a href="{{ route('master.view', $mini->slug) }}" class="active:outline-none">
+                            <img src="\storage\{{ $mini->cards->random()->front }}"
+                                class="mx-auto rounded-lg card__image"></a>
+                    </div>
+                @endforeach
+            @endif
         </div>
-        @if ($showHenchmen)
-            @foreach ($henchmen as $mini)
-                <div class="p-2">
-                    <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
-                        <img src="\storage\{{ $mini->cards->random()->front }}"
-                            class="mx-auto rounded-lg card__image"></a>
+        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    @endif
+
+    @if (count($henchmen) > 0)
+        <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
+            <div class="lg:col-span-4">
+                <div class="block w-full h-full py-2 text-center" wire:click="henchmenToggle">
+                    <span
+                        class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                        Henchmen
+                    </span>
+                    <span class="text-xs">
+                        @if ($showHenchmen)
+                            [Click to Close]
+
+                        @else
+                            [Click to Expand]
+                        @endif
+                    </span>
                 </div>
-            @endforeach
-        @endif
-    </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
-
-
-    <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-        <div class="lg:col-span-4">
-            <div class="block w-full h-full py-2 text-center" wire:click="enforcerToggle">
-                <span
-                    class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
-                    Enforcers
-                </span>
-                <span class="text-xs">
-                    @if ($showEnforcers)
-                        [Click to Close]
-
-                    @else
-                        [Click to Expand]
-                    @endif
-                </span>
             </div>
+            @if ($showHenchmen)
+                @foreach ($henchmen as $mini)
+                    <div class="p-2">
+                        <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
+                            <img src="\storage\{{ $mini->cards->random()->front }}"
+                                class="mx-auto rounded-lg card__image"></a>
+                    </div>
+                @endforeach
+            @endif
         </div>
-        @if ($showEnforcers)
-            @foreach ($enforcers as $mini)
-                <div class="p-2">
-                    <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
-                        <img src="\storage\{{ $mini->cards->random()->front }}"
-                            class="mx-auto rounded-lg card__image"></a>
-                </div>
-            @endforeach
-        @endif
-    </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
-    <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-        <div class="lg:col-span-4">
-            <div class="block w-full h-full py-2 text-center" wire:click="minionToggle">
-                <span
-                    class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
-                    Minions
-                </span>
-                <span class="text-xs">
-                    @if ($showMinions)
-                        [Click to Close]
+        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    @endif
 
-                    @else
-                        [Click to Expand]
-                    @endif
-                </span>
-            </div>
-        </div>
-        @if ($showMinions)
-            @foreach ($minions as $mini)
-                <div class="p-2">
-                    <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
-                        <img src="\storage\{{ $mini->cards->random()->front }}"
-                            class="mx-auto rounded-lg card__image"></a>
+
+    @if (count($enforcers) > 0)
+        <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
+            <div class="lg:col-span-4">
+                <div class="block w-full h-full py-2 text-center" wire:click="enforcerToggle">
+                    <span
+                        class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                        Enforcers
+                    </span>
+                    <span class="text-xs">
+                        @if ($showEnforcers)
+                            [Click to Close]
+
+                        @else
+                            [Click to Expand]
+                        @endif
+                    </span>
                 </div>
-            @endforeach
-        @endif
-    </div>
+            </div>
+            @if ($showEnforcers)
+                @foreach ($enforcers as $mini)
+                    <div class="p-2">
+                        <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
+                            <img src="\storage\{{ $mini->cards->random()->front }}"
+                                class="mx-auto rounded-lg card__image"></a>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    @endif
+    @if (count($minions) > 0)
+        <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
+            <div class="lg:col-span-4">
+                <div class="block w-full h-full py-2 text-center" wire:click="minionToggle">
+                    <span
+                        class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                        Minions
+                    </span>
+                    <span class="text-xs">
+                        @if ($showMinions)
+                            [Click to Close]
+
+                        @else
+                            [Click to Expand]
+                        @endif
+                    </span>
+                </div>
+            </div>
+            @if ($showMinions)
+                @foreach ($minions as $mini)
+                    <div class="p-2">
+                        <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
+                            <img src="\storage\{{ $mini->cards->random()->front }}"
+                                class="mx-auto rounded-lg card__image"></a>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+    @endif
 
 </div>

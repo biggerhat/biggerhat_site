@@ -146,6 +146,13 @@ class Mini extends Model
         });
     }
 
+    public function scopeFilterCharacteristic($query, $name)
+    {
+        return $query->whereHas('characteristics', function ($q) use ($name) {
+            $q->where('name', $name);
+        });
+    }
+
     public function scopeHasStation($query, $id)
     {
         return $query->where('station_id', $id);

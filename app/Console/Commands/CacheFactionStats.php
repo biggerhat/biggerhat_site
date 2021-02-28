@@ -68,7 +68,7 @@ class CacheFactionStats extends Command
             $gunRangeTotal = 0;
             $gunStatTotal = 0;
             $factionKeywords = [];
-            $factionAbilities = [];
+            $factionCharacteristics = [];
             $allAbilities = collect([]);
             $abilities = [];
 
@@ -93,6 +93,23 @@ class CacheFactionStats extends Command
                 foreach ($factionKeywords as $name => $value) {
                     Redis::hset(
                         "factions:keywords:{$faction->slug}",
+                        "{$name}",
+                        $value
+                    );
+                }
+
+                //Calculate #s for each characteristic and store it
+                foreach ($mini->characteristics as $characteristic) {
+                    if (array_key_exists($characteristic['name'], $factionCharacteristics)) {
+                        $factionCharacteristics[$characteristic['name']] += 1;
+                    } else {
+                        $factionCharacteristics += [$characteristic['name'] => 1];
+                    }
+                }
+                //Store Characteristic values in Redis
+                foreach ($factionCharacteristics as $name => $value) {
+                    Redis::hset(
+                        "factions:characteristics:{$faction->slug}",
                         "{$name}",
                         $value
                     );

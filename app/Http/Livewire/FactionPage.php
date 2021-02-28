@@ -25,8 +25,7 @@ class FactionPage extends Component
     public $topAbilities = [];
     public $statistics;
     public $keywords;
-    public $keywordFilter;
-    public $characteristicFilter;
+    public $characteristics;
     public $keyword;
     public $characteristic;
     protected $queryString = ['keyword' => ['except' => ''], 'characteristic' => ['except' => '']];
@@ -39,11 +38,14 @@ class FactionPage extends Component
         $this->statistics = Redis::hgetall("factions:statistics:{$faction->slug}");
         $this->keywords = Redis::hgetall("factions:keywords:{$faction->slug}");
         arsort($this->keywords);
+        $this->characteristics = Redis::hgetall("factions:characteristics:{$faction->slug}");
+        arsort($this->characteristics);
         $this->factionId = $this->faction->id;
         $this->topAbilities = json_decode($this->statistics['topAbilities'], TRUE);
 
-        if ($this->keyword) {
-            $this->filterKeyword($this->keyword);
+        if ($this->keyword || $this->characteristic) {
+            if ($this->keyword) $this->filterKeyword($this->keyword);
+            if ($this->characteristic) $this->filterCharacteristic($this->characteristic);
         } else {
             $this->clearFilters();
         }
@@ -85,18 +87,38 @@ class FactionPage extends Component
         }
     }
 
+    public function toggleAll($toggle)
+    {
+        $this->showMasters = $toggle;
+        $this->showHenchmen = $toggle;
+        $this->showEnforcers = $toggle;
+        $this->showMinions = $toggle;
+    }
+
+
     public function filterKeyword($name)
     {
         $this->keyword = $name;
-        $this->minis = Mini::inFaction($this->factionId)
-            ->filterKeyword($this->keyword)
-            ->orderBy('name', 'ASC')
-            ->get();
+        $query = Mini::inFaction($this->factionId)
+            ->filterKeyword($this->keyword);
+        if ($this->characteristic) {
+            $query = $query->filterCharacteristic($this->characteristic);
+        }
+        $this->minis = $query->orderBy('name', 'ASC')->get();
         $this->stationFilter();
-        $this->showMasters = true;
-        $this->showHenchmen = true;
-        $this->showEnforcers = true;
-        $this->showMinions = true;
+        $this->toggleAll(true);
+    }
+
+    public function filterCharacteristic($name)
+    {
+        $this->characteristic = $name;
+        $query = Mini::inFaction($this->factionId);
+        if ($this->keyword) {
+            $query = $query->filterKeyword($this->keyword);
+        }
+        $this->minis = $query->filterCharacteristic($this->characteristic)->orderBy('name', 'ASC')->get();
+        $this->stationFilter();
+        $this->toggleAll(true);
     }
 
     public function clearFilters()
@@ -108,6 +130,7 @@ class FactionPage extends Component
             ->get();
 
         $this->stationFilter();
+        $this->toggleAll(false);
     }
 
     public function stationFilter()
