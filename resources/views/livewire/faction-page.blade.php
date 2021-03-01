@@ -96,17 +96,13 @@
             <div class="col-span-5 mb-2">
                 <div class="grid grid-cols-4 mx-auto">
                     <div class="text-center">
-                        <div class="inline-block mx-auto text-sm font-bold text-center">
-                            <div class="icon baseline" id="melee" style="margin-right: -5px;"><svg width="32"
-                                    height="32" viewBox="0 0 32 32">
-                                    <path id="icon-info"
-                                        d="M22.080 3.424v0.128q0 0.224-0.448 0.64-0.544 0.512-0.576 0.864-1.248 1.344-2.112 2.688h-0.32q0 0.416-0.48 0.864-0.448 0.512-0.288 0.992-0.064 0.032-0.224 0.096-0.16 0.032-0.192 0.064 0.096 0.384-0.352 1.248-0.384 0.832-0.064 1.376-0.256 0.032-0.48 0.352t-0.448 0.416q0 0.32 0.064 0.32 0 0.128-0.224 0.16t-0.256 0.096q-0.064 0.064-0.096 0.256 0 0.192-0.096 0.352-0.064 0.096-0.256 0.064 0.224 0.672-0.256 0.832-0.16 0.032-0.224-0.064-0.096-0.16-0.192-0.192 0 0.16 0.032 0.64t0.032 0.8q0 0.224-0.16 0.544t-0.48 0.384q0.096 0.48-0.288 1.44-0.384 0.992-0.224 1.44-0.32-0.032-0.416 0.096t-0.064 0.32q0.064 0.192-0.032 0.416 0 0.032-0.416 0.896t-0.416 1.344q-0.064 0-0.192 0.064-0.096 0.032-0.192 0.032-0.064-0.032-0.128-0.096-0.288 0.768-0.288 1.312-0.032 0.512 0.128 1.248-0.256-0.032-0.672 0.128 0 0.224-0.128 0.512t-0.128 0.448q-0.064 0-0.16-0.064-0.096-0.032-0.16-0.032 0.032 0.416 0.032 0.544t-0.064 0.48-0.064 0.512q-0.128-0.352-0.16-0.704v-0.256q0-0.224 0.032-0.544 0.096-0.416 0.096-0.704 0.064-0.256 0.192-0.8 0.128-0.576 0.16-0.736 0.096-0.352 0.608-1.6 0.48-1.28 0.512-2.080 0.16 0 0.256-0.096 0.128-0.064 0.16-0.256t0.064-0.256v-0.736q0.384-0.608 0.8-2.144 0.448-1.504 0.8-2.176-0.064-0.96 0.704-1.472 0-0.096-0.064-0.192-0.064-0.128-0.032-0.256 0.064-0.096 0.32-0.384 0.288-0.288 0.416-0.48 0.16-0.256 0.096-0.48 0.096-0.096 0.448-0.416 0.352-0.352 0.48-0.608 0.16-0.288 0.16-0.736 0.096 0 0.16-0.128 0.064-0.096 0.192-0.064 0.224-0.8 1.056-1.856t1.056-1.504q0.768-0.512 1.856-1.664 1.088-1.184 1.6-1.632zM23.84 5.376v0.096q-0.128 0.16-0.448 0.544-0.32 0.416-0.544 0.768-0.224 0.32-0.352 0.608-0.064 0.096-0.128 0.448-0.032 0.352-0.128 0.512-0.096 0.128-0.448 0.448-0.352 0.352-0.544 0.704-0.16 0.32-0.096 0.768-0.064 0.032-0.16 0.064t-0.16 0.064q-0.032 0-0.096 0.032-0.032 0.064-0.128 0.128-0.032 0.032-0.064 0.096-0.064 0.064-0.096 0.128-0.032 0.416 0 0.736 0.032 0.384-0.064 0.704-0.096 0.288-0.352 0.448 0.256 0.544 0.128 0.992-0.16 0.416-0.448 0.768-0.288 0.288-0.48 0.736-0.224 0.384-0.128 0.832-0.096 0.064-0.192 0.064-0.128 0-0.224-0.032-0.064-0.064-0.128-0.064-0.032 0-0.032 0.128t0.096 0.64q0.128 0.544 0.064 0.96-0.416 0.224-0.48 0.768t-0.064 1.088q0 0.608-0.288 0.928-0.128 0-0.192-0.096-0.096-0.128-0.224-0.096 0 0.256 0.256 0.544 0.224 0.32 0.224 0.544-0.256 0.128-0.416 0.64-0.192 0.576-0.32 0.736-0.032 0.128 0.032 0.32t0.032 0.32q-0.096 0.064-0.192 0.064-0.064 0-0.128-0.064t-0.128-0.064q-0.032 0-0.032 0.128-0.192 0.32-0.032 1.056 0.128 0.736 0.096 0.832-0.352-0.032-0.448 0.32-0.096 0.288 0.032 0.768-0.064 0-0.16-0.032-0.128-0.032-0.192-0.032t-0.16 0.064q0.032 0.064 0.096 0.544t0.096 0.8q-0.32-0.48-0.384-1.184v-0.384q0-0.48 0.096-0.928 0.128-0.64 0.288-1.472t0.16-1.408q0.288-0.352 0.448-0.512-0.128-0.32 0.096-1.344 0.224-1.088 0.128-1.504 0.416-0.864 0.256-1.184 0.352-0.704 0.512-2.304 0.352-0.736 1.12-2.336t1.152-2.528q0.032-0.16-0.064-0.448-0.064-0.288 0.064-0.32 1.216-0.768 1.088-1.568 0.224 0.064 0.352-0.128 0.096-0.16 0.224-0.128 0.8-1.632 2.208-2.72zM17.088 0q-0.128 0.352-0.896 0.896-0.8 0.608-0.768 1.184-0.096 0-0.192-0.064-0.128-0.064-0.256-0.032-0.064 0.128-0.16 0.416-0.096 0.256-0.16 0.384-0.736 0.256-1.664 1.376t-1.696 1.408q-0.16 0.256-0.224 0.96t-0.192 0.928q-0.096 0.16-0.384 0.224-0.288 0.096-0.32 0.32-0.224 0.288 0 0.896l-2.016 2.048q-0.032 0.096-0.032 0.32 0 0.16-0.064 0.288-0.064 0.16-0.224 0.224-0.256 0.096-0.384-0.064-0.128-0.192-0.224-0.192 0 0.416-0.064 1.184t-0.096 1.12q-0.672 0.032-1.184 0.992 0.288 0.32 0.16 0.896-0.16 0.416-0.48 0.192 0.096 0.192 0.064 0.384t-0.096 0.256q-0.032 0.064-0.128 0.192-0.128 0.128-0.192 0.288-0.16 0-0.32-0.16t-0.256-0.224q0.192 1.28-0.224 2.24-0.256 0.544-0.64 0.32-0.096 0.064-0.192 0.224-0.064 0.192-0.096 0.32 0 0.096-0.032 0.256v0.224h-0.672q-0.512 1.472-0.416 2.496-0.096 0.192-0.288 0.032-0.16-0.128-0.32-0.096-0.096 0.096-0.128 0.288-0.064 0.192-0.128 0.416-0.032 0.256-0.064 0.384-0.032 0.096-0.256 0.032-0.192-0.064-0.352-0.032-0.064 0.224-0.064 0.864t-0.256 0.896q-0.064-0.128-0.128-0.448-0.096-0.32-0.128-0.416 0.32-1.216 1.12-3.072 0.768-1.856 1.056-2.72 1.088-0.736 1.536-2.944 0.224-0.192 0.48-0.928 0.256-0.8 0.608-0.96 0.032-0.096-0.032-0.256t-0.064-0.288q0.448 0 0.512-0.352-0.096-0.32 0.448-1.152t0.384-1.344q0.288-0.064 0.864-0.864 0.544-0.864 0.992-1.024 0.032-0.16 0.192-0.48 1.76-1.504 2.688-3.872 0.352-0.064 0.8-0.32t0.544-0.288q0.608-0.736 1.312-1.344 0.704-0.576 1.792-1.312 1.088-0.768 1.536-1.12h0.064zM16.416 5.728q-0.192 0.032-0.416 0.288t-0.512 0.288q-0.032 0.256 0.032 0.576 0.096 0.32 0.064 0.512-0.192 0.096-0.64 0-0.416-0.096-0.64 0-0.704 0.992-0.992 3.040-0.128 0.032-0.384 0.16t-0.48 0.096q0 0.224 0.224 0.448 0.192 0.16 0.128 0.48-0.544-0.064-0.832 0.16 0.256 0.416-0.096 1.088-0.32 0.704-0.256 0.96-0.064 0.032-0.288 0.224-0.256 0.256-0.384 0.352 0.096 0.608-0.128 1.056-0.256 0.512-0.768 0.992t-0.704 0.736q-0.032 0.16 0.096 0.256 0.096 0.128 0.064 0.256l-0.192 0.224q-0.16 0.192-0.384 0.16 0.256 0.288-0.16 1.152t-0.256 1.312q-0.064 0-0.32 0.096-0.288 0.128-0.352 0.128-0.064-0.032-0.352-0.096 0.032 0.16 0.096 0.32 0.096 0.128 0.224 0.256t0.192 0.224q0 0.16-0.224 0.352-0.192 0.16-0.128 0.48-0.128 0.032-0.224-0.032t-0.16-0.16q-0.064-0.128-0.096-0.16-0.096 0.16-0.032 0.608 0.032 0.448 0.192 0.608-0.288 0.352-0.672 0.384-0.032 0.192 0.032 0.352 0.064 0.192 0.064 0.352-0.288 0.224-0.608 0.16l0.064 0.192q0.064 0.192 0.032 0.416-1.024 1.152-0.928 2.336-0.128 0.256-0.512 0.256 0 0.128 0.096 0.384 0.128 0.256 0.128 0.384 0.032 0.16-0.064 0.384-0.096 0.096-0.224-0.032t-0.352-0.032q-0.032 0.096 0.064 0.288 0.064 0.16 0 0.32-0.224 0.128-0.352 0.32-0.16 0.16-0.256 0.448-0.064 0.384-0.096 0.544 0 0.16-0.032 0.64v0.64q-0.288-0.352-0.288-0.896 0-0.064 0.032-0.128 0.032-0.672 0.192-1.184t0.32-1.152q0.192-0.672 0.16-1.12 0.096-0.064 0.256-0.32 0.128-0.288 0.256-0.416-0.096-0.096-0.096-0.32 0.288-0.32 0.576-1.376 0.32-1.088 0.864-1.44v-0.64q0.128-0.032 0.416-0.352 0.032-0.16 0.064-0.48 0.064-0.288 0.064-0.448 0.032-0.16 0.096-0.352 0.096-0.192 0.192-0.32-0.224-0.352 0.256-1.12t0.256-1.152q0.256-0.128 0.416-0.416t0-0.512q0.288-0.288 0.544-0.864 0.224-0.544 0.544-0.896 0.128-0.128 0.096-0.512-0.032-0.32 0-0.512 0.032-0.096 0.224-0.288 0.224-0.16 0.288-0.288 0.064-0.192 0.064-0.512 0-0.384 0.096-0.576l0.192-0.128q0.192-0.096 0.352-0.288t0.128-0.352h0.416q0.448-1.344 1.184-1.696 0.064-0.928 0.832-1.888 0.704-0.992 0.864-1.568 0.672-0.384 1.696-1.536 1.024-1.216 1.76-1.568 0.032-0.032 0.096-0.16 0.096-0.128 0.128-0.16 0.032-0.064 0.128-0.16 0.064-0.096 0.128-0.128l0.16-0.16q0.096-0.064 0.192-0.096v-0.384q0.704-0.192 1.696-1.12 0.032 0 0.032 0.032 0 0.16-0.416 0.48-0.256 0.224-0.48 0.256-0.16 0.16-0.576 0.8t-0.928 0.8q-0.128 0.16-0.096 0.384-0.384 0.032-0.736 0.544-0.032 0.128 0.032 0.256t0.032 0.256z">
-                                    </path>
-                                </svg></div> Range
+                        <div class="block mx-auto text-sm font-bold text-center">
+                            Engagement
                             <div
-                                class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle table-cell text-5xl text-bold border-2 border-gray-900 average font-mono">
+                                class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white relative rounded-full text-center mx-auto align-middle p-2 text-5xl text-bold border-2 border-gray-900 average font-mono">
                                 {{ $statistics['averageMeleeRange'] }}
                             </div>
+                            Range
                         </div>
                     </div>
                     <div class="text-center">
@@ -132,8 +128,8 @@
                                     </path>
                                 </svg>
                             </div> Range
-                        <div class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle table-cell @if ($statistics['averageGunRange']> 9) text-3xl @else
-                                text-5xl @endif text-bold border-2 border-gray-900 average font-mono">
+                        <div class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle @if ($statistics['averageGunRange']> 9) pt-3 text-3xl @else
+                                text-5xl p-2 @endif text-bold border-2 border-gray-900 average font-mono">
                                 {{ $statistics['averageGunRange'] }}
                             </div>
                         </div>
@@ -252,30 +248,31 @@
             </div>
         </div>
         @foreach ($keywords as $aKeyword => $count)
-            <div class="p-2 text-center"><span wire:click="filterKeyword('{{ $aKeyword }}')"
-                    class="inline-block text-center cursor-pointer p-1 text-white rounded-full @if ($aKeyword==$keyword) bg-gray-900 @else bg-{{ $faction->bg_color }} @endif px-2 py-1 text-sm font-bold">{{ strtoupper($aKeyword) }}
-                    ({{ $count }})</span>
+            <div class="p-2 text-center">
+                @if ($aKeyword != $keyword)
+                    <span wire:click="filterKeyword('{{ $aKeyword }}')" class="inline-block text-center cursor-pointer p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm
+                        font-bold">{{ strtoupper($aKeyword) }}
+                        ({{ $count }})
+                    </span>
+                @else
+                    <span wire:click="clearFilters('keyword')"
+                        class="inline-block p-1 px-2 py-1 text-sm font-bold text-center text-white bg-gray-900 rounded-full cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 20px; width: 20px;"
+                            class="inline-block my-auto">
+                            <g class="" transform="translate(0,0)" style="">
+                                <path
+                                    d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
+                                    fill="#ffffff" fill-opacity="1"
+                                    transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
+                                </path>
+                            </g>
+                        </svg>
+                        {{ strtoupper($aKeyword) }}
+                        ({{ $count }})
+                    </span>
+                @endif
             </div>
         @endforeach
-        <div class="col-span-2 lg:col-span-6">
-            <div class="p-2 mx-auto text-center">
-                <span wire:click="clearFilters()"
-                    class="inline-block text-center cursor-pointer p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 25px; width: 25px;"
-                        class="inline-block">
-                        <g class="" transform="translate(0,0)" style="">
-                            <path
-                                d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
-                                fill="#ffffff" fill-opacity="1"
-                                transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
-                            </path>
-                        </g>
-                    </svg>
-                    CLEAR FILTERS
-                </span>
-            </div>
-        </div>
     </div>
 
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
@@ -291,31 +288,31 @@
             </div>
         </div>
         @foreach ($characteristics as $aCharacteristic => $count)
-            <div class="p-2 text-center"><span wire:click="filterCharacteristic('{{ $aCharacteristic }}')"
-                    class="inline-block text-center cursor-pointer p-1 text-white rounded-full @if ($aCharacteristic==$characteristic) bg-gray-900 @else bg-{{ $faction->bg_color }} @endif px-2 py-1 text-sm
-                    font-bold">{{ strtoupper($aCharacteristic) }}
-                    ({{ $count }})</span>
+            <div class="p-2 text-center">
+                @if ($aCharacteristic != $characteristic)
+                    <span wire:click="filterCharacteristic('{{ $aCharacteristic }}')" class="inline-block text-center cursor-pointer p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm
+                        font-bold">{{ strtoupper($aCharacteristic) }}
+                        ({{ $count }})
+                    </span>
+                @else
+                    <span wire:click="clearFilters('characteristic')"
+                        class="inline-block p-1 px-2 py-1 text-sm font-bold text-center text-white bg-gray-900 rounded-full cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 20px; width: 20px;"
+                            class="inline-block my-auto">
+                            <g class="" transform="translate(0,0)" style="">
+                                <path
+                                    d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
+                                    fill="#ffffff" fill-opacity="1"
+                                    transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
+                                </path>
+                            </g>
+                        </svg>
+                        {{ strtoupper($aCharacteristic) }}
+                        ({{ $count }})
+                    </span>
+                @endif
             </div>
         @endforeach
-        <div class="col-span-2 lg:col-span-6">
-            <div class="p-2 mx-auto text-center">
-                <span wire:click="clearFilters()"
-                    class="inline-block text-center cursor-pointer p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 25px; width: 25px;"
-                        class="inline-block">
-                        <g class="" transform="translate(0,0)" style="">
-                            <path
-                                d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
-                                fill="#ffffff" fill-opacity="1"
-                                transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
-                            </path>
-                        </g>
-                    </svg>
-                    CLEAR FILTERS
-                </span>
-            </div>
-        </div>
     </div>
 
 
@@ -325,8 +322,8 @@
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
     @if (count($masters) > 0)
         <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-            <div class="lg:col-span-4">
-                <div class="block w-full h-full py-2 text-center" wire:click="masterToggle">
+            <div class="mx-auto lg:col-span-4">
+                <div class="inline-block h-full py-2 mx-auto text-center" wire:click="masterToggle">
                     <span
                         class="text-transparent block cursor-pointer lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                         Masters
@@ -356,8 +353,8 @@
 
     @if (count($henchmen) > 0)
         <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-            <div class="lg:col-span-4">
-                <div class="block w-full h-full py-2 text-center" wire:click="henchmenToggle">
+            <div class="mx-auto lg:col-span-4">
+                <div class="inline-block h-full py-2 mx-auto text-center" wire:click="henchmenToggle">
                     <span
                         class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                         Henchmen
@@ -388,8 +385,8 @@
 
     @if (count($enforcers) > 0)
         <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-            <div class="lg:col-span-4">
-                <div class="block w-full h-full py-2 text-center" wire:click="enforcerToggle">
+            <div class="mx-auto lg:col-span-4">
+                <div class="inline-block h-full py-2 mx-auto text-center" wire:click="enforcerToggle">
                     <span
                         class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                         Enforcers
@@ -418,8 +415,8 @@
     @endif
     @if (count($minions) > 0)
         <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-            <div class="lg:col-span-4">
-                <div class="block w-full h-full py-2 text-center" wire:click="minionToggle">
+            <div class="mx-auto lg:col-span-4">
+                <div class="inline-block h-full py-2 mx-auto text-center" wire:click="minionToggle">
                     <span
                         class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                         Minions

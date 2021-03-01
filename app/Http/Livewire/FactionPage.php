@@ -42,49 +42,27 @@ class FactionPage extends Component
         arsort($this->characteristics);
         $this->factionId = $this->faction->id;
         $this->topAbilities = json_decode($this->statistics['topAbilities'], TRUE);
-
-        if ($this->keyword || $this->characteristic) {
-            if ($this->keyword) $this->filterKeyword($this->keyword);
-            if ($this->characteristic) $this->filterCharacteristic($this->characteristic);
-        } else {
-            $this->clearFilters();
-        }
+        $this->filterCheck();
     }
 
     public function masterToggle()
     {
-        if ($this->showMasters) {
-            $this->showMasters = false;
-        } else {
-            $this->showMasters = true;
-        }
+        $this->showMasters = !$this->showMasters;
     }
 
     public function henchmenToggle()
     {
-        if ($this->showHenchmen) {
-            $this->showHenchmen = false;
-        } else {
-            $this->showHenchmen = true;
-        }
+        $this->showHenchmen = !$this->showHenchmen;
     }
 
     public function enforcerToggle()
     {
-        if ($this->showEnforcers) {
-            $this->showEnforcers = false;
-        } else {
-            $this->showEnforcers = true;
-        }
+        $this->showEnforcers = !$this->showEnforcers;
     }
 
     public function minionToggle()
     {
-        if ($this->showMinions) {
-            $this->showMinions = false;
-        } else {
-            $this->showMinions = true;
-        }
+        $this->showMinions = !$this->showMinions;
     }
 
     public function toggleAll($toggle)
@@ -99,38 +77,49 @@ class FactionPage extends Component
     public function filterKeyword($name)
     {
         $this->keyword = $name;
-        $query = Mini::inFaction($this->factionId)
-            ->filterKeyword($this->keyword);
-        if ($this->characteristic) {
-            $query = $query->filterCharacteristic($this->characteristic);
-        }
-        $this->minis = $query->orderBy('name', 'ASC')->get();
-        $this->stationFilter();
-        $this->toggleAll(true);
+        $this->filterCheck();
     }
 
     public function filterCharacteristic($name)
     {
         $this->characteristic = $name;
+        $this->filterCheck();
+    }
+
+    public function filterCheck()
+    {
         $query = Mini::inFaction($this->factionId);
         if ($this->keyword) {
             $query = $query->filterKeyword($this->keyword);
         }
-        $this->minis = $query->filterCharacteristic($this->characteristic)->orderBy('name', 'ASC')->get();
+        if ($this->characteristic) {
+            $query = $query->filterCharacteristic($this->characteristic);
+        }
+        $this->minis = $query->orderBy('name', 'ASC')->get();
         $this->stationFilter();
+        if (!$this->keyword && !$this->characteristic) {
+            $this->toggleAll(false);
+            return;
+        }
         $this->toggleAll(true);
     }
 
-    public function clearFilters()
+    public function clearFilters($name = "")
     {
-        $this->keyword = '';
-        $this->characteristic = '';
-        $this->minis = Mini::inFaction($this->factionId)
-            ->orderBy('name', 'ASC')
-            ->get();
-
-        $this->stationFilter();
-        $this->toggleAll(false);
+        switch ($name) {
+            case "keyword":
+                $this->keyword = "";
+                break;
+            case "characteristic":
+                $this->characteristic = "";
+                break;
+            default:
+                $this->keyword = "";
+                $this->characteristic = "";
+                $this->toggleAll(false);
+                break;
+        }
+        $this->filterCheck();
     }
 
     public function stationFilter()
