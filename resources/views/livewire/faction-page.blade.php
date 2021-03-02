@@ -237,8 +237,8 @@
 
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
 
-    <div class="container grid grid-cols-1 mx-auto lg:grid-cols-2">
-        <div class="mb-2 text-center lg:col-span-2">
+    <div class="container grid grid-cols-2 mx-auto lg:grid-cols-2">
+        <div class="col-span-2 mb-2 text-center">
             <div class="block w-full h-full py-2 text-center">
                 <span
                     class="text-transparent lg:text-4xl text-2xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
@@ -248,7 +248,7 @@
         </div>
         <div class="my-4 text-center">
             <select name="keywords" wire:model="keyword" wire:change="filterKeywordDropdown()"
-                class="block p-2 px-4 py-2 mx-auto bg-gray-200 border border-gray-900 rounded shadow w-60 hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                class="block w-40 p-2 px-2 py-2 mx-auto bg-gray-200 border border-gray-900 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline">
                 <option value=''>Keywords</option>
                 @foreach ($keywords as $aKeyword => $count)
                     <option value="{{ $aKeyword }}">{{ $aKeyword }}</option>
@@ -271,7 +271,7 @@
         </div>
         <div class="my-4 text-center">
             <select name="characteristic" wire:model="characteristic" wire:change="filterCharacteristicDropdown()"
-                class="block p-2 px-4 py-2 mx-auto leading-loose bg-gray-200 border border-gray-900 rounded shadow w-60 hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                class="block w-40 p-2 px-2 py-2 mx-auto leading-loose bg-gray-200 border border-gray-900 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline">
                 <option value=''>Characteristics</option>
                 @foreach ($characteristics as $aCharacteristic => $count)
                     <option value="{{ $aCharacteristic }}">{{ $aCharacteristic }}</option>
