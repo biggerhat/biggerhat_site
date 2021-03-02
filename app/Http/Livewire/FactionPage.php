@@ -86,6 +86,16 @@ class FactionPage extends Component
         $this->filterCheck();
     }
 
+    public function filterCharacteristicDropdown()
+    {
+        $this->filterCharacteristic($this->characteristic);
+    }
+
+    public function filterKeywordDropdown()
+    {
+        $this->filterKeyword($this->keyword);
+    }
+
     public function filterCheck()
     {
         $query = Mini::inFaction($this->factionId);

@@ -237,87 +237,63 @@
 
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
 
-    <div class="container grid grid-cols-2 mx-auto lg:grid-cols-6">
-        <div class="col-span-2 mb-2 text-center lg:col-span-6">
+    <div class="container grid grid-cols-1 mx-auto lg:grid-cols-2">
+        <div class="mb-2 text-center lg:col-span-2">
             <div class="block w-full h-full py-2 text-center">
                 <span
-                    class="text-transparent lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
-                    Keywords
+                    class="text-transparent lg:text-4xl text-2xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
+                    Image Filters
                 </span>
-                <span class="block text-xs">[ Click a Keyword to Filter Images ]</span>
             </div>
         </div>
-        @foreach ($keywords as $aKeyword => $count)
-            <div class="p-2 text-center">
-                @if ($aKeyword != $keyword)
-                    <span wire:click="filterKeyword('{{ $aKeyword }}')" class="inline-block text-center cursor-pointer p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm
-                        font-bold">{{ strtoupper($aKeyword) }}
-                        ({{ $count }})
-                    </span>
-                @else
-                    <span wire:click="clearFilters('keyword')"
-                        class="inline-block p-1 px-2 py-1 text-sm font-bold text-center text-white bg-gray-900 rounded-full cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 20px; width: 20px;"
-                            class="inline-block my-auto">
-                            <g class="" transform="translate(0,0)" style="">
-                                <path
-                                    d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
-                                    fill="#ffffff" fill-opacity="1"
-                                    transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
-                                </path>
-                            </g>
-                        </svg>
-                        {{ strtoupper($aKeyword) }}
-                        ({{ $count }})
-                    </span>
-                @endif
-            </div>
-        @endforeach
-    </div>
-
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
-
-    <div class="container grid grid-cols-2 mx-auto lg:grid-cols-6">
-        <div class="col-span-2 mb-2 text-center lg:col-span-6">
-            <div class="block w-full h-full py-2 text-center">
-                <span
-                    class="text-transparent lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
-                    Characteristics
+        <div class="my-4 text-center">
+            <select name="keywords" wire:model="keyword" wire:change="filterKeywordDropdown()"
+                class="block p-2 px-4 py-2 mx-auto bg-gray-200 border border-gray-900 rounded shadow w-60 hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                <option value=''>Keywords</option>
+                @foreach ($keywords as $aKeyword => $count)
+                    <option value="{{ $aKeyword }}">{{ $aKeyword }}</option>
+                @endforeach
+            </select>
+            @if ($keyword)
+                <span class="inline-block p-2 mx-auto font-bold cursor-pointer" wire:click="clearFilters('keyword')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="inline-block"
+                        style="height: 25px; width: 25px;">
+                        <g class="" transform="translate(0,0)" style="">
+                            <path
+                                d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
+                                fill="#000000" fill-opacity="1"
+                                transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
+                            </path>
+                        </g>
+                    </svg> Clear
                 </span>
-                <span class="block text-xs">[ Click a Characteristic to Filter Images ]</span>
-            </div>
+            @endif
         </div>
-        @foreach ($characteristics as $aCharacteristic => $count)
-            <div class="p-2 text-center">
-                @if ($aCharacteristic != $characteristic)
-                    <span wire:click="filterCharacteristic('{{ $aCharacteristic }}')" class="inline-block text-center cursor-pointer p-1 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm
-                        font-bold">{{ strtoupper($aCharacteristic) }}
-                        ({{ $count }})
-                    </span>
-                @else
-                    <span wire:click="clearFilters('characteristic')"
-                        class="inline-block p-1 px-2 py-1 text-sm font-bold text-center text-white bg-gray-900 rounded-full cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 20px; width: 20px;"
-                            class="inline-block my-auto">
-                            <g class="" transform="translate(0,0)" style="">
-                                <path
-                                    d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
-                                    fill="#ffffff" fill-opacity="1"
-                                    transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
-                                </path>
-                            </g>
-                        </svg>
-                        {{ strtoupper($aCharacteristic) }}
-                        ({{ $count }})
-                    </span>
-                @endif
-            </div>
-        @endforeach
+        <div class="my-4 text-center">
+            <select name="characteristic" wire:model="characteristic" wire:change="filterCharacteristicDropdown()"
+                class="block p-2 px-4 py-2 mx-auto leading-loose bg-gray-200 border border-gray-900 rounded shadow w-60 hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                <option value=''>Characteristics</option>
+                @foreach ($characteristics as $aCharacteristic => $count)
+                    <option value="{{ $aCharacteristic }}">{{ $aCharacteristic }}</option>
+                @endforeach
+            </select>
+            @if ($characteristic)
+                <span class="inline-block p-2 mx-auto font-bold cursor-pointer"
+                    wire:click="clearFilters('characteristic')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="inline-block"
+                        style="height: 25px; width: 25px;">
+                        <g class="" transform="translate(0,0)" style="">
+                            <path
+                                d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
+                                fill="#000000" fill-opacity="1"
+                                transform="translate(25.6, 25.6) scale(0.9, 0.9) rotate(0, 256, 256) skewX(0) skewY(0)">
+                            </path>
+                        </g>
+                    </svg> Clear
+                </span>
+            @endif
+        </div>
     </div>
-
-
-
-
 
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
     @if (count($masters) > 0)
