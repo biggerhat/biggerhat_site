@@ -5,6 +5,7 @@ use App\Http\Livewire\CharacterPage;
 use App\Http\Livewire\FactionPage;
 use App\Http\Livewire\MasterPage;
 use App\Http\Livewire\ResourcePage;
+use App\Http\Livewire\KeywordPage;
 use App\Http\Livewire\ResourceTypePage;
 use App\Http\Controllers\PagesController;
 
@@ -28,6 +29,7 @@ Route::get('/characters', [PagesController::class, 'getCharacters'])->name('char
 Route::get('/keywords', [PagesController::class, 'getKeywords'])->name('keywords');
 Route::get('/masters', [PagesController::class, 'getMasters'])->name('masters');
 Route::get('/promos', [PagesController::class, 'getPromos'])->name('promos');
+Route::get('/keywords/{keyword:slug}', KeywordPage::class)->name("keyword.view");
 Route::get('/characters/{mini:slug}', CharacterPage::class)->name("character.view");
 Route::get('/factions/{faction:slug}', FactionPage::class)->name("faction.view");
 Route::get('/masters/{mini:slug}', MasterPage::class)->name("master.view");

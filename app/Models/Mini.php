@@ -134,9 +134,11 @@ class Mini extends Model
 
     public function scopeInKeyword($query, $id)
     {
-        return $query->whereHas('keywords', function ($q) use ($id) {
+        $query->where('hidden_keyword_id', $id);
+        $query->orWhereHas('keywords', function ($q) use ($id) {
             $q->where('id', $id);
         });
+        return $query;
     }
 
     public function scopeFilterKeyword($query, $name)

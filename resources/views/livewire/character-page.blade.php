@@ -43,7 +43,8 @@
                                 class="inline-block text-center p-0.5 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold">{{ strtoupper($faction->name) }}</a>
                         @endforeach</p>
                     <div class="block my-1 border-b border-gray-400 border-dashed"></div>
-                    <p class="pb-1 mb-1 text-xl font-semibold">Keyword(s): @foreach ($mini->keywords as $keyword)<a href="/keywords/{{ $keyword->slug }}"
+                    <p class="pb-1 mb-1 text-xl font-semibold">Keyword(s): @foreach ($mini->keywords as $keyword)<a
+                                href="{{ route('keyword.view', $keyword->slug) }}"
                                 class="inline-block text-center p-0.5 text-white rounded-full {{ $background }} px-2 py-1 text-sm font-bold ">{{ strtoupper($keyword->name) }}</a>
                         @endforeach</p>
                     <div class="block my-1 border-b border-gray-400 border-dashed"></div>
