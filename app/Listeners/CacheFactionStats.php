@@ -6,6 +6,8 @@ use App\Events\MiniSaved;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Artisan;
+use App\Models\Mini;
+use Illuminate\Support\Str;
 
 class CacheFactionStats
 {
@@ -30,5 +32,8 @@ class CacheFactionStats
         foreach ($event->mini->factions as $faction) {
             Artisan::call("faction:cache-stats --faction={$faction->id}");
         }
+        $mini = Mini::find($event->mini->id);
+        $mini->slug = Str::slug($mini->name, '-');
+        $mini->saveQuietly();
     }
 }

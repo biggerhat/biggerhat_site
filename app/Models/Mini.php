@@ -141,6 +141,13 @@ class Mini extends Model
         return $query;
     }
 
+    public function scopeIsNotDead($query)
+    {
+        return $query->whereDoesntHave('factions', function ($q) {
+            $q->where('id', '=', 8);
+        });
+    }
+
     public function scopeFilterKeyword($query, $name)
     {
         return $query->whereHas('keywords', function ($q) use ($name) {
