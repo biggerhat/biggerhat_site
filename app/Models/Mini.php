@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Events\MiniSaved;
-use Illuminate\Database\Query\Builder;
 
 class Mini extends Model
 {

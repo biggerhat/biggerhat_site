@@ -241,8 +241,9 @@
                     </div>
                     <div class="mx-2 mb-2">
                         @foreach ($mini->instructions as $instruction)
-                            <img src="/storage/{{ $instruction->image }}"
-                                class="mx-auto border border-gray-500 rounded">
+                            <a href="{{ route('instruction.view', [$instruction->id, $mini->slug]) }}"><img
+                                    src="/storage/{{ $instruction->image }}"
+                                    class="mx-auto mb-2 border border-gray-500 rounded"></a>
                         @endforeach
                     </div>
                 </div>
