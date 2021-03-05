@@ -10,11 +10,34 @@ class InstructionPage extends Component
 {
     public $mini;
     public $instruction;
+    public string $background;
 
     public function mount(Instruction $instruction, Mini $mini)
     {
-        $this->mini = $mini->load('factions');
+        $this->mini = $mini;
+        $this->mini->load('factions');
         $this->instruction = $instruction->load('minis')->load('minis.factions');
+        $this->setBackground();
+    }
+
+    public function getBackground(Mini $mini): string
+    {
+        $mini->load('factions');
+        if (count($mini->factions) > 1) {
+            return
+                "bg-gradient-to-r from-" . $mini->factions[0]['bg_color'] . " to-" . $mini->factions[1]['bg_color'];
+        }
+
+        return "bg-{$mini->factions[0]['bg_color']}";
+    }
+
+    public function setBackground()
+    {
+        if (count($this->mini->factions) > 1) {
+            $this->background = "bg-gradient-to-r from-" . $this->mini->factions[0]['bg_color'] . " to-" . $this->mini->factions[1]['bg_color'];
+        } else {
+            $this->background = "bg-" . $this->mini->factions[0]['bg_color'];
+        }
     }
 
     public function render()
