@@ -30,7 +30,7 @@
         @foreach ($instruction->minis as $miniListed)
             <div class="text-center">
                 <a href="{{ route('character.view', $miniListed->slug) }}"
-                class="inline-block text-center p-0.5 text-white rounded-full @if ($miniListed->id == $mini->id) bg-gray-900 @else
+                class="inline-block text-center p-0.5 text-white border border-black rounded-full @if ($miniListed->id == $mini->id) bg-gray-900 @else
                     {{ $this->getBackground($miniListed) }} @endif
                     px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($miniListed->name) }}</a>
             </div>

@@ -35,7 +35,7 @@
             @foreach ($box->keywords as $keyword)
                 <div class="text-center">
                     <a href="{{ route('keyword.view', $keyword->slug) }}"
-                        class="inline-block text-center p-0.5 text-white rounded-full bg-gray-900 px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($keyword->name) }}</a>
+                        class="inline-block text-center p-0.5 border border-black text-white rounded-full bg-gray-900 px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($keyword->name) }}</a>
                 </div>
             @endforeach
         </div>
@@ -52,7 +52,7 @@
         @foreach ($box->minis as $miniListed)
             <div class="text-center">
                 <a href="{{ route('character.view', $miniListed->slug) }}"
-                    class="inline-block text-center p-0.5 text-white rounded-full {{ $this->getBackground($miniListed) }} px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($miniListed->name) }}</a>
+                    class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ $this->getBackground($miniListed) }} px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($miniListed->name) }}</a>
             </div>
         @endforeach
 

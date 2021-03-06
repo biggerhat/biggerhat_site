@@ -36,20 +36,20 @@
                     {{ $mini->name }}</div>
                 <div class="mx-2 mb-2">
                     <p class="pb-1 mb-1 text-xl font-semibold">Station: <span
-                            class="inline-block text-center p-0.5 text-white rounded-full {{ $background }} px-2 py-1 text-sm font-bold mr-3">{{ strtoupper($mini->station->name) }}</span>
+                            class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ $background }} px-2 py-1 text-sm font-bold mr-3">{{ strtoupper($mini->station->name) }}</span>
                     </p>
                     <div class="block my-1 border-b border-gray-400 border-dashed"></div>
                     <p class="pb-1 mb-1 text-xl font-semibold">Faction(s): @foreach ($mini->factions as $faction)<a href="/factions/{{ $faction->slug }}"
-                                class="inline-block text-center p-0.5 text-white rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold">{{ strtoupper($faction->name) }}</a>
+                                class="inline-block text-center p-0.5 text-white border border-black rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold">{{ strtoupper($faction->name) }}</a>
                         @endforeach</p>
                     <div class="block my-1 border-b border-gray-400 border-dashed"></div>
                     <p class="pb-1 mb-1 text-xl font-semibold">Keyword(s): @foreach ($mini->keywords as $keyword)<a
                                 href="{{ route('keyword.view', $keyword->slug) }}"
-                                class="inline-block text-center p-0.5 text-white rounded-full {{ $background }} px-2 py-1 text-sm font-bold ">{{ strtoupper($keyword->name) }}</a>
+                                class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ $background }} px-2 py-1 text-sm font-bold ">{{ strtoupper($keyword->name) }}</a>
                         @endforeach</p>
                     <div class="block my-1 border-b border-gray-400 border-dashed"></div>
                     <p class="pb-1 mb-1 text-xl font-semibold">Characteristic(s): @foreach ($mini->characteristics as $characteristic)<span
-                                class="inline-block text-center p-0.5 text-white rounded-full {{ $background }} px-2 py-1 text-sm font-bold">{{ strtoupper($characteristic->name) }}</span>
+                                class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ $background }} px-2 py-1 text-sm font-bold">{{ strtoupper($characteristic->name) }}</span>
                         @endforeach</p>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                     <div class="mx-2 mb-2">
                         @for ($i = 0; $i < $cardCount; $i++)
                             <button wire:click="setNewCard({{ $i }})"
-                                class="focus:outline-none inline-block text-center p-0.5 text-white rounded-full @if ($currentCard !=$i) {{ $background }}@else bg-gray-500 @endif px-2 py-1 text-xs font-bold mb-1
+                                class="focus:outline-none inline-block text-center p-0.5 border border-black text-white rounded-full @if ($currentCard !=$i) {{ $background }}@else bg-gray-500 @endif px-2 py-1 font-bold mb-1
                                 cursor-pointer">{{ strtoupper($cards[$i]['name']) }}</button><br />
                         @endfor
                         @if (count($mini->promos) > 0)
@@ -136,8 +136,8 @@
                             </div>
                             @for ($x = $i; $x < count($mini->promos) + $cardCount; $x++)
                                 <button wire:click="setNewCard({{ $x }})"
-                                    class="focus:outline-none inline-block text-center p-0.5 text-white rounded-full @if ($currentCard !=$x) {{ $background }}@else bg-gray-500 @endif px-2 py-1
-                                    text-xs font-bold mb-1
+                                    class="focus:outline-none border border-black inline-block text-center p-0.5 text-white rounded-full @if ($currentCard !=$x) {{ $background }}@else bg-gray-500 @endif px-2 py-1
+                                    font-bold mb-1
                                     cursor-pointer">{{ strtoupper($cards[$x]['name']) }}</button><br />
                             @endfor
                         @endif
@@ -160,10 +160,10 @@
                 <div class="mx-2 mb-2">
                     @foreach ($relateds as $relatedMini)
                         <a href="{{ route('character.view', $relatedMini->slug) }}"
-                            class="inline-block text-center p-0.5 text-white rounded-full @if (count($relatedMini->factions) > 1) bg-gradient-to-r
+                            class="inline-block text-center border border-black p-0.5 text-white rounded-full @if (count($relatedMini->factions) > 1) bg-gradient-to-r
                             from-{{ $relatedMini->factions[0]['bg_color'] }}
                         to-{{ $relatedMini->factions[1]['bg_color'] }} @else
-                            bg-{{ $relatedMini->factions[0]['bg_color'] }} @endif px-2 py-1 text-xs
+                            bg-{{ $relatedMini->factions[0]['bg_color'] }} @endif px-2 py-1
                             font-bold mb-1 cursor-pointer">{{ strtoupper($relatedMini->name) }}</a><br />
                     @endforeach
                 </div>
@@ -185,7 +185,7 @@
                     <div class="mx-2 mb-2">
                         @foreach ($mini->upgrades as $upgrade)
                             <button wire:click="openUpgradeModal({{ $upgrade->id }})"
-                                class="inline-block text-center p-0.5 text-white rounded-full focus:outline-none bg-gray-900 px-2 py-1 text-xs font-bold mb-1">{{ strtoupper($upgrade->name) }}</button><br />
+                                class="inline-block text-center p-0.5 border border-black text-white rounded-full focus:outline-none bg-gray-900 px-2 py-1 font-bold mb-1">{{ strtoupper($upgrade->name) }}</button><br />
                         @endforeach
                     </div>
                 </div>
@@ -292,7 +292,7 @@
                         @if ($this->mini->markers)
                             @foreach ($this->mini->markers as $token)
                                 <button
-                                    class="inline-block text-center p-0.5 text-white rounded-full bg-gray-900 px-2 py-1 text-xs font-bold mb-1 focus:outline-none"
+                                    class="inline-block text-center p-0.5 text-white rounded-full bg-gray-900 px-2 py-1 font-bold mb-1 focus:outline-none"
                                     wire:click="openMarkerModal('{{ $token->id }}')">{{ strtoupper($token['name']) }}</button>
                                 <br />
                             @endforeach
@@ -300,7 +300,7 @@
                         @if ($this->mini->tokens)
                             @foreach ($this->mini->tokens as $token)
                                 <span
-                                    class="inline-block text-center p-0.5 text-white rounded-full bg-gray-900 px-2 py-1 text-xs font-bold mb-1 focus:outline-none">{{ strtoupper($token['name']) }}</span>
+                                    class="inline-block text-center p-0.5 text-white rounded-full bg-gray-900 px-2 py-1 font-bold mb-1 focus:outline-none">{{ strtoupper($token['name']) }}</span>
                                 <br />
                             @endforeach
                         @endif
