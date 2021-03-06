@@ -28,4 +28,9 @@ class Keyword extends Model
     {
         return $this->belongsToMany(Episode::class);
     }
+
+    public function boxes()
+    {
+        return $this->belongsToMany(Box::class);
+    }
 }

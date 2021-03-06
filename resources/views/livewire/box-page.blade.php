@@ -16,18 +16,37 @@
             </span>
         </div>
         <div class="text-center">
-            <img src="\storage\{{ $box->front }}" class="px-2 mx-auto mb-2 rounded" />
+            <img src="\storage\{{ $box->front }}" class="mx-auto mb-2 border border-black rounded" />
         </div>
         <div class="text-center">
-            <img src="\storage\{{ $box->back }}" class="px-2 mx-auto rounded" />
+            <img src="\storage\{{ $box->back }}" class="mx-auto border border-black rounded" />
         </div>
     </div>
+    @if ($box->keywords->count() > 0)
+        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+
+        <div class="container grid grid-cols-1 mx-auto lg:grid-cols-3">
+            <div class="block w-full h-full col-span-1 py-5 text-center lg:col-span-3">
+                <span class="text-4xl text-transparent text-gray-900 lg:text-5xl md:text-4xl faction_header">
+                    Keywords
+                </span>
+            </div>
+            @foreach ($box->keywords as $keyword)
+                <div class="text-center">
+                    <a href="{{ route('keyword.view', $keyword->slug) }}"
+                        class="inline-block text-center p-0.5 text-white rounded-full bg-gray-900 px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($keyword->name) }}</a>
+                </div>
+            @endforeach
+
+
+        </div>
+    @endif
 
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
 
     <div class="container grid grid-cols-1 mx-auto lg:grid-cols-3">
         <div class="block w-full h-full col-span-1 py-5 text-center lg:col-span-3">
-            <span class="text-4xl text-transparent text-gray-900 lg:text-6xl md:text-4xl faction_header">
+            <span class="text-4xl text-transparent text-gray-900 lg:text-5xl md:text-4xl faction_header">
                 Models Inside
             </span>
         </div>

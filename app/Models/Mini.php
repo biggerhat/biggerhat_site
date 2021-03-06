@@ -107,7 +107,8 @@ class Mini extends Model
 
     public function boxes()
     {
-        return $this->belongsToMany(Box::class);
+        return $this->belongsToMany(Box::class)
+            ->withPivot('quantity');
     }
 
     public function episodes()

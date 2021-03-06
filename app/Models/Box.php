@@ -22,6 +22,12 @@ class Box extends Model
 
     public function minis()
     {
-        return $this->belongsToMany(Mini::class);
+        return $this->belongsToMany(Mini::class)
+            ->withPivot('quantity');
+    }
+
+    public function keywords()
+    {
+        return $this->belongsToMany(Keyword::class);
     }
 }
