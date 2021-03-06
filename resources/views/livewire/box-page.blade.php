@@ -70,7 +70,7 @@
                 </span>
             </div>
             @foreach ($box->instructions as $blueprint)
-                <div class="text-center">
+                <div class="px-2 text-center">
                     <img src="/storage/{{ $blueprint->image }}" class="mx-auto mb-2 border border-gray-500 rounded">
                 </div>
             @endforeach
