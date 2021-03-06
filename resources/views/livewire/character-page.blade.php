@@ -217,8 +217,9 @@
                     </div>
                     <div class="mx-2 mb-2">
                         @foreach ($mini->boxes as $box)
-                            <img src="/storage/{{ $box->front }}"
-                                class="w-1/2 mx-auto border border-gray-500 rounded h-1/2">
+                            <a href="{{ route('box.view', $box->slug) }}">
+                                <img src="/storage/{{ $box->front }}"
+                                    class="w-1/2 mx-auto border border-gray-500 rounded h-1/2"></a>
                         @endforeach
                     </div>
                 </div>

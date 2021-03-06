@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\BoxSaved;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -13,6 +14,10 @@ class Box extends Model
         'description',
         'front',
         'back',
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => BoxSaved::class,
     ];
 
     public function minis()
