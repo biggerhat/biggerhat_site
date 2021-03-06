@@ -58,4 +58,22 @@
 
 
     </div>
+
+    @if ($box->instructions->count() > 0)
+        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+
+        <div class="container grid grid-cols-1 mx-auto lg:grid-cols-{{ $box->instructions->count() }}">
+            <div
+                class="block w-full h-full col-span-1 py-5 text-center lg:col-span-{{ $box->instructions->count() }}">
+                <span class="text-4xl text-transparent text-gray-900 lg:text-5xl md:text-4xl faction_header">
+                    Blueprints
+                </span>
+            </div>
+            @foreach ($box->instructions as $blueprint)
+                <div class="text-center">
+                    <img src="/storage/{{ $blueprint->image }}" class="mx-auto mb-2 border border-gray-500 rounded">
+                </div>
+            @endforeach
+        </div>
+    @endif
 </div>

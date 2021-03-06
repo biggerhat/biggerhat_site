@@ -13,7 +13,7 @@ class BoxPage extends Component
     public function mount(Box $box)
     {
         $this->box = $box;
-        $this->box->load('minis', 'minis.factions', 'keywords');
+        $this->box->load('minis', 'minis.factions', 'keywords', 'instructions');
     }
 
     public function getBackground(Mini $mini): string

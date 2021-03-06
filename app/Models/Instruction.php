@@ -15,4 +15,9 @@ class Instruction extends Model
     {
         return $this->belongsToMany(Mini::class);
     }
+
+    public function boxes()
+    {
+        return $this->belongsToMany(Box::class);
+    }
 }

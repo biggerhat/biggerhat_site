@@ -30,4 +30,9 @@ class Box extends Model
     {
         return $this->belongsToMany(Keyword::class);
     }
+
+    public function instructions()
+    {
+        return $this->belongsToMany(Instruction::class);
+    }
 }
