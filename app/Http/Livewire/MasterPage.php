@@ -168,7 +168,7 @@ class MasterPage extends Component
 
         $this->minis = $query->orderBy('station_id', 'ASC')->orderBy('name', 'ASC')->get();
 
-        $query = Mini::where('station_id', 2)->whereHas('keywords', function ($query) use ($keywordIds) {
+        $query = Mini::where('station_id', 2)->isAlive()->whereHas('keywords', function ($query) use ($keywordIds) {
             for ($i = 0; $i < count($keywordIds); $i++) {
                 if ($i == 0) {
                     $query->where('keyword_id', '=', $keywordIds[$i]);

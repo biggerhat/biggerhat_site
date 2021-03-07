@@ -98,7 +98,9 @@ class FactionPage extends Component
 
     public function filterCheck()
     {
-        $query = Mini::inFaction($this->factionId);
+        $query = Mini::inFaction($this->factionId)
+            ->isHirable()
+            ->isAlive();
         if ($this->keyword) {
             $query = $query->filterKeyword($this->keyword);
         }

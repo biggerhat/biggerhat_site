@@ -319,7 +319,7 @@
                     <div class="p-2">
                         <a href="{{ route('master.view', $mini->slug) }}" class="active:outline-none">
                             <img src="\storage\{{ $mini->cards->random()->front }}"
-                                class="mx-auto rounded-lg card__image"></a>
+                                class="mx-auto border border-black rounded-lg card__image"></a>
                     </div>
                 @endforeach
             @endif
@@ -350,7 +350,7 @@
                     <div class="p-2">
                         <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
                             <img src="\storage\{{ $mini->cards->random()->front }}"
-                                class="mx-auto rounded-lg card__image"></a>
+                                class="mx-auto border border-black rounded-lg card__image"></a>
                     </div>
                 @endforeach
             @endif
@@ -382,7 +382,7 @@
                     <div class="p-2">
                         <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
                             <img src="\storage\{{ $mini->cards->random()->front }}"
-                                class="mx-auto rounded-lg card__image"></a>
+                                class="mx-auto border border-black rounded-lg card__image"></a>
                     </div>
                 @endforeach
             @endif
@@ -412,7 +412,7 @@
                     <div class="p-2">
                         <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
                             <img src="\storage\{{ $mini->cards->random()->front }}"
-                                class="mx-auto rounded-lg card__image"></a>
+                                class="mx-auto border border-black rounded-lg card__image"></a>
                     </div>
                 @endforeach
             @endif

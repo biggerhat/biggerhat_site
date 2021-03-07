@@ -12,7 +12,7 @@ class ResourceTypePage extends Component
     public function mount(ResourceType $resourcetype)
     {
         $this->resourceType = $resourcetype;
-        $this->resourceType->load('resources');
+        $this->resourceType->load('resources', 'episodes', 'episodes.resource');
     }
 
     public function render()

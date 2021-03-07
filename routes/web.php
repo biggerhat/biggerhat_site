@@ -31,7 +31,7 @@ Route::get('/characters', [PagesController::class, 'getCharacters'])->name('char
 Route::get('/keywords', [PagesController::class, 'getKeywords'])->name('keywords');
 Route::get('/masters', [PagesController::class, 'getMasters'])->name('masters');
 Route::get('/promos', [PagesController::class, 'getPromos'])->name('promos');
-Route::get('/instructions/{instruction:id}/{mini:slug}', InstructionPage::class)->name('instruction.view');
+Route::get('/blueprints/{instruction:id}/{mini:slug}', InstructionPage::class)->name('instruction.view');
 Route::get('/boxes/{box:slug}', BoxPage::class)->name("box.view");
 Route::get('/keywords/{keyword:slug}', KeywordPage::class)->name("keyword.view");
 Route::get('/characters/{mini:slug}', CharacterPage::class)->name("character.view");

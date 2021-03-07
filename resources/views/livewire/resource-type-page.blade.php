@@ -20,7 +20,7 @@
                             {{ $resource->name }}
                         </span>
                     </div>
-                    <img src="\storage\{{ $resource->logo }}" class="mx-auto rounded-lg" />
+                    <img src="\storage\{{ $resource->logo }}" class="mx-auto border border-black rounded-lg" />
                     <div class="block my-2 italic">
                         {!! nl2br($resource->description) !!}
                     </div>
@@ -37,7 +37,40 @@
                 </div>
             </div>
         @endforeach
-
     </div>
 
+    @if ($resourceType->is_direct_link)
+        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+
+        <div class="block w-full h-full py-3 text-center">
+            <span class="text-2xl text-gray-900 lg:text-4xl faction_header">
+                Episodes
+            </span>
+        </div>
+
+        <div class="container grid gap-0 mx-auto lg:grid-cols-3 auto-cols-fr lg:gap-2">
+            @foreach ($resourceType->episodes as $episode)
+                <div class="block px-2 mb-2 text-center lg:px-0">
+                    <div class="block w-full p-2 border-2 border-gray-900 rounded active:outline-none"
+                        href="{{ route('keywords') }}">
+                        <div class="block w-full h-full py-2 text-center">
+                            <span class="text-3xl text-transparent text-gray-900 lg:text-4xl faction_header">
+                                {{ $episode->name }}
+                            </span>
+                        </div>
+                        <img src="\storage\{{ $episode->resource->logo }}"
+                            class="mx-auto border border-black rounded-lg" />
+                        <div class="block my-2 italic">
+                            {!! nl2br($episode->description) !!}
+                        </div>
+                        <div class="p-2">
+                            <a class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                                href="{{ $episode->link }}" target="_{{ $resourceType->name }}">Visit
+                                {{ $episode->name }}</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
 </div>

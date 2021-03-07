@@ -30,11 +30,11 @@
                 <div class="mx-auto card__image">
                     <div class="w-full h-full card__image--front">
                         <img src="\storage\{{ $master->cards->random()->front }}"
-                            class="w-full h-full rounded-lg cursor-pointer" />
+                            class="w-full h-full border border-black rounded-lg cursor-pointer" />
                     </div>
                     <div class="w-full h-full card__image--back">
                         <img src="\storage\{{ $master->cards->random()->back }}"
-                            class="w-full h-full rounded-lg cursor-pointer" />
+                            class="w-full h-full border border-black rounded-lg cursor-pointer" />
                     </div>
                 </div>
             </div>
@@ -224,7 +224,8 @@
             @foreach ($master->upgrades as $upgrade)
                 <div class="p-2">
                     <a href="/upgrades/{{ $upgrade->slug }}" class="active:outline-none"><img
-                            src="\storage\{{ $upgrade->image }}" class="mx-auto rounded-lg card__image"></a>
+                            src="\storage\{{ $upgrade->image }}"
+                            class="mx-auto border border-black rounded-lg card__image"></a>
                 </div>
             @endforeach
         </div>
@@ -244,7 +245,7 @@
             <div class="p-2">
                 <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none"><img
                         src="\storage\{{ $mini->cards->random()->front }}"
-                        class="mx-auto rounded-lg card__image"></a>
+                        class="mx-auto border border-black rounded-lg card__image"></a>
             </div>
         @endforeach
     </div>
@@ -263,7 +264,7 @@
             <div class="p-2">
                 <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none"><img
                         src="\storage\{{ $mini->cards->random()->front }}"
-                        class="mx-auto rounded-lg card__image"></a>
+                        class="mx-auto border border-black rounded-lg card__image"></a>
             </div>
         @endforeach
     </div>
@@ -281,7 +282,7 @@
             <div class="p-2">
                 <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none"><img
                         src="\storage\{{ $mini->cards->random()->front }}"
-                        class="mx-auto rounded-lg card__image"></a>
+                        class="mx-auto border border-black rounded-lg card__image"></a>
             </div>
         @endforeach
     </div>

@@ -141,7 +141,12 @@ class Mini extends Model
         return $query;
     }
 
-    public function scopeIsNotDead($query)
+    public function scopeIsHirable($query)
+    {
+        $query->where('IsUnhirable', 0);
+    }
+
+    public function scopeIsAlive($query)
     {
         return $query->whereDoesntHave('factions', function ($q) {
             $q->where('id', '=', 8);

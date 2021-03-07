@@ -18,7 +18,8 @@ class KeywordPage extends Component
         $this->keyword->load('episodes');
         $this->keywordId = $this->keyword->id;
         $this->minis = Mini::inKeyword($this->keywordId)
-            ->isNotDead()
+            ->isAlive()
+            ->isHirable()
             ->orderBy('name')
             ->orderBy('station_id')
             ->get();

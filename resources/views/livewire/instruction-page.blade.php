@@ -1,3 +1,7 @@
+@section('title')
+    - Blueprints - {{ $mini->name }}
+@endsection
+
 <div>
     <div class="container mx-auto">
         <div class="block w-full h-full py-5 text-center">
