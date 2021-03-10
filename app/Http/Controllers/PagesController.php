@@ -21,11 +21,11 @@ class PagesController extends Controller
 
     public function getMasters()
     {
-        $factions = Faction::orderBy('name')->get();
-        foreach ($factions as $faction) {
-            $masters = Mini::isAlive()->isHirable()->hasStation("1")->inFaction($faction->id)->orderBy('name')->select('name', 'image', 'slug')->get();
-            dd($masters->toArray());
-        }
+        $factions = Faction::where('id', '!=', 8)->with(['minis' => function ($query) {
+            $query->isAlive()->isHirable()->hasStation("1")->orderBy('name');
+        }])->orderBy('name')->get();
+
+        return view('pages.masters', compact('factions'));
     }
 
     public function getResources()
