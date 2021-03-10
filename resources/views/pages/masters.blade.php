@@ -31,16 +31,18 @@
                     </p>
                 </div>
             </div>
-            <div></div>
-            @foreach ($faction->minis as $mini)
-                <div class="text-lg font-bold text-center text-gray-900">
-                    <a href="{{ route('master.view', $mini->slug) }}" class="hover:underline">
-                        <img src="\storage\{{ $mini->image }}" class="mx-auto">
-                        {{ $mini->name }}
-                    </a>
-                </div>
-            @endforeach
+    </div>
+    <div class="container grid gap-0 p-3 mx-auto bg-white border border-black rounded lg:grid-cols-4 auto-cols-fr lg:gap-2">
+        @foreach ($faction->minis as $mini)
+            <div class="text-lg font-bold text-center text-gray-900">
+                <a href="{{ route('master.view', $mini->slug) }}" class="hover:underline">
+                    <img src="\storage\{{ $mini->image }}" class="mx-auto">
+                    {{ $mini->name }}
+                </a>
+            </div>
         @endforeach
+    </div>
+    @endforeach
 
     </div>
 
