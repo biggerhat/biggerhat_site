@@ -17,13 +17,21 @@
     <div class="container grid gap-0 mx-auto lg:grid-cols-4 auto-cols-fr lg:gap-2">
         @foreach ($factions as $faction)
             <div class="lg:col-span-4">
-                <div class="block w-full h-full py-5 text-center">
+                <div class="block w-full h-full pt-5 pb-1 text-center">
                     <span
                         class="text-transparent  lg:text-8xl md:text-7xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                         {{ $faction->name }}
                     </span>
                 </div>
             </div>
+            <div class="lg:col-span-2 lg:col-start-2">
+                <div class="block w-full h-full py-5 text-center">
+                    <p class="italic">
+                        "{!! $faction->description !!}"
+                    </p>
+                </div>
+            </div>
+            <div></div>
             @foreach ($faction->minis as $mini)
                 <div class="text-lg font-bold text-center text-gray-900">
                     <a href="{{ route('master.view', $mini->slug) }}" class="hover:underline">
