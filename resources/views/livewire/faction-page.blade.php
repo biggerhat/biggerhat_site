@@ -242,7 +242,7 @@
             <div class="block w-full h-full py-2 text-center">
                 <span
                     class="text-transparent lg:text-4xl text-2xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
-                    Image Filters
+                    Character Filters
                 </span>
             </div>
         </div>

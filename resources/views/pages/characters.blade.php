@@ -74,9 +74,10 @@
                 <div class="block italic">
 
                 </div>
-                <button
-                    class="px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
-                    href="{{ route('masters') }}">View Masters</button>
+                <div class="block py-2">
+                    <a class="px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                        href="{{ route('masters') }}">View Masters</a>
+                </div>
             </div>
         </div>
         <div class="block px-2 mb-2 text-center lg:px-0">

@@ -10,6 +10,7 @@ use App\Http\Livewire\ResourceTypePage;
 use App\Http\Livewire\InstructionPage;
 use App\Http\Livewire\BoxPage;
 use App\Http\Controllers\PagesController;
+use App\Http\Livewire\AdvancedPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::get('/masters', [PagesController::class, 'getMasters'])->name('masters');
 Route::get('/promos', [PagesController::class, 'getPromos'])->name('promos');
 Route::get('/blueprints/{instruction:id}/{mini:slug}', InstructionPage::class)->name('instruction.view');
 Route::get('/boxes/{box:slug}', BoxPage::class)->name("box.view");
+Route::get('/advanced', AdvancedPage::class)->name('advanced');
 Route::get('/keywords/{keyword:slug}', KeywordPage::class)->name("keyword.view");
 Route::get('/characters/{mini:slug}', CharacterPage::class)->name("character.view");
 Route::get('/factions/{faction:slug}', FactionPage::class)->name("faction.view");

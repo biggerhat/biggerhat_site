@@ -11,10 +11,12 @@
                 class="w-32 mx-auto font-semibold text-center text-gray-400 border-b border-gray-400 lg:text-left text-md lg:w-full">
                 Characters</div>
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
-                <li class="text-sm"><a href="/advanced" class="hover:text-white hover:underline">Advanced Search</a>
+                <li class="text-sm"><a href="{{ route('advanced') }}"
+                        class="hover:text-white hover:underline">Advanced Search</a>
                 </li>
                 <li class="text-sm"><a href="/random" class="hover:text-white hover:underline">Random Character</a></li>
-                <li class="text-sm"><a href="/masters" class="hover:text-white hover:underline">Masters</a></li>
+                <li class="text-sm"><a href="{{ route('masters') }}"
+                        class="hover:text-white hover:underline">Masters</a></li>
                 <li class="text-sm"><a href="/keywords" class="hover:text-white hover:underline">Keywords</a></li>
                 <li class="text-sm"><a href="/upgrades" class="hover:text-white hover:underline">Upgrades</a></li>
                 <li class="text-sm"><a href="/promos" class="hover:text-white hover:underline">Alts & Promos</a></li>
