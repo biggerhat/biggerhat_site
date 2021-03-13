@@ -8,7 +8,7 @@
             @if ($cardCount + count($mini->promos) > 1)
                 <div class="px-5 my-1">
                     <select name="cards" wire:model="currentCard"
-                        class="block w-full p-2 px-2 py-2 mx-auto bg-gray-200 border border-gray-900 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                        class="block w-full p-2 px-2 py-2 mx-auto bg-gray-200 border-2 border-gray-900 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline">
                         @for ($i = 0; $i < $cardCount; $i++)
                             <option value="{{ $i }}">{{ $cards[$i]['name'] }}</option>
                         @endfor
@@ -24,11 +24,11 @@
                 <div class="mx-auto card__image">
                     <div class="w-full h-full card__image--front">
                         <img src="\storage\{{ $this->cards[$currentCard]['front'] }}"
-                            class="w-full h-full border border-black rounded-lg cursor-pointer" />
+                            class="w-full h-full border-2 border-black rounded-lg cursor-pointer" />
                     </div>
                     <div class="w-full h-full card__image--back">
                         <img src="\storage\{{ $this->cards[$currentCard]['back'] }}"
-                            class="w-full h-full border border-black rounded-lg cursor-pointer" />
+                            class="w-full h-full border-2 border-black rounded-lg cursor-pointer" />
                     </div>
                 </div>
             </div>

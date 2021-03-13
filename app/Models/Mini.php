@@ -141,6 +141,20 @@ class Mini extends Model
         return $query;
     }
 
+    public function scopeHasAbility($query, $name)
+    {
+        return $query->whereHas('abilities', function ($q) use ($name) {
+            $q->where('name', 'LIKE', "%{$name}%");
+        });
+    }
+
+    public function scopeHasAction($query, $name)
+    {
+        return $query->whereHas('actions', function ($q) use ($name) {
+            $q->where('name', $name);
+        });
+    }
+
     public function scopeIsHirable($query)
     {
         $query->where('IsUnhirable', 0);

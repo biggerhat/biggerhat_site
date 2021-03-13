@@ -31,4 +31,9 @@ class Faction extends Model
     {
         return $this->belongsToMany(Episode::class);
     }
+
+    public function scopeIsAlive($query)
+    {
+        return $query->where('id', '!=', 8);
+    }
 }
