@@ -136,8 +136,11 @@ class AdvancedPage extends Component
         $tempAbilities = Ability::orderBy('name')->get();
         foreach ($tempAbilities as $newAbility) {
             $newAbility->name = preg_replace('# \((.*?)\)#', "", $newAbility->name);
+            $newAbility->name = str_replace("Df ", "", $newAbility->name);
+            $newAbility->name = str_replace("Df/Mv ", "", $newAbility->name);
+            $newAbility->name = str_replace("Df/Wp ", "", $newAbility->name);
         }
-        $this->formAbilities = $tempAbilities->unique('name');
+        $this->formAbilities = $tempAbilities->sortBy('name')->unique('name');
         $this->formActions = Action::orderBy('name')->get()->unique('name');
         return view('livewire.advanced-page')
             ->extends('main')

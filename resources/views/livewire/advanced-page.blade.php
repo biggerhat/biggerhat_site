@@ -19,7 +19,7 @@
             <div class="my-1">
                 <label for="character" class="block font-bold">Character Name: </label>
                 <input type="text"
-                    class="w-1/2 p-1 text-lg bg-gray-200 border border-gray-900 rounded focus:outline-none"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/2 focus:outline-none"
                     wire:model.defer="character" name="character">
             </div>
         </div>
@@ -221,22 +221,24 @@
             </div>
 
         </div>
-        <div class="my-1">
-            <span class="inline-block font-bold text-right w-28">Ability: </span>
-            <select name="ability" wire:model.defer="ability"
-                class="p-1 text-lg bg-gray-200 border border-gray-900 rounded focus:outline-none">
-                <option value=""></option>
-                @foreach ($formAbilities as $formAbility)
-                    <option value="{{ $formAbility->name }}">{{ $formAbility->name }}</option>
-                @endforeach
-            </select>
+        <div class="container grid p-3 mx-auto text-lg lg:grid-cols-2">
+            <div class="my-1">
+                <label for="ability" class="block font-bold">Ability: </label>
+                <select name="ability" wire:model.defer="ability"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/2 focus:outline-none">
+                    <option value=""></option>
+                    @foreach ($formAbilities as $formAbility)
+                        <option value="{{ $formAbility->name }}">{{ $formAbility->name }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
         <div class="container grid p-3 mx-auto mt-2 text-lg lg:grid-cols-2">
             <div class="text-3xl text-center text-gray-900 lg:col-span-2 faction_header">Actions & Triggers</div>
             <div class="my-1">
-                <span class="inline-block font-bold text-right w-28">Action: </span>
+                <label for="action" class="block font-bold">Action: </label>
                 <select name="action" wire:model.defer="action"
-                    class="p-1 text-lg bg-gray-200 border border-gray-900 rounded focus:outline-none">
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/2 focus:outline-none">
                     <option value=""></option>
                     @foreach ($formActions as $formAction)
                         <option value="{{ $formAction->name }}">{{ $formAction->name }}</option>
@@ -262,7 +264,7 @@
                 </span>
             </div>
         </div>
-        <div class="text-center">Total: {{ count($results) }} Characters</div>
+        <div class="text-2xl text-center">Total: {{ count($results) }} Characters</div>
         <div class="container grid mx-auto md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @foreach ($results as $mini)
                 <div class="p-2">
