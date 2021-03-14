@@ -148,10 +148,24 @@ class Mini extends Model
         });
     }
 
+    public function scopeHasAbilityText($query, $text)
+    {
+        return $query->whereHas('abilities', function ($q) use ($text) {
+            $q->where('description', 'LIKE', "%{$text}%");
+        });
+    }
+
     public function scopeHasAction($query, $name)
     {
         return $query->whereHas('actions', function ($q) use ($name) {
-            $q->where('name', $name);
+            $q->where('name', 'LIKE', "%{$name}%");
+        });
+    }
+
+    public function scopeHasActionText($query, $text)
+    {
+        return $query->whereHas('actions', function ($q) use ($text) {
+            $q->where('description', 'LIKE', "%{$text}%");
         });
     }
 
