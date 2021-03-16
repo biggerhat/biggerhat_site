@@ -169,6 +169,27 @@ class Mini extends Model
         });
     }
 
+    public function scopeHasMinDmg($query, $dmg)
+    {
+        return $query->whereHas('actions', function ($q) use ($dmg) {
+            $q->where('min_damage', $dmg);
+        });
+    }
+
+    public function scopeHasModDmg($query, $dmg)
+    {
+        return $query->whereHas('actions', function ($q) use ($dmg) {
+            $q->where('mod_damage', $dmg);
+        });
+    }
+
+    public function scopeHasSevDmg($query, $dmg)
+    {
+        return $query->whereHas('actions', function ($q) use ($dmg) {
+            $q->where('severe_damage', $dmg);
+        });
+    }
+
     public function scopeIsHirable($query)
     {
         $query->where('IsUnhirable', 0);

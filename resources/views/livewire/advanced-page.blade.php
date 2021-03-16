@@ -24,11 +24,21 @@
             </div>
             <div class="my-1">
                 <label for="faction" class="block font-bold">Faction: </label>
-                <select name="faction" wire:model.defer="faction"
+                <select name="faction" id="faction" wire:model.defer="faction"
                     class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
                     <option value=""></option>
                     @foreach ($formFactions as $formFaction)
                         <option value="{{ $formFaction->id }}">{{ $formFaction->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="my-1">
+                <label for="keyword" class="block font-bold">Keyword: </label>
+                <select name="keyword" id="keyword" wire:model.defer="keyword"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    @foreach ($formKeywords as $formKeyword)
+                        <option value="{{ $formKeyword->id }}">{{ $formKeyword->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -323,6 +333,57 @@
                     class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none"
                     wire:model.defer="actText" name="actText" placeholder="Any text, eg: 'burning'">
             </div>
+            <div class="my-1 ">
+                <label for="minDmg" class="block font-bold lg:text-right lg:inline-block lg:w-36">Min Damage: </label>
+                <select name="minDmg" wire:model.defer="minDmg"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="my-1 ">
+                <label for="modDmg" class="block font-bold lg:text-right lg:inline-block lg:w-36">Mod Damage: </label>
+                <select name="modDmg" wire:model.defer="modDmg"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="my-1 ">
+                <label for="sevDmg" class="block font-bold lg:text-right lg:inline-block lg:w-36">Sev Damage: </label>
+                <select name="sevDmg" wire:model.defer="sevDmg"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
         </div>
         <div class="block mt-3 text-center lg:col-span-2">
             <button wire:click="filter" class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
@@ -354,6 +415,4 @@
         </div>
 
     @endif
-
-
 </div>

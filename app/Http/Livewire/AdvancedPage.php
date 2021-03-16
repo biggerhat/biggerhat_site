@@ -6,6 +6,7 @@ use App\Models\Ability;
 use App\Models\Action;
 use App\Models\Characteristic;
 use App\Models\Faction;
+use App\Models\Keyword;
 use App\Models\Mini;
 use App\Models\Station;
 use Livewire\Component;
@@ -18,6 +19,8 @@ class AdvancedPage extends Component
     public $formStations;
     public $characteristic;
     public $formCharacteristics;
+    public $keyword;
+    public $formKeywords;
     public $results;
     public $cost;
     public $costEval;
@@ -44,11 +47,17 @@ class AdvancedPage extends Component
     public $actText;
     public $formAbilities;
     public $formActions;
+
+    public $minDmg;
+    public $modDmg;
+    public $sevDmg;
+
     protected $queryString = [
         'character' => ['except' => ''],
         'faction' => ['except' => ''],
         'station' => ['except' => ''],
         'characteristic' => ['except' => ''],
+        'keyword' => ['except' => ''],
         'ability' => ['except' => ''],
         'abiName' => ['except' => ''],
         'abiText' => ['except' => ''],
@@ -71,6 +80,9 @@ class AdvancedPage extends Component
         'szEval' => ['except' => ''],
         'base' => ['except' => ''],
         'baseEval' => ['except' => ''],
+        'minDmg' => ['except' => ''],
+        'modDmg' => ['except' => ''],
+        'sevDmg' => ['except' => ''],
     ];
 
     public function mount()
@@ -145,9 +157,21 @@ class AdvancedPage extends Component
         if ($this->actText) {
             $this->results = $this->results->hasAbilityText($this->actText);
         }
+        if ($this->minDmg) {
+            $this->results = $this->results->hasMinDmg($this->minDmg);
+        }
+        if ($this->modDmg) {
+            $this->results = $this->results->hasModDmg($this->modDmg);
+        }
+        if ($this->sevDmg) {
+            $this->results = $this->results->hasSevDmg($this->sevDmg);
+        }
 
         if ($this->faction) {
             $this->results = $this->results->inFaction($this->faction);
+        }
+        if ($this->keyword) {
+            $this->results = $this->results->inKeyword($this->keyword);
         }
         if ($this->station) {
             $this->results = $this->results->hasStation($this->station);
@@ -189,6 +213,7 @@ class AdvancedPage extends Component
         $this->formFactions = Faction::isAlive()->orderBy('name', 'ASC')->get();
         $this->formStations = Station::orderBy('id', 'ASC')->get();
         $this->formCharacteristics = Characteristic::orderBy('name', 'ASC')->get();
+        $this->formKeywords = Keyword::orderBy('name', 'ASC')->get();
         $tempAbilities = Ability::orderBy('name')->get();
         foreach ($tempAbilities as $newAbility) {
             $newAbility->name = preg_replace('# \((.*?)\)#', "", $newAbility->name);
