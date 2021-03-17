@@ -48,9 +48,15 @@ class AdvancedPage extends Component
     public $formAbilities;
     public $formActions;
 
+    public $actionResults;
     public $minDmg;
+    public $minEval;
     public $modDmg;
+    public $modEval;
     public $sevDmg;
+    public $sevEval;
+    public $range;
+    public $rangeEval;
 
     protected $queryString = [
         'character' => ['except' => ''],
@@ -81,8 +87,13 @@ class AdvancedPage extends Component
         'base' => ['except' => ''],
         'baseEval' => ['except' => ''],
         'minDmg' => ['except' => ''],
+        'minEval' => ['except' => ''],
         'modDmg' => ['except' => ''],
+        'modEval' => ['except' => ''],
         'sevDmg' => ['except' => ''],
+        'sevEval' => ['except' => ''],
+        'rangeEval' => ['except' => ''],
+        'range' => ['except' => ''],
     ];
 
     public function mount()
@@ -157,14 +168,28 @@ class AdvancedPage extends Component
         if ($this->actText) {
             $this->results = $this->results->hasAbilityText($this->actText);
         }
-        if ($this->minDmg) {
-            $this->results = $this->results->hasMinDmg($this->minDmg);
-        }
-        if ($this->modDmg) {
-            $this->results = $this->results->hasModDmg($this->modDmg);
-        }
-        if ($this->sevDmg) {
-            $this->results = $this->results->hasSevDmg($this->sevDmg);
+        if (($this->minDmg) || ($this->modDmg) || ($this->sevDmg) || ($this->range)) {
+            $this->actionResults = new Action;
+            if ($this->minDmg) {
+                $eval = $this->evalCheck($this->minEval);
+                $this->actionResults = $this->actionResults->where('min_damage', "{$eval}", $this->minDmg);
+            }
+            if ($this->modDmg) {
+                $eval = $this->evalCheck($this->modEval);
+                $this->actionResults = $this->actionResults->where('mod_damage', "{$eval}", $this->modDmg);
+            }
+            if ($this->sevDmg) {
+                $eval = $this->evalCheck($this->sevEval);
+                $this->actionResults = $this->actionResults->where('severe_damage', "{$eval}", $this->sevDmg);
+            }
+            if ($this->range) {
+                $eval = $this->evalCheck($this->rangeEval);
+                $this->actionResults = $this->actionResults->where('range', "{$eval}", $this->range)->where('range', '!=', 37);
+            }
+            $this->actionResults = $this->actionResults->pluck('id')->toArray();
+            $this->results = $this->results->whereHas('actions', function ($q) {
+                $q->whereIn('id', $this->actionResults);
+            });
         }
 
         if ($this->faction) {

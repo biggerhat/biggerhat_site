@@ -335,6 +335,13 @@
             </div>
             <div class="my-1 ">
                 <label for="minDmg" class="block font-bold lg:text-right lg:inline-block lg:w-36">Min Damage: </label>
+                <select name="minEval" wire:model.defer="minEval"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value="equals"> = </option>
+                    <option value="lsthan">
+                        < </option>
+                    <option value="grthan"> > </option>
+                </select>
                 <select name="minDmg" wire:model.defer="minDmg"
                     class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
                     <option value=""></option>
@@ -352,6 +359,13 @@
             </div>
             <div class="my-1 ">
                 <label for="modDmg" class="block font-bold lg:text-right lg:inline-block lg:w-36">Mod Damage: </label>
+                <select name="modEval" wire:model.defer="modEval"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value="equals"> = </option>
+                    <option value="lsthan">
+                        < </option>
+                    <option value="grthan"> > </option>
+                </select>
                 <select name="modDmg" wire:model.defer="modDmg"
                     class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
                     <option value=""></option>
@@ -369,6 +383,13 @@
             </div>
             <div class="my-1 ">
                 <label for="sevDmg" class="block font-bold lg:text-right lg:inline-block lg:w-36">Sev Damage: </label>
+                <select name="sevEval" wire:model.defer="sevEval"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value="equals"> = </option>
+                    <option value="lsthan">
+                        < </option>
+                    <option value="grthan"> > </option>
+                </select>
                 <select name="sevDmg" wire:model.defer="sevDmg"
                     class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
                     <option value=""></option>
@@ -384,10 +405,61 @@
                     <option value="10">10</option>
                 </select>
             </div>
+            <div class="my-1 ">
+                <label for="range" class="block font-bold lg:text-right lg:inline-block lg:w-28">Range: </label>
+                <select name="rangeEval" wire:model.defer="rangeEval"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value="equals"> = </option>
+                    <option value="lsthan">
+                        < </option>
+                    <option value="grthan"> > </option>
+                </select>
+                <select name="range" wire:model.defer="range"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                </select>
+            </div>
         </div>
         <div class="block mt-3 text-center lg:col-span-2">
             <button wire:click="filter" class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
-                Search</button>
+                Filter</button>
             <button wire:click="clearFilters"
                 class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
                 Clear</button>

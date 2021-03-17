@@ -190,6 +190,14 @@ class Mini extends Model
         });
     }
 
+    public function scopeHasRange($query, $range, $eval)
+    {
+        return $query->whereHas('actions', function ($q) use ($range, $eval) {
+            $q->where('range', "{$eval}", $range);
+            $q->where('range', "!=", 37);
+        });
+    }
+
     public function scopeIsHirable($query)
     {
         $query->where('IsUnhirable', 0);
