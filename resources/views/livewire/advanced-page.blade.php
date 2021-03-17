@@ -456,6 +456,31 @@
                     <option value="36">36</option>
                 </select>
             </div>
+            <div class="my-1 ">
+                <label for="actStat" class="block font-bold lg:text-right lg:inline-block lg:w-28">Stat: </label>
+                <select name="statEval" wire:model.defer="statEval"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value="equals"> = </option>
+                    <option value="lsthan">
+                        < </option>
+                    <option value="grthan"> > </option>
+                </select>
+                <select name="actStat" wire:model.defer="actStat"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
         </div>
         <div class="block mt-3 text-center lg:col-span-2">
             <button wire:click="filter" class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
@@ -475,7 +500,8 @@
                 </span>
             </div>
         </div>
-        <div class="text-2xl text-center">Total: {{ count($results) }} Characters</div>
+        <div class="text-2xl text-center"><span class="font-bold">Total:</span> {{ count($results) }} Characters
+        </div>
         <div class="container grid mx-auto md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @foreach ($results as $mini)
                 <div class="p-2">

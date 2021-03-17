@@ -49,6 +49,9 @@ class AdvancedPage extends Component
     public $formActions;
 
     public $actionResults;
+    public $actionDisplay;
+    public $actStat;
+    public $statEval;
     public $minDmg;
     public $minEval;
     public $modDmg;
@@ -94,6 +97,8 @@ class AdvancedPage extends Component
         'sevEval' => ['except' => ''],
         'rangeEval' => ['except' => ''],
         'range' => ['except' => ''],
+        'actStat' => ['except' => ''],
+        'statEval' => ['except' => ''],
     ];
 
     public function mount()
@@ -165,11 +170,15 @@ class AdvancedPage extends Component
             $this->results = $this->results->hasAbilityText($this->abiText);
         }
 
-        if ($this->actText) {
-            $this->results = $this->results->hasAbilityText($this->actText);
-        }
-        if (($this->minDmg) || ($this->modDmg) || ($this->sevDmg) || ($this->range)) {
+        if (($this->minDmg) || ($this->modDmg) || ($this->sevDmg) || ($this->range) || ($this->actText) || ($this->actStat)) {
             $this->actionResults = new Action;
+            if ($this->actText) {
+                $this->actionResults = $this->actionResults->where('description', 'LIKE', "%{$this->actText}%");
+            }
+            if ($this->actStat) {
+                $eval = $this->evalCheck($this->statEval);
+                $this->actionResults = $this->actionResults->where('stat', "{$eval}", $this->actStat)->where('stat', '!=', 99);
+            }
             if ($this->minDmg) {
                 $eval = $this->evalCheck($this->minEval);
                 $this->actionResults = $this->actionResults->where('min_damage', "{$eval}", $this->minDmg);
@@ -187,6 +196,7 @@ class AdvancedPage extends Component
                 $this->actionResults = $this->actionResults->where('range', "{$eval}", $this->range)->where('range', '!=', 37);
             }
             $this->actionResults = $this->actionResults->pluck('id')->toArray();
+            $this->actionDisplay = Action::whereIn('id', $this->actionResults)->orderBy('name')->get()->unique('name');
             $this->results = $this->results->whereHas('actions', function ($q) {
                 $q->whereIn('id', $this->actionResults);
             });
