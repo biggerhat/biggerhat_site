@@ -51,6 +51,7 @@ class AdvancedPage extends Component
     public $actionResults;
     public $actionDisplay;
     public $actStat;
+    public $actType;
     public $statEval;
     public $minDmg;
     public $minEval;
@@ -99,6 +100,7 @@ class AdvancedPage extends Component
         'range' => ['except' => ''],
         'actStat' => ['except' => ''],
         'statEval' => ['except' => ''],
+        'actType' => ['except' => ''],
     ];
 
     public function mount()
@@ -170,10 +172,13 @@ class AdvancedPage extends Component
             $this->results = $this->results->hasAbilityText($this->abiText);
         }
 
-        if (($this->minDmg) || ($this->modDmg) || ($this->sevDmg) || ($this->range) || ($this->actText) || ($this->actStat)) {
+        if (($this->minDmg) || ($this->modDmg) || ($this->sevDmg) || ($this->range) || ($this->actText) || ($this->actStat) || ($this->actType)) {
             $this->actionResults = new Action;
             if ($this->actText) {
                 $this->actionResults = $this->actionResults->where('description', 'LIKE', "%{$this->actText}%");
+            }
+            if ($this->actType) {
+                $this->actionResults = $this->actionResults->where('type', 'LIKE', "%{$this->actType}%");
             }
             if ($this->actStat) {
                 $eval = $this->evalCheck($this->statEval);

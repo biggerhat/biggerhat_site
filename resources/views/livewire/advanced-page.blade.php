@@ -405,6 +405,15 @@
                     <option value="10">10</option>
                 </select>
             </div>
+            <div class="my-1">
+                <label for="actType" class="block font-bold">Type: </label>
+                <select name="actType" wire:model.defer="actType"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="attack">Attack</option>
+                    <option value="tactical">Tactical</option>
+                </select>
+            </div>
             <div class="my-1 ">
                 <label for="range" class="block font-bold lg:text-right lg:inline-block lg:w-28">Range: </label>
                 <select name="rangeEval" wire:model.defer="rangeEval"
