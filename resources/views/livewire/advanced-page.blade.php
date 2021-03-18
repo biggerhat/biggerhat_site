@@ -490,6 +490,17 @@
                     <option value="10">10</option>
                 </select>
             </div>
+            <div class="my-1">
+                <label for="actSuit" class="block font-bold">Stat Suit: </label>
+                <select name="actSuit" wire:model.defer="actSuit"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="crow">Crow</option>
+                    <option value="mask">Mask</option>
+                    <option value="ram">Ram</option>
+                    <option value="tome">Tome</option>
+                </select>
+            </div>
         </div>
         <div class="block mt-3 text-center lg:col-span-2">
             <button wire:click="filter" class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">

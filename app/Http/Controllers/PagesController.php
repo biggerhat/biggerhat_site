@@ -35,6 +35,11 @@ class PagesController extends Controller
         return view('pages.resources', compact('resources'));
     }
 
+    public function getAbout()
+    {
+        return view('pages.about');
+    }
+
     public function getHome()
     {
         return view('pages.home');
