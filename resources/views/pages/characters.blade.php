@@ -72,9 +72,11 @@
                     </g>
                 </svg>
                 <div class="block italic">
-
+                    Masters are the most powerful characters in the game with many strong and unique actions and abilities.
+                    They're most often seen leading a crew, but can be hired alongside other characters to make your crew
+                    even more daunting.
                 </div>
-                <div class="block py-2">
+                <div class="block py-2 mt-2">
                     <a class="px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
                         href="{{ route('masters') }}">View Masters</a>
                 </div>

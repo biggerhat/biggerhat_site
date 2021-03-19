@@ -27,6 +27,8 @@
                 class="w-32 mx-auto font-semibold text-center text-gray-400 border-b border-gray-400 lg:text-left text-md lg:w-auto">
                 References</div>
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
+                <li class="text-sm"><a href="{{ route('faqs') }}" class="hover:text-white hover:underline">FAQs</a>
+                </li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Summoning Charts</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Soulstones</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Crew Hiring</a></li>

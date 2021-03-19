@@ -11,6 +11,7 @@ use App\Http\Livewire\InstructionPage;
 use App\Http\Livewire\BoxPage;
 use App\Http\Controllers\PagesController;
 use App\Http\Livewire\AdvancedPage;
+use App\Http\Livewire\QuestionPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::get('/', [PagesController::class, 'getHome'])->name('home');
 
 Route::get('/resources', [PagesController::class, 'getResources'])->name('resources');
 Route::get('/about', [PagesController::class, 'getAbout'])->name('about');
+Route::get('/faqs', QuestionPage::class)->name('faqs');
 Route::get('/upgrades', [PagesController::class, 'getUpgrades'])->name('upgrades');
 Route::get('/characters', [PagesController::class, 'getCharacters'])->name('characters');
 Route::get('/keywords', [PagesController::class, 'getKeywords'])->name('keywords');

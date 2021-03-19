@@ -1,7 +1,7 @@
 @extends('main')
 
 @section('title')
-    - About Bigger Hat
+    - About Us
 @endsection
 
 @section('content')

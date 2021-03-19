@@ -16,7 +16,7 @@ class Question extends Model
 
     public function ability()
     {
-        return $this->hasOne(Ability::class);
+        return $this->belongsTo(Ability::class);
     }
 
     public function action()
@@ -26,6 +26,6 @@ class Question extends Model
 
     public function mini()
     {
-        return $this->hasOne(Mini::class);
+        return $this->belongsTo(Mini::class);
     }
 }
