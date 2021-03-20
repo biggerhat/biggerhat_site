@@ -10,16 +10,18 @@ use Livewire\Component;
 class SchemePage extends Component
 {
     public $seasons;
-    public $season = 1;
+    public $season = "gaining-grounds-0";
     public $strategies;
     public $schemes;
-    protected $queryString = ['season' => ['except' => '1']];
+    protected $queryString = ['season' => ['except' => 'gaining-grounds-0']];
 
     public function render()
     {
+        $season_id = Season::where('slug', $this->season)->select('id')->first();
+        $season_id = $season_id->id;
         $this->seasons = Season::orderBy('id', 'ASC')->get();
-        $this->strategies = Strategy::where('season_id', $this->season)->orderBy('suit', 'ASC')->get();
-        $this->schemes = Scheme::where('season_id', $this->season)->orderBy('number', 'ASC')->get();
+        $this->strategies = Strategy::where('season_id', $season_id)->orderBy('suit', 'ASC')->get();
+        $this->schemes = Scheme::where('season_id', $season_id)->orderBy('number', 'ASC')->get();
 
         return view('livewire.scheme-page')
             ->extends('main')

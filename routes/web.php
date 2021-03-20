@@ -31,7 +31,7 @@ Route::get('/', [PagesController::class, 'getHome'])->name('home');
 Route::get('/resources', [PagesController::class, 'getResources'])->name('resources');
 Route::get('/about', [PagesController::class, 'getAbout'])->name('about');
 Route::get('/faqs', QuestionPage::class)->name('faqs');
-Route::get('/schemes', SchemePage::class)->name('schemes');
+Route::get('/scenarios', SchemePage::class)->name('schemes');
 Route::get('/upgrades', [PagesController::class, 'getUpgrades'])->name('upgrades');
 Route::get('/characters', [PagesController::class, 'getCharacters'])->name('characters');
 Route::get('/keywords', [PagesController::class, 'getKeywords'])->name('keywords');

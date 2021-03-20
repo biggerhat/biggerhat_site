@@ -1,3 +1,8 @@
+@section('title')
+    - Schemes & Strategies
+@endsection
+
+
 <div>
     <div class="container mx-auto">
         <div class="block w-full h-full py-5 text-center">
@@ -10,7 +15,7 @@
                 <select name="seasons" wire:model="season"
                     class="block w-full p-2 px-2 py-2 mx-auto bg-gray-200 border-2 border-gray-900 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline">
                     @foreach ($seasons as $season)
-                        <option value="{{ $season->id }}">{{ $season->name }}</option>
+                        <option value="{{ $season->slug }}">{{ $season->name }}</option>
                     @endforeach
                 </select>
             </div>
