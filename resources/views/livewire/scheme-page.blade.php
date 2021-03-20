@@ -68,10 +68,12 @@
             </div>
             <div class="grid px-2 lg:gap-1 lg:grid-cols-4">
                 @foreach ($deployments as $deployment)
-                    <div class="my-1 text-3xl text-center">
-                        {!! fauxdown($deployment->suit) !!} {{ $deployment->name }}
+                    <div class="px-2 my-1">
+                        <div class="text-3xl text-center ">{!! fauxdown($deployment->suit) !!} {{ $deployment->name }}</div>
                         <img src="\storage\{{ $deployment->image }}"
-                            class="mx-auto border-2 border-black rounded-lg"></a>
+                            class="block mx-auto border-2 border-black rounded-lg"></a>
+                        <div class="italic text-md">{{ $deployment->description }}</div>
+
                     </div>
                 @endforeach
             </div>
