@@ -32,7 +32,7 @@
             </div>
             <div class="grid px-2 lg:gap-1 lg:grid-cols-4">
                 @foreach ($strategies as $strategy)
-                    <div>
+                    <div class="my-1">
                         <img src="\storage\{{ $strategy->image }}"
                             class="mx-auto border-2 border-black rounded-lg card__image"></a>
                     </div>
@@ -50,9 +50,28 @@
             </div>
             <div class="grid px-2 lg:gap-1 lg:grid-cols-4">
                 @foreach ($schemes as $scheme)
-                    <div>
+                    <div class="my-1">
                         <img src="\storage\{{ $scheme->image }}"
                             class="mx-auto border-2 border-black rounded-lg card__image"></a>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+
+        @if (count($deployments) > 0)
+            <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+
+            <div class="block w-full h-full py-5 text-center">
+                <span class="text-3xl text-gray-900 lg:text-7xl md:text-5xl faction_header">
+                    Deployments
+                </span>
+            </div>
+            <div class="grid px-2 lg:gap-1 lg:grid-cols-4">
+                @foreach ($deployments as $deployment)
+                    <div class="my-1 text-3xl text-center">
+                        {!! fauxdown($deployment->suit) !!} {{ $deployment->name }}
+                        <img src="\storage\{{ $deployment->image }}"
+                            class="mx-auto border-2 border-black rounded-lg"></a>
                     </div>
                 @endforeach
             </div>
