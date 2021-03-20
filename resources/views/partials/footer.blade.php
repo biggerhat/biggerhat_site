@@ -34,7 +34,8 @@
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Crew Hiring</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Timing Charts</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Encounter Setup</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Schemes & Strategies</a></li>
+                <li class="text-sm"><a href="{{ route('schemes') }}" class="hover:text-white hover:underline">Schemes
+                        & Strategies</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Conditions</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">General Actions</a></li>
             </ul>
