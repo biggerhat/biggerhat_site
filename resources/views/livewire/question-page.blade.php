@@ -25,7 +25,7 @@
             @if ($results)
                 @foreach ($results as $question)
                     <div class="p-2 my-1 bg-gray-200 border-2 border-black rounded lg:col-span-3 lg:col-start-2">
-                        <div>Q. {!! fauxdown($question['question']) !!}</div>
+                        <div><span class="font-bold">Q.</span> {!! fauxdown($question['question']) !!}</div>
                         <div><span class="font-bold">A.</span> {!! fauxdown($question['answer']) !!}</div>
                     </div>
                 @endforeach
