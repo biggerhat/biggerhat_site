@@ -12,14 +12,28 @@ class QuestionPage extends Component
 
     protected $queryString = ['query' => ['except' => '']];
 
+    public function mount()
+    {
+    }
+
     public function clearQuery()
     {
-        $this->query = "";
+        $this->reset();
+        return redirect('/faqs');
+    }
+
+    public function search()
+    {
+        if ($this->query) {
+            $this->results = Question::where('question', 'LIKE', "%{$this->query}%")->orWhere('answer', 'LIKE', "%{$this->query}%")->get();
+        } else {
+            $this->results = Question::get();
+        }
     }
 
     public function render()
     {
-        $this->results = Question::where('question', 'LIKE', "%{$this->query}%")->orWhere('answer', 'LIKE', "%{$this->query}")->get();
+        $this->search();
         return view('livewire.question-page')
             ->extends('main')
             ->section('content');
