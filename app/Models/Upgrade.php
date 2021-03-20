@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 
 class Upgrade extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $fillable = [
         'name',
@@ -17,6 +19,21 @@ class Upgrade extends Model
         'cost',
         'tactica',
     ];
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        $trackable = [
+            "id",
+            'name',
+            'plentiful',
+            'description',
+            'cost',
+        ];
+
+        return array_intersect_key($array, array_flip($trackable));
+    }
 
     protected $with = [
         'uspecials',

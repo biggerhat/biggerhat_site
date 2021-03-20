@@ -6,9 +6,13 @@
             <li class="flex w-1/2 my-auto lg:w-1/3">
                 <div class="flex w-full h-full my-auto text-sm bg-gray-900 rounded-full">
                     @if (Request::path() != '/')
-                        <input type="search" name="search" placeholder="Search"
-                            class="w-full h-10 px-2 my-auto text-sm bg-gray-200 rounded-l-full rounded-r-full focus:outline-none"
-                            autocomplete="off" />
+                        <form method="POST" action="{{ route('results') }}" autocomplete="off"
+                            class="inline-flex w-full">
+                            @csrf
+                            <input type="search" name="search" placeholder="Search"
+                                class="w-full h-10 px-2 my-auto text-sm bg-gray-200 rounded-l-full rounded-r-full focus:outline-none"
+                                autocomplete="off" />
+                        </form>
                         <a class="block px-1 py-4" href="{{ route('advanced') }}"><svg
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                 style="height: 30px; width: 30px;" class="block m-auto">
@@ -31,8 +35,8 @@
             <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a
                     href="{{ route('resources') }}"
                     class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Resources</a></li>
-            <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a href="/tools"
-                    class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Tools</a></li>
+            <!-- <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a href="/tools"
+                    class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Tools</a></li> -->
 
             <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative">
                 <a href="" class="block p-2 text-gray-200 rounded-lg cursor-pointer hover:text-white hover:bg-gray-700">

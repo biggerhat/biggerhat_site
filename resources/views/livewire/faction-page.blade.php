@@ -297,8 +297,9 @@
 
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
     @if (count($masters) > 0)
-        <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-            <div class="mx-auto lg:col-span-4">
+        <div
+            class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-3 xl:grid-cols-4 auto-cols-fr">
+            <div class="mx-auto lg:col-span-3 xl:col-span-4">
                 <div class="inline-block h-full py-2 mx-auto text-center" wire:click="masterToggle">
                     <span
                         class="text-transparent block cursor-pointer lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
@@ -328,8 +329,9 @@
     @endif
 
     @if (count($henchmen) > 0)
-        <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-            <div class="mx-auto lg:col-span-4">
+        <div
+            class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-3 xl:grid-cols-4 auto-cols-fr">
+            <div class="mx-auto lg:col-span-3 xl:col-span-4">
                 <div class="inline-block h-full py-2 mx-auto text-center" wire:click="henchmenToggle">
                     <span
                         class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
@@ -390,8 +392,9 @@
         <div class="block my-3 border-b border-gray-400 border-dashed"></div>
     @endif
     @if (count($minions) > 0)
-        <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-4 auto-cols-fr">
-            <div class="mx-auto lg:col-span-4">
+        <div
+            class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-3 xl:grid-cols-4 auto-cols-fr">
+            <div class="mx-auto lg:col-span-3 xl:col-span-4">
                 <div class="inline-block h-full py-2 mx-auto text-center" wire:click="minionToggle">
                     <span
                         class="text-transparent cursor-pointer block lg:text-6xl text-4xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">

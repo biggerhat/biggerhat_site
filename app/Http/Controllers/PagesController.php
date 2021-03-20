@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Faction;
+use App\Models\Keyword;
 use App\Models\Mini;
 use App\Models\ResourceType;
+use App\Models\Upgrade;
 use Illuminate\Support\Facades\Redis;
 
 class PagesController extends Controller
@@ -43,5 +45,27 @@ class PagesController extends Controller
     public function getHome()
     {
         return view('pages.home');
+    }
+
+    public function postSearch(Request $request)
+    {
+        $search = $request->search;
+        $minis = Mini::search("{$search}")->get();
+        $factions = Faction::where('name', 'LIKE', "%{$search}%")->get();
+        if ($factions->count() == 1) {
+            return redirect(route('faction.view', $factions[0]->slug));
+        }
+        $keywords = Keyword::where('name', 'LIKE', "%{$search}%")->get();
+        if ($keywords->count() == 1) {
+            return redirect(route('keyword.view', $keywords[0]->slug));
+        }
+        $upgrades = Upgrade::search("{$search}")->get();
+        if ($upgrades->count() == 1) {
+            return redirect(route('upgrade.view'), $upgrades[0]->slug);
+        }
+        if ($minis->count() == 1) {
+            return redirect(route('character.view', $minis[0]->slug));
+        }
+        return view('pages.results', compact('minis', 'upgrades', 'search'));
     }
 }

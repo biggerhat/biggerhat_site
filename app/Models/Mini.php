@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Events\MiniSaved;
+use Laravel\Scout\Searchable;
 
 class Mini extends Model
 {
+    use Searchable;
+
     protected $fillable = [
         'name',
         'station_id',
@@ -25,6 +28,30 @@ class Mini extends Model
         'tag',
         'hidden_keyword_id',
     ];
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        $trackable = [
+            "id",
+            'name',
+            'cost',
+            'wounds',
+            'size',
+            'base',
+            'defense',
+            'defense_suit',
+            'willpower',
+            'willpower_suit',
+            'move',
+            'quantity',
+            'aka',
+            'description',
+        ];
+
+        return array_intersect_key($array, array_flip($trackable));
+    }
 
     protected $dispatchesEvents = [
         'saved' => MiniSaved::class,

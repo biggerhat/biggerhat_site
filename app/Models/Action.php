@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Action extends Model
 {
+    use Searchable;
+
     protected $fillable = [
         'name',
         'type',
@@ -21,6 +24,29 @@ class Action extends Model
         'notes',
         'range_type',
     ];
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        $trackable = [
+            "id",
+            'name',
+            'type',
+            'bonus',
+            'range',
+            'stat',
+            'stat_suits',
+            'stat_modifier',
+            'resist',
+            'target',
+            'target_suits',
+            'description',
+            'range_type',
+        ];
+
+        return array_intersect_key($array, array_flip($trackable));
+    }
 
     protected $with = [
         'questions',

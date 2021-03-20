@@ -51,6 +51,7 @@
                 @endforeach
             </ul>
         </div>
+        <!--
         <div class="w-full mx-auto">
             <div
                 class="w-32 mx-auto font-semibold text-center text-gray-400 border-b border-gray-400 lg:text-left text-md lg:w-auto">
@@ -62,7 +63,7 @@
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Model Gallery</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Game Logging</a></li>
             </ul>
-        </div>
+        </div> -->
         <div class="w-full mx-auto">
             <div
                 class="w-32 mx-auto font-semibold text-center text-gray-400 border-b border-gray-400 lg:text-left text-md lg:w-auto">
@@ -86,7 +87,8 @@
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
                 <li class="text-sm"><a href="{{ route('about') }}" class="hover:text-white hover:underline">About</a>
                 </li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Donate to Us</a></li>
+                <li class="text-sm"><a href="https://www.patreon.com/biggerhat" target="_patreon"
+                        class="hover:text-white hover:underline">Patreon</a></li>
                 <li class="text-sm"><a href="https://discord.gg/AT236KeAWT" class="hover:text-white hover:underline"
                         target="discord">Discord Server</a></li>
                 <li class="text-sm"><a href="https://www.youtube.com/channel/UC095wgLOM_nojBIdzVUtfWg"

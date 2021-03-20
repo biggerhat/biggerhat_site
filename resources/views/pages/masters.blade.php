@@ -14,7 +14,7 @@
     </div>
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
 
-    <div class="container grid gap-0 mx-auto lg:grid-cols-4 auto-cols-fr lg:gap-2">
+    <div class="container grid gap-0 px-2 mx-auto lg:grid-cols-4 auto-cols-fr lg:gap-2">
         @foreach ($factions as $faction)
             <div class="lg:col-span-4">
                 <div class="block w-full h-full pt-5 pb-1 text-center">
