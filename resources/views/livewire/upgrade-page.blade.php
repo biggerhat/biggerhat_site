@@ -1,5 +1,5 @@
 <div>
-    <div class="container grid mx-auto lg:grid-cols-3 auto-cols-fr auto-rows-fr lg:gap-2">
+    <div class="container grid mx-auto lg:grid-cols-3 auto-cols-fr lg:gap-2">
         <div class="my-1">
             <img src="\storage\{{ $upgrade->image }}"
                 class="mx-auto border-2 border-black rounded-lg card__image"></a>
