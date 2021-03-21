@@ -16,6 +16,9 @@
                         name="search" placeholder="Search for Anything">
                 </form>
             </div>
+            <a href="{{ route('advanced') }}"
+                class="inline-block p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
+                Advanced Search</a>
         </div>
     </div>
 

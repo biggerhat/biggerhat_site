@@ -406,12 +406,24 @@
                 </select>
             </div>
             <div class="my-1">
-                <label for="actType" class="block font-bold">Type: </label>
+                <label for="actType" class="block font-bold">Action Type: </label>
                 <select name="actType" wire:model.defer="actType"
                     class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
                     <option value=""></option>
                     <option value="attack">Attack</option>
                     <option value="tactical">Tactical</option>
+                </select>
+            </div>
+            <div class="my-1">
+                <label for="rangeType" class="block font-bold">Range Type: </label>
+                <select name="rangeType" wire:model.defer="rangeType"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="melee">Melee</option>
+                    <option value="gun">Gun</option>
+                    <option value="aura">Aura</option>
+                    <option value="pulse">Pulse</option>
+
                 </select>
             </div>
             <div class="my-1 ">
@@ -493,6 +505,91 @@
             <div class="my-1">
                 <label for="actSuit" class="block font-bold">Stat Suit: </label>
                 <select name="actSuit" wire:model.defer="actSuit"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="crow">Crow</option>
+                    <option value="mask">Mask</option>
+                    <option value="ram">Ram</option>
+                    <option value="tome">Tome</option>
+                </select>
+            </div>
+            <div class="my-1">
+                <label for="actMod" class="block font-bold">Stat Modifier: </label>
+                <select name="actMod" wire:model.defer="actMod"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="plus">Plus</option>
+                    <option value="minus">Minus</option>
+                </select>
+            </div>
+            <div class="my-1">
+                <label for="actResist" class="block font-bold">Resisted By: </label>
+                <select name="actResist" wire:model.defer="actResist"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="df">Df</option>
+                    <option value="wp">Wp</option>
+                    <option value="mv">Mv</option>
+                    <option value="sz">Sz</option>
+                    <option value="x">X</option>
+                    <option value="*">*</option>
+                </select>
+            </div>
+            <div class="my-1 ">
+                <label for="actTarget" class="block font-bold lg:text-right lg:inline-block lg:w-28">Target Number:
+                </label>
+                <select name="targetEval" wire:model.defer="targetEval"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value="equals"> = </option>
+                    <option value="lsthan">
+                        < </option>
+                    <option value="grthan"> > </option>
+                </select>
+                <select name="actTarget" wire:model.defer="actTarget"
+                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="X">X</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                </select>
+            </div>
+            <div class="my-1">
+                <label for="targetSuit" class="block font-bold">Target Suit Has: </label>
+                <select name="targetSuit" wire:model.defer="targetSuit"
                     class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
                     <option value=""></option>
                     <option value="crow">Crow</option>

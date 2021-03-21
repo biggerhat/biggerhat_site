@@ -62,6 +62,12 @@ class AdvancedPage extends Component
     public $sevEval;
     public $range;
     public $rangeEval;
+    public $rangeType;
+    public $actMod;
+    public $actResist;
+    public $targetEval;
+    public $actTarget;
+    public $targetSuit;
 
     protected $queryString = [
         'character' => ['except' => ''],
@@ -103,6 +109,12 @@ class AdvancedPage extends Component
         'statEval' => ['except' => ''],
         'actType' => ['except' => ''],
         'actSuit' => ['except' => ''],
+        'rangeType' => ['except' => ''],
+        'actMod' => ['except' => ''],
+        'actResist' => ['except' => ''],
+        'actTarget' => ['except' => ''],
+        'targetEval' => ['except' => ''],
+        'targetSuit' => ['except' => ''],
     ];
 
     public function mount()
@@ -174,7 +186,7 @@ class AdvancedPage extends Component
             $this->results = $this->results->hasAbilityText($this->abiText);
         }
 
-        if (($this->minDmg) || ($this->modDmg) || ($this->sevDmg) || ($this->range) || ($this->actText) || ($this->actStat) || ($this->actType) || ($this->actSuit)) {
+        if (($this->minDmg) || ($this->modDmg) || ($this->sevDmg) || ($this->range) || ($this->actText) || ($this->actStat) || ($this->actType) || ($this->actSuit) || ($this->rangeType) || ($this->actMod) || ($this->actResist) || ($this->actTarget) || ($this->targetSuit)) {
             $this->actionResults = new Action;
             if ($this->actText) {
                 $this->actionResults = $this->actionResults->where('description', 'LIKE', "%{$this->actText}%");
@@ -205,6 +217,28 @@ class AdvancedPage extends Component
                 $eval = $this->evalCheck($this->rangeEval);
                 $this->actionResults = $this->actionResults->where('range', "{$eval}", $this->range)->where('range', '!=', 37);
             }
+            if ($this->rangeType) {
+                $this->actionResults = $this->actionResults->where('range_type', 'LIKE', "%{$this->rangeType}%");
+            }
+            if ($this->actMod) {
+                $this->actionResults = $this->actionResults->where('stat_modifier', 'LIKE', "%{$this->actMod}%");
+            }
+            if ($this->actResist) {
+                $this->actionResults = $this->actionResults->where('resist', 'LIKE', "%{$this->actResist}%");
+            }
+            if ($this->actTarget) {
+                $eval = $this->evalCheck($this->targetEval);
+                if ($this->actTarget == "X") {
+                    $eval = "=";
+                    $this->targetEval = "";
+                }
+                $this->actionResults = $this->actionResults->where('target', "{$eval}", $this->actTarget);
+            }
+            if ($this->targetSuit) {
+                $this->actionResults = $this->actionResults->where('target_suits', 'LIKE', "%{$this->targetSuit}%");
+            }
+
+
             $this->actionResults = $this->actionResults->pluck('id')->toArray();
             $this->actionDisplay = Action::whereIn('id', $this->actionResults)->orderBy('name')->get()->unique('name');
             $this->results = $this->results->whereHas('actions', function ($q) {
