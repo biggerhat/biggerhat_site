@@ -28,7 +28,7 @@
         <div class="container grid gap-0 px-2 mx-auto lg:grid-cols-3 xl:grid-cols-4 auto-cols-fr lg:gap-2">
             @foreach ($minis as $mini)
                 <div class="p-2">
-                    <a href="{{ route('master.view', $mini->slug) }}" class="active:outline-none">
+                    <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
                         <img src="\storage\{{ $mini->cards->random()->front }}"
                             class="mx-auto border-2 border-black rounded-lg card__image"></a>
                 </div>
