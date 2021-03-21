@@ -19,6 +19,9 @@
             <a href="{{ route('advanced') }}"
                 class="inline-block p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
                 Advanced Search</a>
+            <a href="{{ route('random') }}"
+                class="inline-block p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
+                Random Character</a>
         </div>
     </div>
 

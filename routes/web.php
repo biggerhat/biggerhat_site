@@ -58,7 +58,7 @@ Route::get('/random', function () {
     $minis = App\Models\Mini::all();
     $mini = $minis->random();
     return redirect()->route('character.view', $mini->slug);
-});
+})->name('random');
 
 Route::get('/user/logout', 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');
 
