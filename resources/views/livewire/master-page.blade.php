@@ -199,7 +199,7 @@
                 <div class="mx-2 mb-2 text-lg">
                     @foreach ($superTopAbilities as $ability)
                         <div class="pl-4 mb-1" style="text-indent: -1rem;"><span
-                                class="font-bold">{{ $ability['name'] }}</span> ({{ $ability['count'] }}
+                                class="font-bold">{!! fauxdown($ability['name']) !!}</span> ({{ $ability['count'] }}
                             characters) - {!! fauxdown($ability['description']) !!} </div>
                     @endforeach
                 </div>

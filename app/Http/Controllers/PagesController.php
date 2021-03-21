@@ -61,7 +61,7 @@ class PagesController extends Controller
         }
         $upgrades = Upgrade::search("{$search}")->get();
         if ($upgrades->count() == 1) {
-            return redirect(route('upgrade.view'), $upgrades[0]->slug);
+            return redirect(route('upgrade.view', $upgrades[0]->slug));
         }
         if ($minis->count() == 1) {
             return redirect(route('character.view', $minis[0]->slug));
