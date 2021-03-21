@@ -65,7 +65,6 @@ class AdvancedPage extends Component
     public $rangeType;
     public $actMod;
     public $actResist;
-    public $targetEval;
     public $actTarget;
     public $targetSuit;
 
@@ -113,7 +112,6 @@ class AdvancedPage extends Component
         'actMod' => ['except' => ''],
         'actResist' => ['except' => ''],
         'actTarget' => ['except' => ''],
-        'targetEval' => ['except' => ''],
         'targetSuit' => ['except' => ''],
     ];
 
@@ -227,12 +225,7 @@ class AdvancedPage extends Component
                 $this->actionResults = $this->actionResults->where('resist', 'LIKE', "%{$this->actResist}%");
             }
             if ($this->actTarget) {
-                $eval = $this->evalCheck($this->targetEval);
-                if ($this->actTarget == "X") {
-                    $eval = "=";
-                    $this->targetEval = "";
-                }
-                $this->actionResults = $this->actionResults->where('target', "{$eval}", $this->actTarget);
+                $this->actionResults = $this->actionResults->where('target', "=", $this->actTarget);
             }
             if ($this->targetSuit) {
                 $this->actionResults = $this->actionResults->where('target_suits', 'LIKE', "%{$this->targetSuit}%");

@@ -536,15 +536,8 @@
                 </select>
             </div>
             <div class="my-1 ">
-                <label for="actTarget" class="block font-bold lg:text-right lg:inline-block lg:w-28">Target Number:
+                <label for="actTarget" class="block font-bold lg:text-right lg:inline-block lg:w-42">Target Number:
                 </label>
-                <select name="targetEval" wire:model.defer="targetEval"
-                    class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
-                    <option value="equals"> = </option>
-                    <option value="lsthan">
-                        < </option>
-                    <option value="grthan"> > </option>
-                </select>
                 <select name="actTarget" wire:model.defer="actTarget"
                     class="w-1/3 p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-1/4 focus:outline-none">
                     <option value=""></option>
