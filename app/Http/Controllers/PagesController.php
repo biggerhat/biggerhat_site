@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Faction;
 use App\Models\Keyword;
+use App\Models\Marker;
 use App\Models\Mini;
 use App\Models\ResourceType;
 use App\Models\Upgrade;
@@ -45,6 +46,12 @@ class PagesController extends Controller
     public function getHome()
     {
         return view('pages.home');
+    }
+
+    public function getMarkers()
+    {
+        $markers = Marker::orderBy('name', 'ASC')->get();
+        return view('pages.markers', compact('markers'));
     }
 
     public function postSearch(Request $request)
