@@ -54,7 +54,7 @@
             <div class="mx-1 mb-3 sm:my-1 md:m-0">
                 <div class="mb-2 bg-gray-200 border-2 border-black rounded">
                     <div
-                        class="block p-1 mb-2 text-xl font-medium text-white align-middle border-b border-black bg-gradient-to-r from-guild-light to-exso-light">
+                        class="block p-1 mb-2 text-xl font-medium text-white align-middle border-b border-black {{ $background }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                             class="inline-block">
                             <g class="" transform="translate(0,0)" style="">
