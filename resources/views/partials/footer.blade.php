@@ -31,7 +31,7 @@
                 </li>
                 <li class="text-sm"><a href="{{ route('markers') }}" class="hover:text-white hover:underline">Terrain
                         Markers</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Summoning Charts</a></li>
+                <li class="text-sm"><a href="{{ route('summons') }}" class="hover:text-white hover:underline">Summoning Charts</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Soulstones</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Crew Hiring</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Timing Charts</a></li>

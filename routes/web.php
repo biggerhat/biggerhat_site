@@ -14,6 +14,9 @@ use App\Http\Livewire\AdvancedPage;
 use App\Http\Livewire\QuestionPage;
 use App\Http\Livewire\UpgradePage;
 use App\Http\Livewire\SchemePage;
+use App\Http\Livewire\SummonPage;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +44,7 @@ Route::get('/upgrades', [PagesController::class, 'getUpgrades'])->name('upgrades
 Route::get('/characters', [PagesController::class, 'getCharacters'])->name('characters');
 Route::get('/keywords', [PagesController::class, 'getKeywords'])->name('keywords');
 Route::get('/masters', [PagesController::class, 'getMasters'])->name('masters');
+Route::get('/summons', SummonPage::class)->name('summons');
 Route::get('/promos', [PagesController::class, 'getPromos'])->name('promos');
 Route::get('/markers', [PagesController::class, 'getMarkers'])->name('markers');
 Route::get('/blueprints/{instruction:id}/{mini:slug}', InstructionPage::class)->name('instruction.view');
