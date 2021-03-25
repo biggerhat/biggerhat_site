@@ -9,6 +9,7 @@ use App\Models\Faction;
 use App\Models\Keyword;
 use App\Models\Mini;
 use App\Models\Station;
+use App\Models\Trigger;
 use Livewire\Component;
 
 class AdvancedPage extends Component
@@ -19,6 +20,8 @@ class AdvancedPage extends Component
     public $formStations;
     public $characteristic;
     public $formCharacteristics;
+    public $formTriggers;
+    public $trigger;
     public $keyword;
     public $formKeywords;
     public $results;
@@ -68,6 +71,9 @@ class AdvancedPage extends Component
     public $actTarget;
     public $targetSuit;
 
+    public $trigSuit;
+    public $trigText;
+
     protected $queryString = [
         'character' => ['except' => ''],
         'faction' => ['except' => ''],
@@ -113,6 +119,10 @@ class AdvancedPage extends Component
         'actResist' => ['except' => ''],
         'actTarget' => ['except' => ''],
         'targetSuit' => ['except' => ''],
+        'trigSuit' => ['except' => ''],
+        'trigger' => ['except' => ''],
+        'trigText' => ['except' => ''],
+
     ];
 
     public function mount()
@@ -184,7 +194,7 @@ class AdvancedPage extends Component
             $this->results = $this->results->hasAbilityText($this->abiText);
         }
 
-        if (($this->minDmg) || ($this->modDmg) || ($this->sevDmg) || ($this->range) || ($this->actText) || ($this->actStat) || ($this->actType) || ($this->actSuit) || ($this->rangeType) || ($this->actMod) || ($this->actResist) || ($this->actTarget) || ($this->targetSuit)) {
+        if (($this->minDmg) || ($this->modDmg) || ($this->sevDmg) || ($this->range) || ($this->actText) || ($this->actStat) || ($this->actType) || ($this->actSuit) || ($this->rangeType) || ($this->actMod) || ($this->actResist) || ($this->actTarget) || ($this->targetSuit) || ($this->trigSuit) || ($this->trigger) || ($this->trigText)) {
             $this->actionResults = new Action;
             if ($this->actText) {
                 $this->actionResults = $this->actionResults->where('description', 'LIKE', "%{$this->actText}%");
@@ -229,6 +239,24 @@ class AdvancedPage extends Component
             }
             if ($this->targetSuit) {
                 $this->actionResults = $this->actionResults->where('target_suits', 'LIKE', "%{$this->targetSuit}%");
+            }
+            if ($this->trigSuit) {
+                $suit = $this->trigSuit;
+                $this->actionResults = $this->actionResults->whereHas('triggers', function ($q) use ($suit) {
+                    $q->where('suits', 'LIKE', "%{$suit}%");
+                });
+            }
+            if ($this->trigger) {
+                $name = $this->trigger;
+                $this->actionResults = $this->actionResults->whereHas('triggers', function ($q) use ($name) {
+                    $q->where('name', 'LIKE', "%{$name}%");
+                });
+            }
+            if ($this->trigText) {
+                $text = $this->trigText;
+                $this->actionResults = $this->actionResults->whereHas('triggers', function ($q) use ($text) {
+                    $q->where('description', 'LIKE', "%{$text}%");
+                });
             }
 
 
@@ -295,6 +323,7 @@ class AdvancedPage extends Component
         }
         $this->formAbilities = $tempAbilities->sortBy('name')->unique('name');
         $this->formActions = Action::orderBy('name')->get()->unique('name');
+        $this->formTriggers = Trigger::orderBy('name')->get()->unique('name');
         return view('livewire.advanced-page')
             ->extends('main')
             ->section('content');

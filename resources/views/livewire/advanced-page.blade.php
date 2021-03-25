@@ -591,6 +591,33 @@
                     <option value="tome">Tome</option>
                 </select>
             </div>
+            <div class="my-1">
+                <label for="trigger" class="block font-bold">Trigger: </label>
+                <select name="trigger" wire:model.defer="trigger"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    @foreach ($formTriggers as $formTrigger)
+                        <option value="{{ $formTrigger->name }}">{{ $formTrigger->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="my-1">
+                <label for="trigSuit" class="block font-bold">Trigger Suit: </label>
+                <select name="trigSuit" wire:model.defer="trigSuit"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    <option value="crow">Crow</option>
+                    <option value="mask">Mask</option>
+                    <option value="ram">Ram</option>
+                    <option value="tome">Tome</option>
+                </select>
+            </div>
+            <div class="my-1">
+                <label for="trigText" class="block font-bold">Trigger Text:</label>
+                <input type="text"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none"
+                    wire:model.defer="trigText" name="trigText" placeholder="Any text, eg: 'burning'">
+            </div>
         </div>
         <div class="block mt-3 text-center lg:col-span-2">
             <button wire:click="filter" class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">

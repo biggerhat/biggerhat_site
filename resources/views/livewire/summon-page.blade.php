@@ -10,7 +10,7 @@
                 <select name="master" wire:model="master"
                     class="block w-full p-2 px-2 py-2 mx-auto bg-gray-200 border-2 border-gray-900 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline">
                     <option value=""></option>
-                    <option value="asami-tanaka">Asami (Oni)</option>
+                    <option value="asami-tanaka">Asami Tanaka (Oni)</option>
                     <option value="dashel-barker">Dashel Barker (Guard)</option>
                     <option value="dreamer">Dreamer (Nightmare)</option>
                     <option value="forgotten-marshal">Forgotten Marshal (Forgotten)</option>
