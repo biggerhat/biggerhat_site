@@ -13,6 +13,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Livewire\AdvancedPage;
 use App\Http\Livewire\QuestionPage;
 use App\Http\Livewire\UpgradePage;
+use App\Http\Livewire\UpgradesPage;
 use App\Http\Livewire\SchemePage;
 use App\Http\Livewire\SummonPage;
 
@@ -52,6 +53,7 @@ Route::get('/boxes/{box:slug}', BoxPage::class)->name("box.view");
 Route::get('/advanced', AdvancedPage::class)->name('advanced');
 Route::get('/keywords/{keyword:slug}', KeywordPage::class)->name("keyword.view");
 Route::get('/characters/{mini:slug}', CharacterPage::class)->name("character.view");
+Route::get('/upgrades', UpgradesPage::class)->name('upgrades');
 Route::get('/upgrades/{upgrade:slug}', UpgradePage::class)->name("upgrade.view");
 Route::get('/factions/{faction:slug}', FactionPage::class)->name("faction.view");
 Route::get('/masters/{mini:slug}', MasterPage::class)->name("master.view");

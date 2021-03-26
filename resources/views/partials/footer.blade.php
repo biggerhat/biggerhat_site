@@ -18,7 +18,8 @@
                 <li class="text-sm"><a href="{{ route('masters') }}"
                         class="hover:text-white hover:underline">Masters</a></li>
                 <li class="text-sm"><a href="/keywords" class="hover:text-white hover:underline">Keywords</a></li>
-                <li class="text-sm"><a href="/upgrades" class="hover:text-white hover:underline">Upgrades</a></li>
+                <li class="text-sm"><a href="{{ route('upgrades') }}"
+                        class="hover:text-white hover:underline">Upgrades</a></li>
                 <li class="text-sm"><a href="/promos" class="hover:text-white hover:underline">Alts & Promos</a></li>
             </ul>
         </div>
@@ -31,15 +32,16 @@
                 </li>
                 <li class="text-sm"><a href="{{ route('markers') }}" class="hover:text-white hover:underline">Terrain
                         Markers</a></li>
-                <li class="text-sm"><a href="{{ route('summons') }}" class="hover:text-white hover:underline">Summoning Charts</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Soulstones</a></li>
+                <li class="text-sm"><a href="{{ route('summons') }}"
+                        class="hover:text-white hover:underline">Summoning Charts</a></li>
+                <!-- <li class="text-sm"><a href="" class="hover:text-white hover:underline">Soulstones</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Crew Hiring</a></li>
                 <li class="text-sm"><a href="" class="hover:text-white hover:underline">Timing Charts</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Encounter Setup</a></li>
+                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Encounter Setup</a></li> -->
                 <li class="text-sm"><a href="{{ route('schemes') }}" class="hover:text-white hover:underline">Schemes
                         & Strategies</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">Conditions</a></li>
-                <li class="text-sm"><a href="" class="hover:text-white hover:underline">General Actions</a></li>
+                <!-- <li class="text-sm"><a href="" class="hover:text-white hover:underline">Conditions</a></li>
+                <li class="text-sm"><a href="" class="hover:text-white hover:underline">General Actions</a></li> -->
             </ul>
         </div>
         <div class="w-full mx-auto">
