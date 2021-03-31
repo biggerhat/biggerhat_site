@@ -20,4 +20,9 @@ class Strategy extends Model
     {
         return $this->belongsTo(Season::class);
     }
+
+    public function tacticas()
+    {
+        return $this->hasMany(Tactica::class);
+    }
 }

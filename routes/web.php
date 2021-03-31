@@ -10,12 +10,14 @@ use App\Http\Livewire\ResourceTypePage;
 use App\Http\Livewire\InstructionPage;
 use App\Http\Livewire\BoxPage;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\TacticaController;
 use App\Http\Livewire\AdvancedPage;
 use App\Http\Livewire\QuestionPage;
 use App\Http\Livewire\UpgradePage;
 use App\Http\Livewire\UpgradesPage;
 use App\Http\Livewire\SchemePage;
 use App\Http\Livewire\SummonPage;
+use App\Http\Livewire\TacticaPage;
 
 
 
@@ -50,6 +52,8 @@ Route::get('/promos', [PagesController::class, 'getPromos'])->name('promos');
 Route::get('/markers', [PagesController::class, 'getMarkers'])->name('markers');
 Route::get('/blueprints/{instruction:id}/{mini:slug}', InstructionPage::class)->name('instruction.view');
 Route::get('/boxes/{box:slug}', BoxPage::class)->name("box.view");
+Route::get('/tacticas/{tactica:slug}', [TacticaController::class, 'getTactica'])->name('tactica.view');
+Route::get('/tacticas', TacticaPage::class)->name('tacticas');
 Route::get('/advanced', AdvancedPage::class)->name('advanced');
 Route::get('/keywords/{keyword:slug}', KeywordPage::class)->name("keyword.view");
 Route::get('/characters/{mini:slug}', CharacterPage::class)->name("character.view");

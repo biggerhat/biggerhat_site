@@ -35,4 +35,9 @@ class Faction extends Model
     {
         return $query->where('id', '!=', 8);
     }
+
+    public function tacticas()
+    {
+        return $this->hasMany(Tactica::class);
+    }
 }

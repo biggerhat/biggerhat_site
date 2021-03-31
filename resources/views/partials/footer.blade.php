@@ -17,10 +17,12 @@
                 <li class="text-sm"><a href="/random" class="hover:text-white hover:underline">Random Character</a></li>
                 <li class="text-sm"><a href="{{ route('masters') }}"
                         class="hover:text-white hover:underline">Masters</a></li>
+                <li class="text-sm"><a href="{{ route('tacticas') }}"
+                        class="hover:text-white hover:underline">Tacticas</a></li>
                 <li class="text-sm"><a href="/keywords" class="hover:text-white hover:underline">Keywords</a></li>
                 <li class="text-sm"><a href="{{ route('upgrades') }}"
                         class="hover:text-white hover:underline">Upgrades</a></li>
-                <li class="text-sm"><a href="/promos" class="hover:text-white hover:underline">Alts & Promos</a></li>
+                <!-- <li class="text-sm"><a href="/promos" class="hover:text-white hover:underline">Alts & Promos</a></li> -->
             </ul>
         </div>
         <div class="w-full mx-auto">

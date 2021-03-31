@@ -33,4 +33,9 @@ class Keyword extends Model
     {
         return $this->belongsToMany(Box::class);
     }
+
+    public function tacticas()
+    {
+        return $this->hasMany(Tactica::class);
+    }
 }

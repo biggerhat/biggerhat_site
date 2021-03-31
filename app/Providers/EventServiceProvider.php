@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Event;
 use App\Events\MiniSaved;
 use App\Events\ResourceSaved;
 use App\Events\BoxSaved;
+use App\Events\TacticaSaved;
 use App\Listeners\CacheFactionStats;
 use App\Listeners\setResourceSlug;
 use App\Listeners\setBoxSlug;
+use App\Listeners\setTacticaSlug;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -32,6 +34,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         BoxSaved::class => [
             setBoxSlug::class,
+        ],
+        TacticaSaved::class => [
+            setTacticaSlug::class,
         ],
 
     ];

@@ -64,4 +64,9 @@ class Upgrade extends Model
     {
         return $this->belongsToMany(Faction::class);
     }
+
+    public function tacticas()
+    {
+        return $this->hasMany(Tactica::class);
+    }
 }

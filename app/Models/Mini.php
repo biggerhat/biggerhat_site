@@ -143,6 +143,11 @@ class Mini extends Model
         return $this->belongsToMany(Episode::class);
     }
 
+    public function tacticas()
+    {
+        return $this->hasMany(Tactica::class);
+    }
+
     /**
      * Scope a query to only include minis of a given faction.
      *
