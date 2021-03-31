@@ -63,7 +63,7 @@ function fauxdown($expression)
             '</div></div>',
             '<div class="pl-6">',
             '</div>',
-            '<ul class="p-0 m-0 list-disc">',
+            '<ul class="p-0 m-0 list-disc list-inside">',
             '</ul>',
             '<li>',
             '</li>',
