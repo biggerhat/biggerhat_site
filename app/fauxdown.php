@@ -73,6 +73,14 @@ function fauxdown($expression)
     );
 
     $expression = preg_replace_callback(
+        "(\{\{img=(.*?)\}\})is",
+        function ($name) {
+            return "<img src=\"\storage\\tacticas\\" . $name[1] . "\" class=\"mx-auto rounded border border-black\">";
+        },
+        $expression
+    );
+
+    $expression = preg_replace_callback(
         "(\{\{mini=(.*?)\}\})is",
         function ($name) {
             $mini = Mini::where('name', 'LIKE', "%{$name[1]}%")->with('factions')->first();
