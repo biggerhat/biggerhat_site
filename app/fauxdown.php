@@ -3,6 +3,7 @@
 use App\Models\Faction;
 use App\Models\Keyword;
 use App\Models\Mini;
+use App\Models\Upgrade;
 
 function fauxdown($expression)
 {
@@ -26,6 +27,16 @@ function fauxdown($expression)
             '{{/i}}',
             '{{p}}',
             '{{/p}}',
+            '{{heading}}',
+            '{{/heading}}',
+            '{{crew}}',
+            '{{/crew}}',
+            '{{hires}}',
+            '{{/hires}}',
+            '{{list}}',
+            '{{/list}}',
+            '{{item}}',
+            '{{/item}}',
         ),
         array(
             '<div class="icon baseline" id="aura" style="margin-right: -1px; "><svg width="32" height="32" viewBox="0 0 32 32"><path id="icon-info" d="M20.64 28q-0.448-0.224-0.736-0.608-0.256-0.416-0.384-0.96-0.096-0.544-0.128-1.056t-0.096-1.184q0-0.736-0.064-1.12-0.032-0.448-0.352-1.312-0.32-0.928-0.352-1.312 0-0.192-0.32-1.344t-0.288-1.376q0.064-1.44 0.032-2.24-0.032-0.736 0.032-1.632 0.096-0.896 0.384-2.016 0.288-1.088 1.024-2.048 0.736-0.992 1.504-1.952 0.8-1.024 1.184-2.144 0.128-0.16 0.544-0.384 0.416-0.192 0.608-0.512 0.192-0.288 0.064-0.864-0.416-0.256-0.544-0.128t-0.416 0.352-0.64 0.128q-1.12 3.456-3.84 4.928-0.064-1.76-0.704-2.464-0.448-0.064-0.768-0.128-0.288-0.032-0.544 0.128t-0.384 0.288q-0.128 0.096-0.256 0.352t-0.192 0.48-0.16 0.512l-0.16 0.448q-1.408-0.672-2.336-2.016t-0.832-2.88q-0.288 0.096-0.608-0.16-0.32-0.288-0.512-0.416t-0.64 0.192q0.128 0.832 0.768 1.92t1.664 2.528q1.024 1.408 1.44 2.048 0.352 0.608 0.512 1.248 0.256 0.672 0.192 1.696t-0.224 1.792q-0.128 0.672-0.352 1.856t-0.32 2.048q-0.16 1.792-0.064 3.296t-0.16 3.072q-0.224 1.536-0.992 2.4 0.224 0.096 0.48 0.128 0.192 0.032 0.384-0.128 0.224-0.064 0.384-0.16 0.128-0.096 0.32-0.288 0.256-0.16 0.352-0.224 0.064-2.080 0.448-3.808 0.416-1.76 1.152-3.936 0.864 0.576 1.408 1.792t0.704 2.464q0.224 1.248 0.576 2.656 0.416 1.44 0.992 2.24-1.344 0.192-2.656 0.192-2.112 0-4.128-0.512-3.232-0.8-5.6-2.624-2.304-1.856-3.616-4.736-1.088-2.464-1.088-5.248 0-0.576 0.064-1.184 0.256-3.776 2.368-6.816 2.144-2.976 5.536-4.512 2.944-1.312 6.24-1.312 0.544 0 1.12 0.032 3.872 0.256 6.976 2.24 3.072 1.984 4.736 5.184 1.504 2.912 1.504 6.208 0 0.384-0.032 0.768-0.48 8.544-10.208 12.128z"></path></svg></div>',
@@ -44,8 +55,19 @@ function fauxdown($expression)
             '</b>',
             '<i>',
             '</i>',
-            '<p style="text-indent: 2rem">',
+            '<p style="text-indent: 1.5rem">',
             '</p>',
+            '<div class="text-2xl font-bold text-center underline">',
+            '</div>',
+            '<div class="container grid mx-auto lg:grid-cols-5"><div class="p-2 my-1 bg-gray-200 border-2 border-black rounded lg:col-start-2 lg:col-span-3">',
+            '</div></div>',
+            '<div class="pl-6">',
+            '</div>',
+            '<ul class="p-0 m-0 list-disc">',
+            '</ul>',
+            '<li>',
+            '</li>',
+
         ),
         $expression
     );
@@ -58,7 +80,7 @@ function fauxdown($expression)
                 return $name[1];
             }
             return "<a href=\"" . route('character.view', $mini->slug) . "\"
-                    class=\"px-1 py-1 rounded-full text-sm font-bold text-center text-white " . getBackground($mini) . " \" style=\"white-space: nowrap\">" . strtoupper($mini->name) . "</a>";
+                    class=\"px-1 py-1 my-1 rounded-full text-sm border border-black font-bold text-center text-white " . getBackground($mini) . " \" style=\"white-space: nowrap\">" . strtoupper($mini->name) . "</a>";
         },
         $expression
     );
@@ -71,7 +93,7 @@ function fauxdown($expression)
                 return $name[1];
             }
             return "<a href=\"" . route('keyword.view', $keyword->slug) . "\"
-                    class=\"px-1 py-1 rounded-full text-sm font-bold text-center text-white bg-gray-900 \" style=\"white-space: nowrap\">" . strtoupper($keyword->name) . "</a>";
+                    class=\"px-1 py-1 rounded-full text-sm border border-black font-bold text-center text-white bg-gray-900 \" style=\"white-space: nowrap\">" . strtoupper($keyword->name) . "</a>";
         },
         $expression
     );
@@ -84,7 +106,20 @@ function fauxdown($expression)
                 return $name[1];
             }
             return "<a href=\"" . route('faction.view', $faction->slug) . "\"
-                    class=\"px-1 py-1 rounded-full text-sm font-bold text-center text-white bg-" . $faction->bg_color . " \" style=\"white-space: nowrap\">" . strtoupper($faction->name) . "</a>";
+                    class=\"px-1 py-1 rounded-full text-sm border border-black font-bold text-center text-white bg-" . $faction->bg_color . " \" style=\"white-space: nowrap\">" . strtoupper($faction->name) . "</a>";
+        },
+        $expression
+    );
+
+    $expression = preg_replace_callback(
+        "(\{\{upgrade=(.*?)\}\})is",
+        function ($name) {
+            $upgrade = Upgrade::where('name', 'LIKE', "%{$name[1]}%")->with('factions')->first();
+            if (!$upgrade) {
+                return $name[1];
+            }
+            return "<a href=\"" . route('upgrade.view', $upgrade->slug) . "\"
+                    class=\"px-1 py-1 rounded-full border border-black text-sm font-bold text-center text-white " . getUpgradeBackground($upgrade) . " \" style=\"white-space: nowrap\">" . strtoupper($upgrade->name) . "</a>";
         },
         $expression
     );
@@ -103,4 +138,17 @@ function getBackground(Mini $mini): string
     }
 
     return "bg-{$mini->factions[0]['bg_color']}";
+}
+
+function getUpgradeBackground(Upgrade $upgrade): string
+{
+    if (count($upgrade->factions) > 1) {
+        return implode(" ", [
+            "bg-gradient-to-r",
+            "from-{$upgrade->factions[0]['bg_color']}",
+            "to-{$upgrade->factions[1]['bg_color']}"
+        ]);
+    }
+
+    return "bg-{$upgrade->factions[0]['bg_color']}";
 }

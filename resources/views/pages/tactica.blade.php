@@ -15,7 +15,7 @@
     </div>
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
     <div class="container grid px-2 mx-auto lg:grid-cols-5">
-        <div class="text-lg lg:col-start-2 lg:col-span-3">
+        <div class="text-lg leading-8 lg:col-start-2 lg:col-span-3">
             {!! fauxdown(nl2br($tactica->description)) !!}
         </div>
     </div>

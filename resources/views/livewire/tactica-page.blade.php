@@ -22,14 +22,14 @@
             </div>
         </div>
         <div class="block my-3 border-b border-gray-400 border-dashed"></div>
-        <div class="container">
+        <div class="container px-2">
             @if (!$query)
                 <div class="block w-full h-full py-5 text-center">
                     <span class="text-3xl text-gray-900 lg:text-7xl md:text-3xl faction_header">
                         Latest Tacticas
                     </span>
                 </div>
-                <div class="container grid lg:grid-cols-3 xl:grid-cols-4">
+                <div class="container grid lg:grid-cols-3 lg:gap-1 xl:grid-cols-4">
                     @foreach ($results as $tactica)
                         <div class="p-2 my-1 text-center bg-gray-200 border-2 border-black rounded">
                             <div><a class="text-lg font-bold text-gray-900 hover:underline hover:text-gray-500 active:outline-none"
