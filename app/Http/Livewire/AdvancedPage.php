@@ -7,8 +7,10 @@ use App\Models\Action;
 use App\Models\Characteristic;
 use App\Models\Faction;
 use App\Models\Keyword;
+use App\Models\Marker;
 use App\Models\Mini;
 use App\Models\Station;
+use App\Models\Token;
 use App\Models\Trigger;
 use Livewire\Component;
 
@@ -21,6 +23,8 @@ class AdvancedPage extends Component
     public $characteristic;
     public $formCharacteristics;
     public $formTriggers;
+    public $formMarkers;
+    public $formTokens;
     public $trigger;
     public $keyword;
     public $formKeywords;
@@ -70,6 +74,9 @@ class AdvancedPage extends Component
     public $actResist;
     public $actTarget;
     public $targetSuit;
+
+    public $marker;
+    public $token;
 
     public $trigSuit;
     public $trigText;
@@ -122,6 +129,8 @@ class AdvancedPage extends Component
         'trigSuit' => ['except' => ''],
         'trigger' => ['except' => ''],
         'trigText' => ['except' => ''],
+        'marker' => ['except' => ''],
+        'token' => ['except' => ''],
 
     ];
 
@@ -270,6 +279,12 @@ class AdvancedPage extends Component
         if ($this->faction) {
             $this->results = $this->results->inFaction($this->faction);
         }
+        if ($this->marker) {
+            $this->results = $this->results->hasMarker($this->marker);
+        }
+        if ($this->token) {
+            $this->results = $this->results->hasToken($this->token);
+        }
         if ($this->keyword) {
             $this->results = $this->results->inKeyword($this->keyword);
         }
@@ -314,6 +329,8 @@ class AdvancedPage extends Component
         $this->formStations = Station::orderBy('id', 'ASC')->get();
         $this->formCharacteristics = Characteristic::orderBy('name', 'ASC')->get();
         $this->formKeywords = Keyword::orderBy('name', 'ASC')->get();
+        $this->formMarkers = Marker::orderBy('name', 'ASC')->get();
+        $this->formTokens = Token::orderBy('name', 'ASC')->get();
         $tempAbilities = Ability::orderBy('name')->get();
         foreach ($tempAbilities as $newAbility) {
             $newAbility->name = preg_replace('# \((.*?)\)#', "", $newAbility->name);

@@ -194,6 +194,20 @@ class Mini extends Model
         });
     }
 
+    public function scopeHasMarker($query, $name)
+    {
+        return $query->whereHas('markers', function ($q) use ($name) {
+            $q->where('name', 'LIKE', "%{$name}%");
+        });
+    }
+
+    public function scopeHasToken($query, $name)
+    {
+        return $query->whereHas('tokens', function ($q) use ($name) {
+            $q->where('name', 'LIKE', "%{$name}%");
+        });
+    }
+
     public function scopeHasActionText($query, $text)
     {
         return $query->whereHas('actions', function ($q) use ($text) {

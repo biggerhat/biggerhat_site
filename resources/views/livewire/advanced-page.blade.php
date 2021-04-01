@@ -619,6 +619,29 @@
                     wire:model.defer="trigText" name="trigText" placeholder="Any text, eg: 'burning'">
             </div>
         </div>
+        <div class="container grid p-3 mx-auto text-lg lg:grid-cols-3">
+            <div class="text-3xl text-center text-gray-900 lg:col-span-3 faction_header">Misc.</div>
+            <div class="my-1">
+                <label for="token" class="block font-bold">Tokens: </label>
+                <select name="token" id="token" wire:model.defer="token"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    @foreach ($formTokens as $formToken)
+                        <option value="{{ $formToken->name }}">{{ $formToken->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="my-1">
+                <label for="marker" class="block font-bold">Markers: </label>
+                <select name="marker" id="marker" wire:model.defer="marker"
+                    class="w-full p-1 text-lg bg-gray-200 border border-gray-900 rounded lg:w-3/4 focus:outline-none">
+                    <option value=""></option>
+                    @foreach ($formMarkers as $formMarker)
+                        <option value="{{ $formMarker->name }}">{{ $formMarker->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
         <div class="block mt-3 text-center lg:col-span-2">
             <button wire:click="filter" class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
                 Filter</button>
