@@ -32,4 +32,9 @@ class Season extends Model
     {
         return $this->hasMany(Deployment::class);
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

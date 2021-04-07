@@ -34,7 +34,7 @@ class FactionPage extends Component
     {
         $this->factions = Faction::where('hidden', '1')->orderBy('name', 'ASC')->get();
         $this->faction = $faction;
-        $this->faction->load('episodes');
+        $this->faction->load('episodes', 'tacticas');
         $this->statistics = Redis::hgetall("factions:statistics:{$faction->slug}");
         $this->keywords = Redis::hgetall("factions:keywords:{$faction->slug}");
         arsort($this->keywords);

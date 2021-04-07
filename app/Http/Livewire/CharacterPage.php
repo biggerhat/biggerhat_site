@@ -148,6 +148,14 @@ class CharacterPage extends Component
                 }
             }
             foreach ($this->mini->actions as $action) {
+                foreach ($action->triggers as $trigger) {
+                    if (count($trigger->questions) > 0) {
+                        $this->areQuestions = true;
+                        foreach ($trigger->questions as $newQuestion) {
+                            array_push($this->questions, $newQuestion);
+                        }
+                    }
+                }
                 if (count($action->questions) > 0) {
                     $this->areQuestions = true;
                     foreach ($action->questions as $newQuestion) {

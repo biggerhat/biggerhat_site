@@ -18,4 +18,9 @@ class Trigger extends Model
     {
         return $this->belongsToMany(Action::class);
     }
+
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class);
+    }
 }

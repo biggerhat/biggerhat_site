@@ -200,19 +200,22 @@
             </div>
         </div>
         <div>
-            <div class="mb-2">
+            <div class="mb-2 text-center">
                 <div class="block w-full h-full py-2 text-center">
                     <span
                         class="text-transparent lg:text-4xl text-3xl bg-clip-text bg-gradient-to-br from-{{ $faction->bg_color }} via-gray-700 to-{{ $faction->bg_color }} faction_header">
                         Tactica
                     </span>
                 </div>
-                @if (!$faction->tactica)
+                @if (count($faction->tacticas) == 0)
                     <span class="block italic text-center">No tactica has been submitted yet for this faction! Contact
                         us today to submit
                         one.</span>
                 @else
-                    {!! $faction->tactica !!}
+                    @foreach ($faction->tacticas as $tactica)
+                        <a href="{{ route('tactica.view', $tactica->slug) }}"
+                            class="block text-lg font-bold text-gray-900 hover:underline active:outline-none">{{ $tactica->name }}</a>
+                    @endforeach
                 @endif
             </div>
         </div>

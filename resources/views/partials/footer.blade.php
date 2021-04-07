@@ -17,8 +17,6 @@
                 <li class="text-sm"><a href="/random" class="hover:text-white hover:underline">Random Character</a></li>
                 <li class="text-sm"><a href="{{ route('masters') }}"
                         class="hover:text-white hover:underline">Masters</a></li>
-                <li class="text-sm"><a href="{{ route('tacticas') }}"
-                        class="hover:text-white hover:underline">Tacticas</a></li>
                 <li class="text-sm"><a href="/keywords" class="hover:text-white hover:underline">Keywords</a></li>
                 <li class="text-sm"><a href="{{ route('upgrades') }}"
                         class="hover:text-white hover:underline">Upgrades</a></li>
@@ -51,6 +49,8 @@
                 class="w-32 mx-auto font-semibold text-center text-gray-400 border-b border-gray-400 lg:text-left text-md lg:w-auto">
                 Resources</div>
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
+                <li class="text-sm"><a href="{{ route('tacticas') }}"
+                        class="hover:text-white hover:underline">Tacticas</a></li>
                 @foreach ($footerResourceTypes as $resourceType)
                     <li class="text-sm"><a href="{{ route('resourcetype.view', $resourceType->slug) }}"
                             class="hover:text-white hover:underline">{{ $resourceType->name }}</a></li>

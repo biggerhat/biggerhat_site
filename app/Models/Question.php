@@ -14,18 +14,43 @@ class Question extends Model
         'mini_id',
     ];
 
-    public function ability()
+    public function abilities()
     {
-        return $this->belongsTo(Ability::class);
+        return $this->belongsToMany(Ability::class);
     }
 
-    public function action()
+    public function actions()
     {
         return $this->belongsToMany(Action::class);
     }
 
-    public function mini()
+    public function minis()
     {
-        return $this->belongsTo(Mini::class);
+        return $this->belongsToMany(Mini::class);
+    }
+
+    public function triggers()
+    {
+        return $this->belongsToMany(Trigger::class);
+    }
+
+    public function schemes()
+    {
+        return $this->belongsToMany(Scheme::class);
+    }
+
+    public function strategies()
+    {
+        return $this->belongsToMany(Strategy::class);
+    }
+
+    public function season()
+    {
+        return $this->belongsTo(Season::class);
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(QuestionSection::class);
     }
 }

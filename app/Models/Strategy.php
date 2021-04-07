@@ -25,4 +25,9 @@ class Strategy extends Model
     {
         return $this->hasMany(Tactica::class);
     }
+
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class);
+    }
 }
