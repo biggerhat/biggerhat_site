@@ -654,15 +654,19 @@
 
         <div class="block my-3 border-b border-gray-400 border-dashed"></div>
         <div class="container mx-auto mb-2 text-center">
-            <div class="block w-full h-full py-2 text-center">
+            <div class="block w-full h-full py-2 text-center" wire:loading>
+                <img src="./images/loading.gif" class="mx-auto">
+            </div>
+            <div class="block w-full h-full py-2 text-center" wire:loading.remove>
                 <span class="text-4xl text-gray-900 lg:text-6xl faction_header">
                     Results
                 </span>
             </div>
         </div>
-        <div class="text-2xl text-center"><span class="font-bold">Total:</span> {{ count($results) }} Characters
+        <div class="text-2xl text-center" wire:loading.remove><span class="font-bold">Total:</span>
+            {{ count($results) }} Characters
         </div>
-        <div class="container grid mx-auto md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div class="container grid mx-auto md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" wire:loading.remove>
             @foreach ($results as $mini)
                 <div class="p-2">
                     <a href="{{ route('character.view', $mini->slug) }}" class="active:outline-none">
