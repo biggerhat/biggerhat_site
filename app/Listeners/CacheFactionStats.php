@@ -35,5 +35,6 @@ class CacheFactionStats
         $mini = Mini::find($event->mini->id);
         $mini->slug = Str::slug($mini->name, '-');
         $mini->saveQuietly();
+        Artisan::call("keyword:cache-stats");
     }
 }
