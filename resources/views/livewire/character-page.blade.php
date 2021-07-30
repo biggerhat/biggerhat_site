@@ -2,6 +2,25 @@
     - {{ $mini->name }}
 @endsection
 <div>
+    @if (count($mini->Spoilers) > 0)
+        <div class="container mx-auto mb-3">
+            <div class="w-full p-5 mx-auto bg-red-100 rounded sm:w-1/2">
+                <div class="flex space-x-3">
+                    <div class="flex flex-col space-y-2 leading-tight">
+                        <div class="text-sm font-medium text-red-700">WARNING</div>
+                        <div class="flex-1 text-sm leading-snug text-red-600">This character is a spoiler and not
+                            officially released yet. It is subject to change upon official release.</div>
+                        <div class="flex-1 text-sm leading-snug text-red-600">Check out the source for this Spoiler
+                            here: <a href="{{ $mini->Spoilers[0]->url }}" target="_new"
+                                class="font-bold hover:underline">{{ $mini->Spoilers[0]->name }}
+                                ({{ $mini->Spoilers[0]->source }})</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="container grid mx-auto mb-3 auto-cols-fr lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-3">
 
         <div class="p-0 m-0 mb-3 md:col-span-2 lg:col-span-1">
@@ -43,6 +62,25 @@
                     </g>
                 </svg>
             </div>
+            @can('edit', $mini)
+                @if (count($mini->Spoilers) > 0)
+                    <div class="p-2 text-center align-middle">
+                        <button
+                            class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                            wire:click="removeSpoiler">
+                            Remove Spoiler
+                        </button>
+                    </div>
+                @else
+                    <div class="p-2 text-center align-middle">
+                        <button
+                            class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                            wire:click="openSpoilerModal">
+                            Make Spoiler
+                        </button>
+                    </div>
+                @endif
+            @endcan
         </div>
 
         <div class="mx-1 mb-3 sm:my-3 md:m-0">
@@ -243,8 +281,10 @@
                         </svg>Summons
                     </div>
                     <div class="mx-2 mb-2">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum illo cupiditate molestias atque
-                        consequuntur ea quo cumque, odit velit sint similique? Asperiores ratione aperiam tempora, alias
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum illo cupiditate molestias
+                        atque
+                        consequuntur ea quo cumque, odit velit sint similique? Asperiores ratione aperiam tempora,
+                        alias
                         corrupti deleniti quaerat molestiae.
                     </div>
                 </div>
@@ -356,6 +396,38 @@
                             </div>
                             <span class="font-semibold">Size:</span> {{ $markerSize }}mm <br />
                             <span class="font-semibold">Traits:</span> {!! fauxdown($markerContent) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if ($spoilerModal)
+        <div class="fixed top-0 left-0 w-full h-full bg-gray-500 opacity-75 z-100"></div>
+        <div class="fixed top-0 left-0 w-full h-full overflow-y-auto z-101" wire:click.stop="closeSpoilerModal">
+            <div class="table px-5 py-6 m-auto w-content" wire:click.stop="">
+                <div class="table-cell text-center align-middle">
+                    <div class="mx-2 bg-gray-200 border-2 border-black rounded md:mx-auto">
+                        <div class="block p-1 mb-2 text-xl font-medium text-white bg-gray-900 border-b border-black">
+                            Make Spoiler
+                        </div>
+                        <div class="px-5 py-5 mx-auto text-md">
+                            <select name="cards" wire:model="spoilerID"
+                                class="block w-full p-2 px-2 py-2 mx-auto bg-gray-200 border-2 border-gray-900 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                <option>Select A Spoiler Resource</option>
+                                @foreach ($spoilers as $spoiler)
+                                    <option value="{{ $spoiler['id'] }}">{{ $spoiler['name'] }}
+                                        ({{ $spoiler['source'] }})</option>
+                                @endforeach
+                            </select>
+                            <div class="p-2">
+                                <button
+                                    class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                                    wire:click="addSpoiler()">
+                                    Add Spoiler
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

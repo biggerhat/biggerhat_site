@@ -104,7 +104,7 @@ class Mini extends Model
 
     public function erratas()
     {
-        return $this->hasMany(Errata::class, 'mini_id', 'id');
+        return $this->hasMany(Errata::class, 'mini_id', 'id')->orderBy('id', 'DESC');
     }
 
     public function markers()
@@ -146,6 +146,21 @@ class Mini extends Model
     public function tacticas()
     {
         return $this->hasMany(Tactica::class);
+    }
+
+    public function original()
+    {
+        return $this->belongsTo(Mini::class, 'original_id');
+    }
+
+    public function titles()
+    {
+        return $this->hasMany(Mini::class, 'original_id');
+    }
+
+    public function spoilers()
+    {
+        return $this->morphToMany(Spoiler::class, 'spoilerize');
     }
 
     /**

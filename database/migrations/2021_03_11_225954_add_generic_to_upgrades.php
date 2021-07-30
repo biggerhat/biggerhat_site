@@ -26,7 +26,7 @@ class AddGenericToUpgrades extends Migration
     public function down()
     {
         Schema::table('upgrades', function (Blueprint $table) {
-            //
+            $table->dropColumn('isGeneric');
         });
     }
 }

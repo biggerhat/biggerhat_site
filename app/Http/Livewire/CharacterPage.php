@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Mini;
 use App\Models\Upgrade;
 use App\Models\Marker;
+use App\Models\Spoiler;
 
 class CharacterPage extends Component
 {
@@ -23,6 +24,9 @@ class CharacterPage extends Component
     public $markerContent;
     public $markerSize;
     public $markerIcon;
+    public $spoilerModal = false;
+    public $spoilers;
+    public $spoilerID;
     public $cards = [];
     public $cardCount;
     public $currentCard = 0;
@@ -60,6 +64,8 @@ class CharacterPage extends Component
         $this->setTokens();
         $this->setRelateds();
         $this->setCards();
+        $this->spoilers = Spoiler::orderBy('created_at', 'DESC')->get()->toArray();
+        //dd($this->spoilers);
     }
 
     public function setCards()
@@ -90,6 +96,33 @@ class CharacterPage extends Component
     public function setNewCard($newCard)
     {
         $this->currentCard = $newCard;
+    }
+
+    public function openSpoilerModal()
+    {
+        $this->spoilerModal = true;
+    }
+
+    public function addSpoiler()
+    {
+        if ($this->spoilerID) {
+            $mini = Mini::find($this->mini->id);
+            $mini->spoilers()->attach($this->spoilerID);
+        }
+        $this->spoilerModal = false;
+        return redirect()->route('character.view', $this->mini->slug);
+    }
+
+    public function removeSpoiler()
+    {
+        $mini = Mini::find($this->mini->id);
+        $mini->spoilers()->detach();
+        return redirect()->route('character.view', $this->mini->slug);
+    }
+
+    public function closeSpoilerModal()
+    {
+        $this->spoilerModal = false;
     }
 
     public function openUpgradeModal($upgradeId)
