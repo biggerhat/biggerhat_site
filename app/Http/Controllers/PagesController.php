@@ -79,7 +79,7 @@ class PagesController extends Controller
 
     public function getSpoilers()
     {
-        $spoilers = Spoiler::orderBy('id', 'ASC')->get();
+        $spoilers = Spoiler::orderBy('id', 'DESC')->get();
         return view('pages.spoilers', compact('spoilers'));
     }
 }
