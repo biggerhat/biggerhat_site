@@ -1,7 +1,7 @@
 @extends('main')
 
 @section('title')
-
+    - Spoilers
 @endsection
 
 @section('content')
