@@ -16,12 +16,19 @@
                         name="search" placeholder="Search for Anything">
                 </form>
             </div>
-            <a href="{{ route('advanced') }}"
-                class="inline-block p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
-                Advanced Search</a>
-            <a href="{{ route('random') }}"
-                class="inline-block p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
-                Random Character</a>
+            <div class="mx-auto my-1">
+                <a href="{{ route('advanced') }}"
+                    class="inline-block p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
+                    Advanced Search</a>
+                <a href="{{ route('random') }}"
+                    class="inline-block p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
+                    Random Character</a>
+            </div>
+            <div class="mx-auto my-1">
+                <a href="{{ route('spoilers') }}"
+                    class="inline-block p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
+                    Spoilers!</a>
+            </div>
         </div>
     </div>
 

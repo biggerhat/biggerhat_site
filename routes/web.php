@@ -63,6 +63,7 @@ Route::get('/factions/{faction:slug}', FactionPage::class)->name("faction.view")
 Route::get('/masters/{mini:slug}', MasterPage::class)->name("master.view");
 Route::get('/resources/types/{resourcetype:slug}', ResourceTypePage::class)->name("resourcetype.view");
 Route::get('/resources/{resource:slug}', ResourcePage::class)->name("resource.view");
+Route::get('/spoilers', [PagesController::class, 'getSpoilers'])->name('spoilers');
 
 Route::get('/random', function () {
     $minis = App\Models\Mini::all();

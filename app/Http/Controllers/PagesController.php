@@ -8,6 +8,7 @@ use App\Models\Keyword;
 use App\Models\Marker;
 use App\Models\Mini;
 use App\Models\ResourceType;
+use App\Models\Spoiler;
 use App\Models\Upgrade;
 use Illuminate\Support\Facades\Redis;
 
@@ -74,5 +75,11 @@ class PagesController extends Controller
             return redirect(route('character.view', $minis[0]->slug));
         }
         return view('pages.results', compact('minis', 'upgrades', 'search'));
+    }
+
+    public function getSpoilers()
+    {
+        $spoilers = Spoiler::orderBy('id', 'ASC')->get();
+        return view('pages.spoilers', compact('spoilers'));
     }
 }
