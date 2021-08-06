@@ -57,7 +57,8 @@ class CharacterPage extends Component
             'promos',
             'instructions',
             'boxes',
-            'episodes'
+            'episodes',
+            'summoner'
         );
         $this->setBackground();
         $this->setQuestions();
