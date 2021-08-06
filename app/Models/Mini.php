@@ -87,6 +87,16 @@ class Mini extends Model
         return $this->belongsTo(Station::class, 'station_id', 'id');
     }
 
+    public function summoner()
+    {
+        return $this->hasMany(Summon::class, 'summoner_id', 'id');
+    }
+
+    public function summons()
+    {
+        return $this->belongsToMany(Summon::class);
+    }
+
     public function actions()
     {
         return $this->belongsToMany(Action::class);

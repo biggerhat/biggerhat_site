@@ -2,58 +2,33 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Mini;
+use App\Models\Summon;
 use Livewire\Component;
 
 class SummonPage extends Component
 {
     public $master;
     public $chart;
+    public $summoners;
+    public $summoner;
     protected $queryString = [
-        'master' => ['except' => '']
+        'master' => ['except' => ''],
+        'summoner' => ['except' => ''],
     ];
+
+    public function mount()
+    {
+        $this->summoners = Mini::whereHas('summoner')->orderBy('name')->get();
+    }
 
     private function setChart()
     {
-        switch ($this->master) {
-            case "asami-tanaka":
-                $this->chart = "asami.png";
-                break;
-            case "dashel-barker":
-                $this->chart = "dashel.png";
-                break;
-            case "dreamer":
-                $this->chart = "dreamer.png";
-                break;
-            case "forgotten-marshal":
-                $this->chart = "forgotten.png";
-                break;
-            case "kirai-ankou":
-                $this->chart = "kirai.png";
-                break;
-            case "nicodem":
-                $this->chart = "nicodem.png";
-                break;
-            case "ramos":
-                $this->chart = "ramos.png";
-                break;
-            case "sandeep-desai":
-                $this->chart = "sandeep.png";
-                break;
-            case "somer-teeth-jones":
-                $this->chart = "somer.png";
-                break;
-            case "tara-blake":
-                $this->chart = "tara.png";
-                break;
-            case "ulix-turner":
-                $this->chart = "ulix.png";
-                break;
-            case "widow-weaver":
-                $this->chart = "weaver.png";
-                break;
-            default:
-                $this->chart = "summonrules.PNG";
-                break;
+        if (!$this->summoner) {
+            $this->chart = "./images/summonrules.PNG";
+        } else {
+            $newSum = Mini::where('slug', "=", $this->summoner)->with('summoner')->first();
+            $this->chart = "\storage\\" . $newSum->summoner[0]->chart;
         }
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Livewire\SummonPage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
@@ -68,5 +69,10 @@ class Upgrade extends Model
     public function tacticas()
     {
         return $this->hasMany(Tactica::class);
+    }
+
+    public function summons()
+    {
+        return $this->belongsToMany(Summon::class);
     }
 }

@@ -7,21 +7,12 @@
         </div>
         <div class="container grid px-2 my-2 lg:grid-cols-5">
             <div class="lg:col-span-3 lg:col-start-2">
-                <select name="master" wire:model="master"
+                <select name="summoner" wire:model="summoner"
                     class="block w-full p-2 px-2 py-2 mx-auto bg-gray-200 border-2 border-gray-900 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                    <option value=""></option>
-                    <option value="asami-tanaka">Asami Tanaka (Oni)</option>
-                    <option value="dashel-barker">Dashel Barker (Guard)</option>
-                    <option value="dreamer">Dreamer (Nightmare)</option>
-                    <option value="forgotten-marshal">Forgotten Marshal (Forgotten)</option>
-                    <option value="kirai-ankou">Kirai Ankou (Urami)</option>
-                    <option value="nicodem">Nicodem (Mortuary/Zombie)</option>
-                    <option value="ramos">Ramos (Machina)</option>
-                    <option value="sandeep-desai">Sandeep Desai (Academic/Elemental)</option>
-                    <option value="somer-teeth-jones">Som'er Teeth Jones (Big Hat)</option>
-                    <option value="tara-blake">Tara Blake (Obliteration)</option>
-                    <option value="ulix-turner">Ulix Turner (Pig/Sooey)</option>
-                    <option value="widow-weaver">Widow Weaver (Puppet)</option>
+                    <option value="">Select a Summoner</option>
+                    @foreach ($summoners as $selectSum)
+                        <option value="{{ $selectSum->slug }}">{{ $selectSum->name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -29,12 +20,13 @@
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
     <div class="container mx-auto">
         <div class="px-2">
-            <img src="./images/{{ $chart }}" class="mx-auto border-2 border-black rounded">
+            <img src="{{ $chart }}" class="mx-auto border-2 border-black rounded">
         </div>
     </div>
     <div class="container grid px-2 mx-auto lg:grid-cols-5">
         <div class="text-sm italic text-center lg:col-span-3 lg:col-start-2">
-            *All Images Provided Courtesy of Trisha Waddell from "A Wyrd Place"
+            *All Summon Charts Property of BiggerHat.Net, based on the original images by Trisha Waddell from "A Wyrd
+            Place"
         </div>
     </div>
 </div>
