@@ -9,14 +9,13 @@ use Livewire\Component;
 
 class SummonPage extends Component
 {
-    public $master;
     public $chart;
     public $summoners;
     public $summoner;
+    public $newSum;
     public $summons = [];
     public $upgrades = [];
     protected $queryString = [
-        'master' => ['except' => ''],
         'summoner' => ['except' => ''],
     ];
 
@@ -29,11 +28,14 @@ class SummonPage extends Component
     {
         if (!$this->summoner) {
             $this->chart = "./images/summonrules.PNG";
+            $this->newSum = null;
+            $this->summons = [];
+            $this->upgrades = [];
         } else {
-            $newSum = Mini::where('slug', "=", $this->summoner)->with('summoner', 'summons')->first();
-            $this->summons = $newSum->summoner[0]->summons;
-            $this->upgrades = $newSum->summoner[0]->upgrades;
-            $this->chart = "\storage\\" . $newSum->summoner[0]->chart;
+            $this->newSum = Mini::where('slug', "=", $this->summoner)->with('summoner', 'summons')->first();
+            $this->summons = $this->newSum->summoner[0]->summons;
+            $this->upgrades = $this->newSum->summoner[0]->upgrades;
+            $this->chart = "\storage\\" . $this->newSum->summoner[0]->chart;
         }
     }
 

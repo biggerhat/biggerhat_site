@@ -23,6 +23,22 @@
             <img src="{{ $chart }}" class="mx-auto border-2 border-black rounded-xl">
         </div>
     </div>
+    @if ($newSum)
+        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="container grid grid-cols-1 mx-auto">
+            <div class="block w-full h-full col-span-1 py-5 text-center">
+                <span class="text-4xl text-transparent text-gray-900 lg:text-5xl md:text-4xl faction_header">
+                    Summoner
+                </span>
+            </div>
+            <div class="text-center">
+                <a href="{{ route('character.view', $newSum->slug) }}"
+                    class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ $this->getBackground($newSum) }} px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($newSum->name) }}</a>
+            </div>
+
+
+        </div>
+    @endif
     @if (count($summons) > 0)
         <div class="block my-3 border-b border-gray-400 border-dashed"></div>
         <div class="container grid grid-cols-1 mx-auto lg:grid-cols-3">
