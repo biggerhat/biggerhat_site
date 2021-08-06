@@ -13,8 +13,8 @@ class SummonPage extends Component
     public $chart;
     public $summoners;
     public $summoner;
-    public $summons;
-    public $upgrades;
+    public $summons = [];
+    public $upgrades = [];
     protected $queryString = [
         'master' => ['except' => ''],
         'summoner' => ['except' => ''],
