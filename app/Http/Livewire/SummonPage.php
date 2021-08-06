@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Mini;
 use App\Models\Summon;
+use App\Models\Upgrade;
 use Livewire\Component;
 
 class SummonPage extends Component
@@ -12,6 +13,8 @@ class SummonPage extends Component
     public $chart;
     public $summoners;
     public $summoner;
+    public $summons;
+    public $upgrades;
     protected $queryString = [
         'master' => ['except' => ''],
         'summoner' => ['except' => ''],
@@ -27,9 +30,37 @@ class SummonPage extends Component
         if (!$this->summoner) {
             $this->chart = "./images/summonrules.PNG";
         } else {
-            $newSum = Mini::where('slug', "=", $this->summoner)->with('summoner')->first();
+            $newSum = Mini::where('slug', "=", $this->summoner)->with('summoner', 'summons')->first();
+            $this->summons = $newSum->summoner[0]->summons;
+            $this->upgrades = $newSum->summoner[0]->upgrades;
             $this->chart = "\storage\\" . $newSum->summoner[0]->chart;
         }
+    }
+
+    public function getBackground(Mini $mini): string
+    {
+        if (count($mini->factions) > 1) {
+            return implode(" ", [
+                "bg-gradient-to-r",
+                "from-{$mini->factions[0]['bg_color']}",
+                "to-{$mini->factions[1]['bg_color']}"
+            ]);
+        }
+
+        return "bg-{$mini->factions[0]['bg_color']}";
+    }
+
+    public function getUpgradeBackground(Upgrade $upgrade): string
+    {
+        if (count($upgrade->factions) > 1) {
+            return implode(" ", [
+                "bg-gradient-to-r",
+                "from-{$upgrade->factions[0]['bg_color']}",
+                "to-{$upgrade->factions[1]['bg_color']}"
+            ]);
+        }
+
+        return "bg-{$upgrade->factions[0]['bg_color']}";
     }
 
     public function render()

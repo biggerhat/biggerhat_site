@@ -20,12 +20,49 @@
     <div class="block my-3 border-b border-gray-400 border-dashed"></div>
     <div class="container mx-auto">
         <div class="px-2">
-            <img src="{{ $chart }}" class="mx-auto border-2 border-black rounded">
+            <img src="{{ $chart }}" class="mx-auto border-2 border-black rounded-xl">
         </div>
     </div>
-    <div class="container grid px-2 mx-auto lg:grid-cols-5">
-        <div class="text-sm italic text-center lg:col-span-3 lg:col-start-2">
-            *All Summon Charts Property of BiggerHat.Net, based on the original images by Trisha Waddell from "A Wyrd
+    @if (count($summons) > 0)
+        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="container grid grid-cols-1 mx-auto lg:grid-cols-3">
+            <div class="block w-full h-full col-span-1 py-5 text-center lg:col-span-3">
+                <span class="text-4xl text-transparent text-gray-900 lg:text-5xl md:text-4xl faction_header">
+                    Summons
+                </span>
+            </div>
+            @foreach ($summons as $summon)
+                <div class="text-center">
+                    <a href="{{ route('character.view', $summon->slug) }}"
+                        class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ $this->getBackground($summon) }} px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($summon->name) }}</a>
+                </div>
+            @endforeach
+
+
+        </div>
+    @endif
+    @if (count($upgrades) > 0)
+        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="container grid grid-cols-1 mx-auto lg:grid-cols-3">
+            <div class="block w-full h-full col-span-1 py-5 text-center lg:col-span-3">
+                <span class="text-4xl text-transparent text-gray-900 lg:text-5xl md:text-4xl faction_header">
+                    Upgrades
+                </span>
+            </div>
+            @foreach ($upgrades as $upgrade)
+                <div class="text-center">
+                    <a href="{{ route('upgrade.view', $upgrade->slug) }}"
+                        class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ $this->getUpgradeBackground($upgrade) }} px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($upgrade->name) }}</a>
+                </div>
+            @endforeach
+
+
+        </div>
+    @endif
+
+    <div class="container grid px-2 mx-auto mt-10 lg:grid-cols-5">
+        <div class="text-xs italic text-center lg:col-span-3 lg:col-start-2">
+            *All Summon Charts Property of Bigger Hat, based on the original images by Trisha Waddell from "A Wyrd
             Place"
         </div>
     </div>
