@@ -11,6 +11,6 @@ class ApiController extends Controller
     {
         $name = $request->get("name");
         $minis = Mini::where('name', 'LIKE', "%{$name}%")->get();
-        return $request;
+        return $minis;
     }
 }
