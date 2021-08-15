@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/minis', [ApiController::class, 'findMinis']);
+Route::get('/keywords', [ApiController::class, 'fetchKeyword']);
