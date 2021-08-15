@@ -95,7 +95,7 @@
                 </li>
                 <li class="text-sm"><a href="https://www.patreon.com/biggerhat" target="_patreon"
                         class="hover:text-white hover:underline">Patreon</a></li>
-                <li class="text-sm"><a href="https://discord.gg/AT236KeAWT" class="hover:text-white hover:underline"
+                <li class="text-sm"><a href="https://discord.gg/25cNcmZd9H" class="hover:text-white hover:underline"
                         target="discord">Discord Server</a></li>
                 <li class="text-sm"><a href="https://www.youtube.com/channel/UC095wgLOM_nojBIdzVUtfWg"
                         class="hover:text-white hover:underline" target="youtube">YouTube</a></li>
