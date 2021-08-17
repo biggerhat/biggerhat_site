@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keyword;
+use App\Models\Marker;
 use App\Models\Mini;
 use Illuminate\Http\Request;
 
@@ -25,5 +26,12 @@ class ApiController extends Controller
             ->orderBy('name')
             ->get();
         return $minis;
+    }
+
+    public function fetchMarker(Request $request)
+    {
+        $name = $request->get("name");
+        $marker = Marker::where('name', 'LIKE', "%{$name}%")->first();
+        return $marker;
     }
 }

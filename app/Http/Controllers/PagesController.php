@@ -9,6 +9,7 @@ use App\Models\Marker;
 use App\Models\Mini;
 use App\Models\ResourceType;
 use App\Models\Spoiler;
+use App\Models\Tactica;
 use App\Models\Upgrade;
 use Illuminate\Support\Facades\Redis;
 
@@ -46,7 +47,8 @@ class PagesController extends Controller
 
     public function getHome()
     {
-        return view('pages.home');
+        $tacticas = Tactica::latest()->take(5)->get();
+        return view('pages.home', compact('tacticas'));
     }
 
     public function getMarkers()

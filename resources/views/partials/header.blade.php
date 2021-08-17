@@ -30,8 +30,9 @@
             <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a
                     href="{{ route('characters') }}"
                     class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Characters</a></li>
-            <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a href="/references"
-                    class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">References</a></li>
+            <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a
+                    href="{{ route('spoilers') }}"
+                    class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Spoilers</a></li>
             <li class="order-3 hidden w-full p-2 text-center item lg:block lg:w-auto lg:relative"><a
                     href="{{ route('resources') }}"
                     class="block p-4 text-gray-200 rounded-lg hover:text-white hover:bg-gray-700">Resources</a></li>
