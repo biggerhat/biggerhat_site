@@ -19,7 +19,7 @@ class ApiController extends Controller
     public function fetchKeyword(Request $request)
     {
         $name = $request->get("name");
-        $keyword = Keyword::where('name', 'LIKE', "%{$name}%")->get();
+        $keyword = Keyword::where('name', 'LIKE', "%{$name}%")->first();
         $minis = Mini::inKeyword($keyword->id)
             ->isAlive()
             ->orderBy('station_id')
@@ -31,7 +31,7 @@ class ApiController extends Controller
     public function fetchMarker(Request $request)
     {
         $name = $request->get("name");
-        $marker = Marker::where('name', 'LIKE', "%{$name}%")->first();
+        $marker = Marker::where('name', 'LIKE', "%{$name}%")->get();
         return $marker;
     }
 }
