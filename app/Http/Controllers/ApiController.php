@@ -19,7 +19,7 @@ class ApiController extends Controller
     public function fetchKeyword(Request $request)
     {
         $name = $request->get("name");
-        $keyword = Keyword::where('name', 'LIKE', "%{$name}%")->first();
+        $keyword = Keyword::where('name', 'LIKE', "%{$name}%")->get();
         $minis = Mini::inKeyword($keyword->id)
             ->isAlive()
             ->orderBy('station_id')
