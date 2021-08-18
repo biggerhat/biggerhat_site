@@ -16,4 +16,9 @@ class Marker extends Model
     {
         return $this->belongsToMany(Mini::class);
     }
+
+    public function terrains()
+    {
+        return $this->belongsToMany(Terrain::class)->orderBy('name');
+    }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Condition;
 use App\Models\Keyword;
 use App\Models\Marker;
 use App\Models\Mini;
+use App\Models\Terrain;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -33,5 +35,27 @@ class ApiController extends Controller
         $name = $request->get("name");
         $marker = Marker::where('name', 'LIKE', "%{$name}%")->get();
         return $marker;
+    }
+
+    public function fetchTerrain(Request $request)
+    {
+        $name = $request->get("name");
+        if ($name === "all") {
+            $terrain = Terrain::orderBy('name')->get();
+            return $terrain;
+        }
+        $terrain = Terrain::where('name', 'LIKE', "%{$name}%")->get();
+        return $terrain;
+    }
+
+    public function fetchCondition(Request $request)
+    {
+        $name = $request->get("name");
+        if ($name === "all") {
+            $condition = Condition::orderBy('name')->get();
+            return $condition;
+        }
+        $condition = Condition::where('name', 'LIKE', "%{$name}%")->get();
+        return $condition;
     }
 }

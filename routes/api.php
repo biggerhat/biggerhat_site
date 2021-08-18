@@ -22,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/minis', [ApiController::class, 'findMinis']);
 Route::get('/keywords', [ApiController::class, 'fetchKeyword']);
 Route::get('/markers', [ApiController::class, 'fetchMarker']);
+Route::get('/terrain', [ApiController::class, 'fetchTerrain']);
+Route::get('/condition', [ApiController::class, 'fetchCondition']);
