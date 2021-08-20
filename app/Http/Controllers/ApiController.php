@@ -79,7 +79,7 @@ class ApiController extends Controller
         return $condition;
     }
 
-    private function stripParse(String $string): string
+    private function stripParse(String $expression): string
     {
         $expression = str_replace(
             array(
@@ -149,5 +149,6 @@ class ApiController extends Controller
             ),
             $expression
         );
+        return $expression;
     }
 }
