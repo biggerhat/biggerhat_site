@@ -7,6 +7,7 @@ use App\Models\Keyword;
 use App\Models\Marker;
 use App\Models\Mini;
 use App\Models\Terrain;
+use App\Models\Upgrade;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -14,8 +15,15 @@ class ApiController extends Controller
     public function findMinis(Request $request)
     {
         $name = $request->get("name");
-        $minis = Mini::where('name', 'LIKE', "%{$name}%")->with('factions', 'cards', 'keywords', 'station', 'characteristics')->orderBy('name', 'ASC')->get();
+        $minis = Mini::where('name', 'LIKE', "%{$name}%")->with('cards')->orderBy('name', 'ASC')->get();
         return $minis;
+    }
+
+    public function fetchUpgrades(Request $request)
+    {
+        $name = $request->get("name");
+        $upgrades = Upgrade::where('name', 'LIKE', "%{$name}%")->orderBy('name', 'ASC')->get();
+        return $upgrades;
     }
 
     public function fetchKeyword(Request $request)
