@@ -25,3 +25,4 @@ Route::get('/upgrades', [ApiController::class, 'fetchUpgrade']);
 Route::get('/markers', [ApiController::class, 'fetchMarker']);
 Route::get('/terrain', [ApiController::class, 'fetchTerrain']);
 Route::get('/condition', [ApiController::class, 'fetchCondition']);
+Route::get('/questions', [ApiController::class, 'fetchQuestion']);

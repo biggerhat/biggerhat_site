@@ -6,6 +6,7 @@ use App\Models\Condition;
 use App\Models\Keyword;
 use App\Models\Marker;
 use App\Models\Mini;
+use App\Models\Question;
 use App\Models\Terrain;
 use App\Models\Upgrade;
 use Illuminate\Http\Request;
@@ -24,6 +25,13 @@ class ApiController extends Controller
         $name = $request->get("name");
         $upgrades = Upgrade::where('name', 'LIKE', "%{$name}%")->orderBy('name', 'ASC')->get();
         return $upgrades;
+    }
+
+    public function fetchQuestion(Request $request)
+    {
+        $query = $request->get("query");
+        $questions = Question::where('question', 'LIKE', "%{$query}%")->orWhere('answer', 'LIKE', "%{$query}%")->with('section')->get();
+        return $questions;
     }
 
     public function fetchKeyword(Request $request)
