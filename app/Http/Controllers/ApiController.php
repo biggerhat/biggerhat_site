@@ -19,7 +19,7 @@ class ApiController extends Controller
         return $minis;
     }
 
-    public function fetchUpgrades(Request $request)
+    public function fetchUpgrade(Request $request)
     {
         $name = $request->get("name");
         $upgrades = Upgrade::where('name', 'LIKE', "%{$name}%")->orderBy('name', 'ASC')->get();
