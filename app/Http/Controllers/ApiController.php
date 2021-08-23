@@ -42,6 +42,9 @@ class ApiController extends Controller
     {
         $name = $request->get("name");
         $keyword = Keyword::where('name', 'LIKE', "%{$name}%")->first();
+        if (!$keyword) {
+            return "[ ]";
+        }
         $minis = Mini::inKeyword($keyword->id)
             ->isAlive()
             ->orderBy('station_id')
