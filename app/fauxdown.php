@@ -168,8 +168,10 @@ function getUpgradeBackground(Upgrade $upgrade): string
 
 function comboImage(Card $card)
 {
-    $frontUrl = storage_path() . "/" . str_replace("\\", "/", $card->front);
-    $backUrl = storage_path() . "/" . str_replace("\\", "/", $card->back);
+    $frontUrl =
+        "https://biggerhat.net/storage/" . $card->front;
+    $backUrl =
+        "https://biggerhat.net/storage/" . $card->back;
 
     list($widthFront, $heightFront) = getimagesize($frontUrl);
     list($widthBack, $heightBack) = getimagesize($backUrl);
