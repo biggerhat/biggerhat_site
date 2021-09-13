@@ -177,6 +177,7 @@ function comboImage(Card $card)
     list($widthBack, $heightBack) = getimagesize($backUrl);
     $background = imagecreatetruecolor($widthFront + $widthBack, $heightFront);
 
+    header('Content-Type: image/jpeg');
     $outputImage = $background;
 
     $frontUrl = imagecreatefromjpeg($frontUrl);
@@ -191,7 +192,7 @@ function comboImage(Card $card)
 
     $card->combo = $comboUrl;
     $card->saveQuietly();
-    imagejpeg($outputImage, storage_path() . '\cards\combos\\' . $comboName);
+    imagejpeg($outputImage, "./storage/cards/combos/" . $comboName);
     imagedestroy($outputImage);
 }
 
