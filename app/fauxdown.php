@@ -168,10 +168,8 @@ function getUpgradeBackground(Upgrade $upgrade): string
 
 function comboImage(Card $card)
 {
-
-
-    $frontUrl = "storage\\" . $card->front;
-    $backUrl = "storage\\" . $card->back;
+    $frontUrl = storage_path() . $card->front;
+    $backUrl = storage_path() . $card->back;
 
     list($widthFront, $heightFront) = getimagesize($frontUrl);
     list($widthBack, $heightBack) = getimagesize($backUrl);
@@ -191,7 +189,7 @@ function comboImage(Card $card)
 
     $card->combo = $comboUrl;
     $card->saveQuietly();
-    imagejpeg($outputImage, "storage\cards\combos\\" . $comboName);
+    imagejpeg($outputImage, storage_path() . '\cards\combos\\' . $comboName);
     imagedestroy($outputImage);
 }
 
