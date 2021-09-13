@@ -71,13 +71,14 @@ Route::get('/random', function () {
     return redirect()->route('character.view', $mini->slug);
 })->name('random');
 
+/*
 Route::get('/combotest', function () {
     $cards = App\Models\Card::where("combo", "")->limit(500)->get();
     foreach ($cards as $card) {
         comboImage($card);
     }
     echo "Done: " . count($cards);
-});
+}); */
 
 Route::get('/user/logout', 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');
 
