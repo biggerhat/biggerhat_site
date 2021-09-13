@@ -170,8 +170,8 @@ function comboImage(Card $card)
 {
 
 
-    $frontUrl = "\storage\\" . $card->front;
-    $backUrl = "\storage\\" . $card->back;
+    $frontUrl = ".\storage\\" . $card->front;
+    $backUrl = ".\storage\\" . $card->back;
 
     list($widthFront, $heightFront) = getimagesize($frontUrl);
     list($widthBack, $heightBack) = getimagesize($backUrl);
