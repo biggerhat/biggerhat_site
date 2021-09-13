@@ -75,6 +75,7 @@ Route::get('/combotest', function () {
     $cards = App\Models\Card::all();
     foreach ($cards as $card) {
         $card->combo = '';
+        $card->saveQuietly();
     }
     return redirect()->route('home');
 });
