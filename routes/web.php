@@ -74,7 +74,8 @@ Route::get('/random', function () {
 Route::get('/combotest', function () {
     $cards = App\Models\Card::all();
     foreach ($cards as $card) {
-        comboImage($card);
+        $card->combo = '';
+        $card->save();
     }
     return redirect()->route('home');
 });
