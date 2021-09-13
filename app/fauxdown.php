@@ -170,8 +170,8 @@ function comboImage(Card $card)
 {
 
 
-    $frontUrl = './storage/' . str_replace('\\', '/', $card->front);
-    $backUrl = './storage/' . str_replace('\\', '/', $card->back);
+    $frontUrl = "\storage\\" . $card->front;
+    $backUrl = "\storage\\" . $card->back;
 
     list($widthFront, $heightFront) = getimagesize($frontUrl);
     list($widthBack, $heightBack) = getimagesize($backUrl);
@@ -190,7 +190,7 @@ function comboImage(Card $card)
 
     $card->combo = $comboUrl;
     $card->saveQuietly();
-    imagejpeg($outputImage, './storage/' . $comboUrl);
+    imagejpeg($outputImage, "\storage\\" . $comboUrl);
     imagedestroy($outputImage);
 }
 
