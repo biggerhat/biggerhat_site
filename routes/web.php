@@ -72,12 +72,11 @@ Route::get('/random', function () {
 })->name('random');
 
 Route::get('/combotest', function () {
-    $cards = App\Models\Card::all();
+    $cards = App\Models\Card::where("combo", "")->limit(500)->get();
     foreach ($cards as $card) {
-        $card->combo = '';
-        $card->saveQuietly();
+        comboImage($card);
     }
-    return redirect()->route('home');
+    echo "Done: " . count($cards);
 });
 
 Route::get('/user/logout', 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');
