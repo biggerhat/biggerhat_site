@@ -170,8 +170,8 @@ function comboImage(Card $card)
 {
 
 
-    $frontUrl = "\\storage\\" . $card->front;
-    $backUrl = "\\storage\\" . $card->back;
+    $frontUrl = "/storage/" . $card->front;
+    $backUrl = "/storage/" . $card->back;
 
     list($widthFront, $heightFront) = getimagesize($frontUrl);
     list($widthBack, $heightBack) = getimagesize($backUrl);
@@ -186,11 +186,12 @@ function comboImage(Card $card)
     imagecopymerge($outputImage, $backUrl, $widthFront, 0, 0, 0, $widthBack, $heightBack, 100);
 
 
-    $comboUrl = 'cards\\combos\\' . uniqidReal() . '.jpg';
+    $comboName = uniqidReal() . '.jpg';
+    $comboUrl = 'cards/combos/' . $comboName;
 
     $card->combo = $comboUrl;
     $card->saveQuietly();
-    imagejpeg($outputImage, "\\storage\\" . $comboUrl);
+    imagejpeg($outputImage, "storage/cards/combos/" . $comboName);
     imagedestroy($outputImage);
 }
 
