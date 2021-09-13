@@ -15,6 +15,15 @@ class Card extends Model
         'mini_id',
     ];
 
+    public static function booted()
+    {
+        static::saved(function ($card) {
+            if (!$card->combo) {
+                comboImage($card);
+            }
+        });
+    }
+
     public function mini()
     {
         return $this->belongsTo(Mini::class, 'mini_id', 'id');

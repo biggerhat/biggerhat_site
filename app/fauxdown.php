@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Card;
 use App\Models\Faction;
 use App\Models\Keyword;
 use App\Models\Mini;
@@ -163,4 +164,44 @@ function getUpgradeBackground(Upgrade $upgrade): string
     }
 
     return "bg-{$upgrade->factions[0]['bg_color']}";
+}
+
+function comboImage(Card $card)
+{
+
+    $frontUrl = './storage/' . $card->front;
+    $backUrl = './storage/' . $card->back;
+
+    list($widthFront, $heightFront) = getimagesize($frontUrl);
+    list($widthBack, $heightBack) = getimagesize($backUrl);
+    $background = imagecreatetruecolor($widthFront + $widthBack, $heightFront);
+
+    $outputImage = $background;
+
+    $frontUrl = imagecreatefromjpeg($frontUrl);
+    $backUrl = imagecreatefromjpeg($backUrl);
+
+    imagecopymerge($outputImage, $frontUrl, 0, 0, 0, 0, $widthFront, $heightFront, 100);
+    imagecopymerge($outputImage, $backUrl, $widthFront, 0, 0, 0, $widthBack, $heightBack, 100);
+
+
+    $comboUrl = 'cards\combos\\' . uniqidReal() . '.jpg';
+
+    $card->combo = $comboUrl;
+    $card->saveQuietly();
+    imagejpeg($outputImage, './storage/' . $comboUrl);
+    imagedestroy($outputImage);
+}
+
+function uniqidReal($lenght = 13)
+{
+    // uniqid gives 13 chars, but you could adjust it to your needs.
+    if (function_exists("random_bytes")) {
+        $bytes = random_bytes(ceil($lenght / 2));
+    } elseif (function_exists("openssl_random_pseudo_bytes")) {
+        $bytes = openssl_random_pseudo_bytes(ceil($lenght / 2));
+    } else {
+        throw new Exception("no cryptographically secure random function available");
+    }
+    return substr(bin2hex($bytes), 0, $lenght);
 }

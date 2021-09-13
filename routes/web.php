@@ -71,6 +71,16 @@ Route::get('/random', function () {
     return redirect()->route('character.view', $mini->slug);
 })->name('random');
 
+Route::get('/combotest', function () {
+    $cards = App\Models\Card::all();
+    foreach ($cards as $card) {
+        if (!$card->combo) {
+            comboImage($card);
+        }
+    }
+    return redirect()->route('home');
+});
+
 Route::get('/user/logout', 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
