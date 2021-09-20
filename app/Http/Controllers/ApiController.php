@@ -16,7 +16,11 @@ class ApiController extends Controller
     public function findMinis(Request $request)
     {
         $name = $request->get("name");
-        $minis = Mini::where('name', 'LIKE', "%{$name}%")->with('cards')->orderBy('name', 'ASC')->get();
+        $mini = Mini::where('name', $name)->with('cards')->get();
+        if (count($mini) > 0) {
+            return $mini;
+        }
+        $minis = Mini::where('name', 'LIKE', "%{$name}%")->orWhere('aka', 'LIKE', "%{$name}%")->with('cards')->orderBy('name', 'ASC')->get();
         return $minis;
     }
 
@@ -47,6 +51,7 @@ class ApiController extends Controller
         }
         $minis = Mini::inKeyword($keyword->id)
             ->isAlive()
+            ->isVisible()
             ->orderBy('station_id')
             ->orderBy('name')
             ->get();

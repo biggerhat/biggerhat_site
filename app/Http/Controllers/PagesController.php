@@ -60,20 +60,20 @@ class PagesController extends Controller
     public function postSearch(Request $request)
     {
         $search = $request->search;
-        $minis = Mini::search("{$search}")->get();
+        $minis = Mini::where('name', 'LIKE', "%{$search}%")->get();
         $factions = Faction::where('name', 'LIKE', "%{$search}%")->get();
-        if ($factions->count() == 1) {
+        if ($factions->count() == 1 && $minis->count() == 0) {
             return redirect(route('faction.view', $factions[0]->slug));
         }
         $keywords = Keyword::where('name', 'LIKE', "%{$search}%")->get();
-        if ($keywords->count() == 1) {
+        if ($keywords->count() == 1 && $minis->count() == 0) {
             return redirect(route('keyword.view', $keywords[0]->slug));
         }
-        $upgrades = Upgrade::search("{$search}")->get();
-        if ($upgrades->count() == 1) {
+        $upgrades = Upgrade::where('name', 'LIKE', "%{$search}%")->get();
+        if ($upgrades->count() == 1 && $minis->count() == 0) {
             return redirect(route('upgrade.view', $upgrades[0]->slug));
         }
-        if ($minis->count() == 1) {
+        if ($minis->count() == 1 && $upgrades->count() == 0 && $keywords->count() == 0 && $factions->count() == 0) {
             return redirect(route('character.view', $minis[0]->slug));
         }
         return view('pages.results', compact('minis', 'upgrades', 'search'));

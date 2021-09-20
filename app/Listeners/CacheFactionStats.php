@@ -32,7 +32,7 @@ class CacheFactionStats
         foreach ($event->mini->factions as $faction) {
             Artisan::call("faction:cache-stats --faction={$faction->id}");
         }
-        $mini = Mini::find($event->mini->id);
+        $mini = Mini::viewAll()->find($event->mini->id);
         $mini->slug = Str::slug($mini->name, '-');
         $mini->saveQuietly();
         Artisan::call("keyword:cache-stats");

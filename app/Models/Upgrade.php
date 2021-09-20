@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Http\Livewire\SummonPage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
 
@@ -40,6 +41,14 @@ class Upgrade extends Model
         'uspecials',
         'urestricteds',
     ];
+
+    public static function booted()
+    {
+        static::saved(function ($upgrade) {
+            $upgrade->slug = Str::slug($upgrade->name, '-');
+            $upgrade->saveQuietly();
+        });
+    }
 
     public function minis()
     {

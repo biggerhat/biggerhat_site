@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Events\MiniSaved;
+use Illuminate\Database\Eloquent\Builder;
 use Laravel\Scout\Searchable;
 
 class Mini extends Model
@@ -51,6 +52,13 @@ class Mini extends Model
         ];
 
         return array_intersect_key($array, array_flip($trackable));
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('visible', function (Builder $builder) {
+            $builder->where('isHidden', false);
+        });
     }
 
     protected $dispatchesEvents = [
@@ -243,6 +251,11 @@ class Mini extends Model
     public function scopeIsHirable($query)
     {
         $query->where('IsUnhirable', 0);
+    }
+
+    public function scopeViewAll($query)
+    {
+        $query->withoutGlobalScope('visible');
     }
 
     public function scopeIsAlive($query)
