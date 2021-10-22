@@ -20,4 +20,9 @@ class Instruction extends Model
     {
         return $this->belongsToMany(Box::class);
     }
+
+    public function promos()
+    {
+        return $this->belongsToMany(Promo::class);
+    }
 }

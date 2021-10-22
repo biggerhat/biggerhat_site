@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
     <div class="container mx-auto">
         <div class="block w-full h-full py-5 text-center">
@@ -23,7 +23,7 @@
         <img src="\storage\{{ $instruction->image }}" class="px-2 mx-auto rounded-lg" />
     </div>
 
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
     <div class="container grid grid-cols-1 mx-auto lg:grid-cols-3">
         <div class="block w-full h-full col-span-1 py-5 text-center lg:col-span-3">
@@ -34,7 +34,7 @@
         @foreach ($instruction->minis as $miniListed)
             <div class="text-center">
                 <a href="{{ route('character.view', $miniListed->slug) }}"
-                class="inline-block text-center p-0.5 text-white border border-black rounded-full @if ($miniListed->id == $mini->id) bg-gray-900 @else
+                    class="inline-block text-center p-0.5 text-white border border-black rounded-full @if ($miniListed->id == $mini->id) bg-gray-900 @else
                     {{ $this->getBackground($miniListed) }} @endif
                     px-2 py-1 font-bold mb-1 cursor-pointer">{{ strtoupper($miniListed->name) }}</a>
             </div>

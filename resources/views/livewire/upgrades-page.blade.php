@@ -10,7 +10,7 @@
             </span>
         </div>
     </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     <div class="container mx-auto mb-2 text-center">
         <div class="block w-full h-full pt-5 text-center">
             <span class="text-3xl text-gray-900 lg:text-5xl faction_header">
@@ -51,7 +51,7 @@
         <button wire:click="clearFilters" class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
             Clear Filters</button>
     </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     <div class="text-2xl text-center"><span class="font-bold">Total:</span> {{ count($upgrades) }} Upgrades
     </div>
     <div class="container grid mx-auto md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

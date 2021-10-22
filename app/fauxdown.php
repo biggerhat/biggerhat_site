@@ -4,6 +4,7 @@ use App\Models\Card;
 use App\Models\Faction;
 use App\Models\Keyword;
 use App\Models\Mini;
+use App\Models\Promo;
 use App\Models\Upgrade;
 
 function fauxdown($expression)
@@ -81,6 +82,14 @@ function fauxdown($expression)
         "(\{\{img=(.*?)\}\})is",
         function ($name) {
             return "<img src=\"\storage\\tacticas\\" . $name[1] . "\" class=\"mx-auto rounded border border-black\">";
+        },
+        $expression
+    );
+
+    $expression = preg_replace_callback(
+        "(\{\{url=(.*?)\}\}(.*?)\{\{url\}\})is",
+        function ($name) {
+            return "<a href=\"" . $name[1] . "\" class=\"text-blue-500 hover:underline\" target=\"_new\">" . $name[2] . "</a>";
         },
         $expression
     );
@@ -167,6 +176,36 @@ function getUpgradeBackground(Upgrade $upgrade): string
 }
 
 function comboImage(Card $card)
+{
+    $frontUrl =
+        "https://biggerhat.net/storage/" . str_replace("\\", "/", $card->front);
+    $backUrl =
+        "https://biggerhat.net/storage/" . str_replace("\\", "/", $card->back);
+
+    list($widthFront, $heightFront) = getimagesize($frontUrl);
+    list($widthBack, $heightBack) = getimagesize($backUrl);
+    $background = imagecreatetruecolor($widthFront + $widthBack, $heightFront);
+
+    header('Content-Type: image/jpeg');
+    $outputImage = $background;
+
+    $frontUrl = imagecreatefromjpeg($frontUrl);
+    $backUrl = imagecreatefromjpeg($backUrl);
+
+    imagecopymerge($outputImage, $frontUrl, 0, 0, 0, 0, $widthFront, $heightFront, 100);
+    imagecopymerge($outputImage, $backUrl, $widthFront, 0, 0, 0, $widthBack, $heightBack, 100);
+
+
+    $comboName = uniqidReal() . '.jpg';
+    $comboUrl = 'cards\combos\\' . $comboName;
+
+    $card->combo = $comboUrl;
+    $card->saveQuietly();
+    imagejpeg($outputImage, "./storage/cards/combos/" . $comboName);
+    imagedestroy($outputImage);
+}
+
+function comboImagePromo(Promo $card)
 {
     $frontUrl =
         "https://biggerhat.net/storage/" . str_replace("\\", "/", $card->front);

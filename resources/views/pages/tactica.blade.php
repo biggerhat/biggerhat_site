@@ -13,13 +13,13 @@
             <span class="text-sm italic">Submitted By {{ $tactica->author }}</span>
         </div>
     </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     <div class="container grid px-2 mx-auto lg:grid-cols-5">
         <div class="text-lg leading-8 lg:col-start-2 lg:col-span-3">
             {!! fauxdown(nl2br($tactica->description)) !!}
         </div>
     </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     <div class="block w-full h-full py-5 text-center">
         <span class="block text-3xl text-gray-900 lg:text-4xl faction_header">
             Tags

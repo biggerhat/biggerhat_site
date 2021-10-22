@@ -51,7 +51,6 @@ class ApiController extends Controller
         }
         $minis = Mini::inKeyword($keyword->id)
             ->isAlive()
-            ->isVisible()
             ->orderBy('station_id')
             ->orderBy('name')
             ->get();

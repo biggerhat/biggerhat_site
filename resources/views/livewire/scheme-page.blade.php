@@ -22,7 +22,7 @@
 
         </div>
 
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
         @if (count($strategies) > 0)
             <div class="block w-full h-full py-5 text-center">
@@ -41,7 +41,7 @@
         @endif
 
         @if (count($schemes) > 0)
-            <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+            <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
             <div class="block w-full h-full py-5 text-center">
                 <span class="text-3xl text-gray-900 lg:text-7xl md:text-5xl faction_header">
@@ -59,7 +59,7 @@
         @endif
 
         @if (count($deployments) > 0)
-            <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+            <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
             <div class="block w-full h-full py-5 text-center">
                 <span class="text-3xl text-gray-900 lg:text-7xl md:text-5xl faction_header">

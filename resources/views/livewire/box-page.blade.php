@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
     <div class="container grid mx-auto lg:grid-cols-2">
         <div class="block w-full h-full py-5 text-center lg:col-span-2 ">
@@ -28,7 +28,7 @@
     </div>
 
     @if ($box->keywords->count() > 0)
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
         <div class="container grid grid-cols-1 mx-auto lg:grid-cols-{{ $box->keywords->count() }}">
             <div class="block w-full h-full col-span-1 py-5 text-center lg:col-span-{{ $box->keywords->count() }}">
@@ -45,7 +45,7 @@
         </div>
     @endif
 
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
     <div class="container grid grid-cols-1 mx-auto lg:grid-cols-3">
         <div class="block w-full h-full col-span-1 py-5 text-center lg:col-span-3">
@@ -64,7 +64,7 @@
     </div>
 
     @if ($box->instructions->count() > 0)
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
         <div class="container grid grid-cols-1 mx-auto lg:grid-cols-{{ $box->instructions->count() }}">
             <div

@@ -16,7 +16,7 @@
     </div>
 
     @if (count($minis) > 0)
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
         <div class="container mx-auto mb-2 text-center">
             <div class="block w-full h-full py-5 text-center">
@@ -37,7 +37,7 @@
     @endif
 
     @if (count($upgrades) > 0)
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
         <div class="container mx-auto mb-2 text-center">
             <div class="block w-full h-full py-5 text-center">

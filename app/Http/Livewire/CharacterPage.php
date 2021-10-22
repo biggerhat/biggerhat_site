@@ -19,6 +19,7 @@ class CharacterPage extends Component
     public $relateds;
     public $upgradeModal = false;
     public $upgradeContent;
+    public $upgradeSlug;
     public $markerModal = false;
     public $markerName;
     public $markerContent;
@@ -29,6 +30,7 @@ class CharacterPage extends Component
     public $spoilerID;
     public $cards = [];
     public $cardCount;
+    public $original;
     public $currentCard = 0;
 
     protected $listeners = [
@@ -58,13 +60,16 @@ class CharacterPage extends Component
             'instructions',
             'boxes',
             'episodes',
-            'summoner'
+            'summoner',
+            'original',
+            'titles',
         );
         $this->setBackground();
         $this->setQuestions();
         $this->setTokens();
         $this->setRelateds();
         $this->setCards();
+        $this->titleCheck();
         $this->spoilers = Spoiler::orderBy('created_at', 'DESC')->get()->toArray();
         //dd($this->spoilers);
     }
@@ -80,6 +85,7 @@ class CharacterPage extends Component
             }
             $this->cards[$i]['front'] = $this->mini->cards[$i]->front;
             $this->cards[$i]['back'] = $this->mini->cards[$i]->back;
+            $this->cards[$i]['combo'] = $this->mini->cards[$i]->combo;
             $this->cards[$i]['pdf'] = $this->mini->cards[$i]->pdf;
             $this->cards[$i]['type'] = "normal";
         }
@@ -88,7 +94,9 @@ class CharacterPage extends Component
             $this->cards[$i]['name'] = $promo->name;
             $this->cards[$i]['front'] = $promo->front;
             $this->cards[$i]['back'] = $promo->back;
+            $this->cards[$i]['combo'] = $promo->combo;
             $this->cards[$i]['pdf'] = $promo->pdf;
+            $this->cards[$i]['slug'] = $promo->slug;
             $this->cards[$i]['type'] = "promo";
             $i++;
         }
@@ -130,12 +138,14 @@ class CharacterPage extends Component
     {
         $upgrade = Upgrade::find($upgradeId);
         $this->upgradeContent = $upgrade->image;
+        $this->upgradeSlug = $upgrade->slug;
         $this->upgradeModal = true;
     }
 
     public function closeUpgradeModal()
     {
         $this->upgradeModal = false;
+        $this->upgradeSlug = "";
         $this->upgradeContent = "";
     }
 
@@ -197,6 +207,13 @@ class CharacterPage extends Component
                     }
                 }
             }
+        }
+    }
+
+    public function titleCheck()
+    {
+        if ($this->mini->hasTitle == 1) {
+            $this->original = Mini::find($this->mini->original_id);
         }
     }
 

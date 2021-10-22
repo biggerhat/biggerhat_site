@@ -17,14 +17,14 @@
             </div>
         </div>
     </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     <div class="container mx-auto">
         <div class="px-2">
             <img src="{{ $chart }}" class="mx-auto border-2 border-black rounded-xl">
         </div>
     </div>
     @if ($newSum)
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
         <div class="container grid grid-cols-1 mx-auto">
             <div class="block w-full h-full col-span-1 py-5 text-center">
                 <span class="text-4xl text-transparent text-gray-900 lg:text-5xl md:text-4xl faction_header">
@@ -40,7 +40,7 @@
         </div>
     @endif
     @if (count($summons) > 0)
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
         <div class="container grid grid-cols-1 mx-auto lg:grid-cols-3">
             <div class="block w-full h-full col-span-1 py-5 text-center lg:col-span-3">
                 <span class="text-4xl text-transparent text-gray-900 lg:text-5xl md:text-4xl faction_header">
@@ -58,7 +58,7 @@
         </div>
     @endif
     @if (count($upgrades) > 0)
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
         <div class="container grid grid-cols-1 mx-auto lg:grid-cols-3">
             <div class="block w-full h-full col-span-1 py-5 text-center lg:col-span-3">
                 <span class="text-4xl text-transparent text-gray-900 lg:text-5xl md:text-4xl faction_header">

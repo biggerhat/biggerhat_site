@@ -181,6 +181,11 @@ class Mini extends Model
         return $this->morphToMany(Spoiler::class, 'spoilerize');
     }
 
+    public function cultures()
+    {
+        return $this->belongsToMany(Culture::class);
+    }
+
     /**
      * Scope a query to only include minis of a given faction.
      *

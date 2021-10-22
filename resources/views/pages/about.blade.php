@@ -10,19 +10,21 @@
     </div>
     <div class="container grid pt-4 mx-auto lg:grid-cols-5">
         <div class="text-xl text-center lg:col-span-3 lg:col-start-2">
-            <p class="my-2">Bigger Hat was started by two Malifaux players from Central Florida just looking to make the
+            <p class="my-2">Bigger Hat was started by two Malifaux players from Central Florida just looking to
+                make the
                 most in-depth
                 and
                 awesome Malifaux database they could. From there we've built on and added more and more features with many
                 more
                 planned to come. We just want to do everything we can for the benefit of the excellent Malifaux community.
             </p>
-            <p class="my-2">If you have any questions or want to submit any Tacticas or any content at all, feel free to
+            <p class="my-2">If you have any questions or want to submit any Tacticas or any content at all, feel
+                free to
                 contact us one
                 of the ways listed below.</p>
         </div>
     </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     <div class="container mx-auto text-4xl text-center text-gray-900 faction_header lg:text-6xl">
         Contact Us
     </div>
@@ -42,7 +44,7 @@
                 </div>
                 <div class="p-2">
                     <a class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
-                        href="https://discord.gg/AT236KeAWT" target="discord">Visit
+                        href="https://discord.gg/25cNcmZd9H" target="discord">Visit
                         Our Discord</a>
                 </div>
             </div>

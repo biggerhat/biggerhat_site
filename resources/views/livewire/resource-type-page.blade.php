@@ -39,7 +39,7 @@
     </div>
 
     @if ($resourceType->is_direct_link)
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
         <div class="block w-full h-full py-3 text-center">
             <span class="text-2xl text-gray-900 lg:text-4xl faction_header">

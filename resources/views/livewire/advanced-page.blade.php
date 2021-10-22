@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     <div class="container mx-auto">
         <div class="container grid p-3 mx-auto text-lg lg:grid-cols-3">
             <div class="text-3xl text-center text-gray-900 lg:col-span-3 faction_header">General</div>
@@ -652,7 +652,7 @@
     </div>
     @if ($results)
 
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
         <div class="container mx-auto mb-2 text-center">
             <div class="block w-full h-full py-2 text-center" wire:loading>
                 <img src="./images/loading.gif" class="mx-auto">

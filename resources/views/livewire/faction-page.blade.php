@@ -6,7 +6,8 @@
     <div class="container grid w-full grid-cols-8 gap-0 px-2 mx-auto lg:px-0 lg:gap-16">
         @foreach ($factions as $headerFaction)
             <div><a href="{{ route('faction.view', $headerFaction->slug) }}" class="active:outline-none"><img
-                        src="\storage\{{ $headerFaction->image }}" alt="{{ $headerFaction->name }}" @if ($headerFaction->id != $faction->id) class="opacity-25" @endif></a></div>
+                        src="\storage\{{ $headerFaction->image }}" alt="{{ $headerFaction->name }}"
+                        @if ($headerFaction->id != $faction->id) class="opacity-25" @endif></a></div>
         @endforeach
     </div>
     <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-9 auto-cols-fr">
@@ -27,7 +28,7 @@
         </div>
     </div>
 
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
     <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-2 auto-cols-fr">
         <div class="mb-2 text-center lg:col-span-2">
@@ -128,7 +129,8 @@
                                     </path>
                                 </svg>
                             </div> Range
-                        <div class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle @if ($statistics['averageGunRange']> 9) pt-3 text-3xl @else
+                            <div
+                                class="block w-16 h-16 bg-{{ $faction->bg_color }} text-white rounded-full text-center mx-auto align-middle @if ($statistics['averageGunRange'] > 9) pt-3 text-3xl @else
                                 text-5xl p-2 @endif text-bold border-2 border-gray-900 average font-mono">
                                 {{ $statistics['averageGunRange'] }}
                             </div>
@@ -188,7 +190,7 @@
 
     </div>
 
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
     <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto my-3 lg:grid-cols-2 auto-cols-fr">
         <div class="mb-2 text-center lg:col-span-2">
@@ -238,7 +240,7 @@
         </div>
     </div>
 
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
     <div class="container grid grid-cols-2 mx-auto lg:grid-cols-2">
         <div class="col-span-2 mb-2 text-center">
@@ -261,7 +263,7 @@
                 <span class="inline-block p-2 mx-auto font-bold cursor-pointer" wire:click="clearFilters('keyword')">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="inline-block"
                         style="height: 25px; width: 25px;">
-                        <g class="" transform="translate(0,0)" style="">
+                        <g class="" transform=" translate(0,0)" style="">
                             <path
                                 d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
                                 fill="#000000" fill-opacity="1"
@@ -285,7 +287,7 @@
                     wire:click="clearFilters('characteristic')">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="inline-block"
                         style="height: 25px; width: 25px;">
-                        <g class="" transform="translate(0,0)" style="">
+                        <g class="" transform=" translate(0,0)" style="">
                             <path
                                 d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"
                                 fill="#000000" fill-opacity="1"
@@ -298,7 +300,7 @@
         </div>
     </div>
 
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     @if (count($masters) > 0)
         <div
             class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 lg:grid-cols-3 xl:grid-cols-4 auto-cols-fr">
@@ -328,7 +330,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     @endif
 
     @if (count($henchmen) > 0)
@@ -360,7 +362,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     @endif
 
 
@@ -392,7 +394,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     @endif
     @if (count($minions) > 0)
         <div

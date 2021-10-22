@@ -12,7 +12,7 @@
             </span>
         </div>
     </div>
-    <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+    <div class="block my-3 border-b border-gray-500 border-dashed"></div>
 
     <div class="container grid gap-0 px-2 mx-auto lg:grid-cols-4 auto-cols-fr lg:gap-2">
         @foreach ($factions as $faction)

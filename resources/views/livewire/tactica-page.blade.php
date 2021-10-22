@@ -13,15 +13,14 @@
                     wire:model.defer="query" name="query" placeholder="Enter Search Term">
             </div>
             <div class="block mt-3 text-center lg:col-span-5">
-                <button wire:click="search"
-                    class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
+                <button wire:click="search" class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
                     Search</button>
                 <button wire:click="clearQuery"
                     class="p-2 mx-1 font-bold text-white bg-gray-900 rounded focus:outline-none">
                     Clear</button>
             </div>
         </div>
-        <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+        <div class="block my-3 border-b border-gray-500 border-dashed"></div>
         <div class="container px-2">
             @if (!$query)
                 <div class="block w-full h-full py-5 text-center">
@@ -39,12 +38,12 @@
                                 Submitted By {{ $tactica->author }}
                             </div>
                             @if ($tactica->summary)
-                                <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+                                <div class="block my-3 border-b border-gray-500 border-dashed"></div>
                                 <div>
                                     {{ $tactica->summary }}
                                 </div>
                             @endif
-                            <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+                            <div class="block my-3 border-b border-gray-500 border-dashed"></div>
                             <div class="mb-2">
                                 <span class="font-bold">Tags:</span>
                                 @if ($tactica->keyword)
@@ -107,12 +106,12 @@
                                 Submitted By {{ $tactica->author }}
                             </div>
                             @if ($tactica->summary)
-                                <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+                                <div class="block my-3 border-b border-gray-500 border-dashed"></div>
                                 <div>
                                     {{ $tactica->summary }}
                                 </div>
                             @endif
-                            <div class="block my-3 border-b border-gray-400 border-dashed"></div>
+                            <div class="block my-3 border-b border-gray-500 border-dashed"></div>
                             <div class="mb-2">
                                 <span class="font-bold">Tags:</span>
                                 @if ($tactica->keyword)

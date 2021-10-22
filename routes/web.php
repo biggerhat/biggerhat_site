@@ -12,6 +12,8 @@ use App\Http\Livewire\BoxPage;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TacticaController;
 use App\Http\Livewire\AdvancedPage;
+use App\Http\Livewire\PromoPage;
+use App\Http\Livewire\PromosPage;
 use App\Http\Livewire\QuestionPage;
 use App\Http\Livewire\UpgradePage;
 use App\Http\Livewire\UpgradesPage;
@@ -48,7 +50,8 @@ Route::get('/characters', [PagesController::class, 'getCharacters'])->name('char
 Route::get('/keywords', [PagesController::class, 'getKeywords'])->name('keywords');
 Route::get('/masters', [PagesController::class, 'getMasters'])->name('masters');
 Route::get('/summons', SummonPage::class)->name('summons');
-Route::get('/promos', [PagesController::class, 'getPromos'])->name('promos');
+Route::get('/promos', PromosPage::class)->name('promos');
+Route::get('/promos/{slug}', PromoPage::class)->name('promo.view');
 Route::get('/markers', [PagesController::class, 'getMarkers'])->name('markers');
 Route::get('/blueprints/{instruction:id}/{mini:slug}', InstructionPage::class)->name('instruction.view');
 Route::get('/boxes/{box:slug}', BoxPage::class)->name("box.view");

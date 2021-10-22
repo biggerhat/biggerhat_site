@@ -19,7 +19,7 @@
     @livewireStyles
 </head>
 
-<body class="flex flex-col min-h-screen antialiased bg-gray-300">
+<body class="flex flex-col min-h-screen antialiased bg-gray-400">
     @include('partials.header')
 
     <main class="flex-grow min-h-screen pt-5 pb-5">
@@ -79,7 +79,6 @@
             item.addEventListener("keypress", toggleItem, false);
         }
         document.addEventListener("click", closeSubmenu, false);
-
     </script>
     @livewireScripts
 </body>

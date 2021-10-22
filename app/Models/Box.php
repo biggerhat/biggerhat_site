@@ -35,4 +35,9 @@ class Box extends Model
     {
         return $this->belongsToMany(Instruction::class);
     }
+
+    public function promos()
+    {
+        return $this->belongsToMany(Promo::class);
+    }
 }
