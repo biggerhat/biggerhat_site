@@ -1,33 +1,29 @@
 @section('title')
     - {{ $mini->name }}
 @endsection
-<div class="">
-    @if (count($mini->Spoilers) > 0)
-        <div class="container mx-auto">
-            <div class="w-full p-5 mx-auto bg-red-100 rounded sm:w-1/2">
-                <div class="flex space-x-3">
-                    <div class="flex flex-col space-y-2 leading-tight">
-                        <div class="text-sm font-medium text-red-700">WARNING</div>
-                        <div class="flex-1 text-sm leading-snug text-red-600">This character is a spoiler and not
-                            officially released yet. It is subject to change upon official release.
-                        </div>
-                        <div class="flex-1 text-sm leading-snug text-red-600">Check out the source for this Spoiler
-                            here: <a href="{{ $mini->Spoilers[0]->url }}" target="_new"
-                                     class="font-bold hover:underline">{{ $mini->Spoilers[0]->name }}
-                                ({{ $mini->Spoilers[0]->source }})</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-
+<div>
     <div
         class="container grid mx-auto auto-cols-fr xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 gap-x-3">
 
-        <div class="p-0 m-0 mb-3 md:col-span-2 lg:col-span-3 xl:col-span-4">
+        <div class="p-0 md:col-span-2 lg:col-span-3 xl:col-span-4">
+            @if ($mini->spoilers->count() > 0)
+                <div class="bg-gray-200 border border-t-4 border-b-4 border-blue-700 rounded shadow-lg mx-1">
+                    <div
+                        class="text-xl font-medium p-1 text-gray-100 border-b border-blue-700 bg-blue-500">
+                        Spoiler
+                    </div>
+                    <div class="p-2 bg-blue-300">
+                        This character is a spoiler and not officially released yet. It is subject to change upon
+                        official release.
+                        Check out the source for this Spoiler
+                        here: <a href="{{ $mini->Spoilers[0]->url }}" target="_new"
+                                 class="font-bold hover:underline">{{ $mini->Spoilers[0]->name }}
+                            ({{ $mini->Spoilers[0]->source }})</a>
+                    </div>
+                </div>
+            @endif
             @if ($cardCount + count($mini->promos) > 1)
-                <div class="px-5 my-1">
+                <div class="px-5 py-2">
                     <select name="cards" wire:model="currentCard"
                             class="block w-full p-2 px-2 py-2 mx-auto bg-gray-200 border-2 border-gray-900 rounded shadow md:w-3/4 hover:border-gray-500 focus:outline-none focus:shadow-outline">
                         @for ($i = 0; $i < $cardCount; $i++)
@@ -45,20 +41,20 @@
                 <div class="mx-auto card__image">
                     <div class="w-full h-full card__image--front">
                         <img src="\storage\{{ $this->cards[$currentCard]['front'] }}"
-                             class="w-full h-full border-2 border-black rounded-lg cursor-pointer"/>
+                             class="w-full h-full border-2 border-gray-900 rounded-lg cursor-pointer"/>
                     </div>
                     <div class="w-full h-full card__image--back">
                         <img src="\storage\{{ $this->cards[$currentCard]['back'] }}"
-                             class="w-full h-full border-2 border-black rounded-lg cursor-pointer"/>
+                             class="w-full h-full border-2 border-gray-900 rounded-lg cursor-pointer"/>
                     </div>
                 </div>
             </div>
             <div class="hidden min-h-0 m-0 mx-auto bg-gray-300 rounded-lg w-min md:block">
                 <img src="\storage\{{ $this->cards[$currentCard]['combo'] }}"
-                     class="w-full h-full border-2 border-black rounded-lg shadow-lg"/>
+                     class="w-full h-full border border-gray-900 rounded-lg shadow-lg"/>
             </div>
             <div
-                class="w-12 px-2 py-2 mx-auto mt-2 text-xs font-medium leading-6 text-center text-gray-900 transition bg-transparent border-2 border-black rounded-full shadow md:hidden flipper ripple hover:shadow-lg hover:bg-gray-100 focus:outline-none">
+                class="w-12 px-2 py-2 mx-auto mt-2 text-xs font-medium leading-6 text-center text-gray-900 transition bg-transparent border-2 border-gray-900 rounded-full shadow md:hidden flipper ripple hover:shadow-lg hover:bg-gray-100 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 25px; width: 25px;"
                      class="mx-auto">
                     <g class="" transform=" translate(0,0)" style="">
@@ -90,7 +86,7 @@
                 @if (count($mini->Spoilers) > 0)
                     <div class="p-2 text-center align-middle">
                         <button
-                            class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                            class="inline-block px-5 py-2 mx-auto font-bold text-white bg-gray-900 border-2 border-gray-900 rounded active:outline-none"
                             wire:click="removeSpoiler">
                             Remove Spoiler
                         </button>
@@ -98,72 +94,68 @@
                 @else
                     <div class="p-2 text-center align-middle">
                         <button
-                            class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                            class="inline-block px-5 py-2 mx-auto font-bold text-white bg-gray-900 border-2 border-gray-900 rounded active:outline-none"
                             wire:click="openSpoilerModal">
                             Make Spoiler
                         </button>
                     </div>
                 @endif
             @endcan
+            <br />
         </div>
-
-        <div class="xl:col-span-3 lg:col-span-2 md:col-span-2 overflow-auto px-1 md:px-0">
-            <div class="bg-gray-200 border border-t-4 border-b-4 border-black rounded shadow-lg">
+        <div class="xl:col-span-3 lg:col-span-2 md:col-span-2 px-1 md:px-0 text-sm">
+            <div class="shadow-lg">
                 <div
-                    class="block p-1 text-xl font-medium text-gray-100 border-b mb-2 border-gray-900 {{ $background }}">
+                    class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                     {{ $mini->name }}</div>
-                <div class="">
+                <div class="border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                     @if ($original)
-                        <p class="pb-1 pl-1 font-semibold text-md">Title for:
+                        <p class="p-1 font-semibold text-md">Title For:
                             <a href="{{ route('character.view', $original->slug) }}"
-                               class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ getBackground($original) }} px-2 py-1 text-sm font-bold">{{ strtoupper($original->name) }}</a>
+                               class="inline-block text-center p-0.5 text-white border border-gray-900 rounded-full {{ getBackground($original) }} px-2 py-1 text-sm font-bold">{{ strtoupper($original->name) }}</a>
                         </p>
-                        <div class="block my-1 border-b border-gray-400 border-dashed"></div>
+                        <div class="block border-b border-gray-400 border-dashed"></div>
                     @endif
-                    <p class="pb-1 pl-1 font-semibold text-md">Station: <a
+                    <p class="p-1 font-semibold text-md">Station: <a
                             href="/advanced?station={{ $mini->station->id }}"
-                            class="inline-block text-center p-0.5 text-gray-100 border border-black rounded-full {{ $background }} px-2 py-1 text-sm font-bold mr-3">{{ strtoupper($mini->station->name) }}</a>
+                            class="inline-block text-center p-0.5 text-gray-100 border border-gray-900 rounded-full {{ $background }} px-2 py-1 text-sm font-bold mr-3">{{ strtoupper($mini->station->name) }}</a>
                     </p>
-                    <div class="block my-1 border-b border-gray-400 border-dashed"></div>
-                    <p class="pb-1 pl-1 font-semibold text-md">Faction(s): @foreach ($mini->factions as $faction)<a
+                    <div class="block border-b border-gray-400 border-dashed"></div>
+                    <p class="p-1 font-semibold text-md">Faction(s): @foreach ($mini->factions as $faction)<a
                             href="/factions/{{ $faction->slug }}"
-                            class="inline-block text-center p-0.5 text-gray-100 border border-black rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold">{{ strtoupper($faction->name) }}</a>
+                            class="inline-block text-center p-0.5 text-gray-100 border border-gray-900 rounded-full bg-{{ $faction->bg_color }} px-2 py-1 text-sm font-bold">{{ strtoupper($faction->name) }}</a>
                         @endforeach</p>
-                    <div class="block my-1 border-b border-gray-400 border-dashed"></div>
-                    <p class="pb-1 pl-1 font-semibold text-md">Keyword(s): @foreach ($mini->keywords as $keyword)<a
+                    <div class="block border-b border-gray-400 border-dashed"></div>
+                    <p class="p-1 font-semibold text-md">Keyword(s): @foreach ($mini->keywords as $keyword)<a
                             href="{{ route('keyword.view', $keyword->slug) }}"
-                            class="inline-block text-center p-0.5 text-gray-100 border border-black rounded-full {{ $background }} px-2 py-1 text-sm font-bold ">{{ strtoupper($keyword->name) }}</a>
+                            class="inline-block text-center p-0.5 text-gray-100 border border-gray-900 rounded-full {{ $background }} px-2 py-1 text-sm font-bold ">{{ strtoupper($keyword->name) }}</a>
                         @endforeach</p>
-                    <div class="block my-1 border-b border-gray-400 border-dashed"></div>
-                    <p class="pb-1 pl-1 font-semibold text-md">
+                    <div class="block border-b border-gray-400 border-dashed"></div>
+                    <p class="p-1 font-semibold text-md">
                         Characteristic(s): @foreach ($mini->characteristics as $characteristic)<a
                             href="/advanced?characteristic={{ $characteristic->name }}"
-                            class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ $background }} px-2 py-1 text-sm font-bold">{{ strtoupper($characteristic->name) }}</a>
+                            class="inline-block text-center p-0.5 text-white border border-gray-900 rounded-full {{ $background }} px-2 py-1 text-sm font-bold">{{ strtoupper($characteristic->name) }}</a>
                         @endforeach</p>
                 </div>
             </div>
-            <br />
             @if ($mini->titles->count() > 0)
-                <div class="bg-gray-200 border border-t-4 border-b-4 border-black rounded shadow-lg">
+                <div class="shadow-lg">
                     <div
-                        class="block text-xl font-medium pl-1 text-gray-100 border-b border-gray-900 {{ $background }}">
+                        class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                         Titles
                     </div>
-                    <div class="p-2">
+                    <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                         @foreach($mini->titles as $title)
                             <a href="{{ route('character.view', $title->slug) }}"
-                               class="inline-block text-center p-0.5 text-white border border-black rounded-full {{ getBackground($title) }} px-2 py-1 text-sm font-bold">{{ strtoupper($title->name) }}</a>
+                               class="inline-block text-center p-0.5 text-white border border-gray-900 rounded-full {{ getBackground($title) }} px-2 py-1 text-sm font-bold">{{ strtoupper($title->name) }}</a>
                         @endforeach
                     </div>
                 </div>
-                <br />
             @endif
-
-
             @if (count($mini->erratas) > 0)
-                <div class="bg-gray-200 border border-t-4 border-b-4 border-black rounded shadow-lg">
+                <div class="shadow-lg">
                     <div
-                        class="block p-1 text-xl font-medium text-white border-b border-black {{ $background }}">
+                        class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                              class="inline-block">
                             <g class="" transform=" translate(0,0)" style="">
@@ -174,23 +166,21 @@
                         </svg>
                         Errata History
                     </div>
-                    <div class="mx-2">
+                    <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                         @foreach ($mini->erratas as $errata)
                             {!! nl2br(fauxdown($errata->description)) !!}
                             <span class="block italic text-right">-{{ $errata->season->name }}</span>
                             @if (!$loop->last)
-                                <div class="block my-3 border-b border-gray-500 border-dashed"></div>
+                                <div class="block my-2 border-b border-gray-500 border-dashed"></div>
                             @endif
                         @endforeach
                     </div>
                 </div>
-                <br />
             @endif
-
             @if ($areQuestions)
-                <div class="bg-gray-200 border border-t-4 border-b-4 border-black rounded shadow-lg">
+                <div class="shadow-lg">
                     <div
-                        class="block p-1 text-xl font-medium text-white border-b border-black {{ $background }}">
+                        class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                              class="inline-block">
                             <g class="" transform=" translate(0,0)" style="">
@@ -201,30 +191,28 @@
                         </svg>
                         FAQs
                     </div>
-                    <div class="mx-2">
+                    <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                         @foreach ($questions as $question)
-                            <span class="font-bold">Q.</span> {!! fauxdown($question['question']) !!} <br/>
-                            <span class="font-bold">A.</span> {!! fauxdown($question['answer']) !!} <br/>
+                            <span class="font-bold">Q.</span> {!! fauxdown($question['question']) !!}<br/>
+                            <span class="font-bold">A.</span> {!! fauxdown($question['answer']) !!}<br/>
                             @if (!$loop->last)
-                                <div class="block my-3 border-b border-gray-500 border-dashed"></div>
+                                <div class="block border-b my-2 border-gray-500 border-dashed"></div>
                             @endif
                         @endforeach
                     </div>
                 </div>
-                <br />
             @endif
         </div>
     </div>
 
-    <div class="block border-b border-gray-500 border-dashed"></div>
-        <br />
+    <div class="block border-b border-gray-500 border-dashed mb-2"></div>
 
     <div class="container grid mx-auto auto-cols-fr lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-2">
 
-        <div class="mx-1 mb-2 sm:my-2">
-            <div class="bg-gray-200 border-2 border-black rounded">
+        <div class="mx-1 mb-1">
+            <div class="shadow-lg">
                 <div
-                    class="block p-1 mb-2 text-xl font-medium text-white align-middle border-b border-black {{ $background }}">
+                    class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                          class="inline-block">
                         <g class="" transform=" translate(0,0)" style="">
@@ -235,10 +223,10 @@
                     </svg>
                     Related Characters
                 </div>
-                <div class="mx-2 mb-2">
+                <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                     @foreach ($relateds as $relatedMini)
                         <a href="{{ route('character.view', $relatedMini->slug) }}"
-                           class="inline-block text-center border border-black p-0.5 text-white rounded-full @if (count($relatedMini->factions) > 1) bg-gradient-to-r
+                           class="inline-block text-center border border-gray-900 p-0.5 text-white rounded-full @if (count($relatedMini->factions) > 1) bg-gradient-to-r
                             from-{{ $relatedMini->factions[0]['bg_color'] }}
                                to-{{ $relatedMini->factions[1]['bg_color'] }} @else
                                bg-{{ $relatedMini->factions[0]['bg_color'] }} @endif px-2 py-1
@@ -249,10 +237,10 @@
         </div>
 
         @if (count($mini->upgrades) > 0)
-            <div class="mx-1 mb-2 sm:my-2">
-                <div class="bg-gray-200 border-2 border-black rounded">
+            <div class="mx-1 mb-1">
+                <div class="shadow-lg">
                     <div
-                        class="block p-1 mb-2 text-xl font-medium text-white border-b border-black {{ $background }}">
+                        class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                              class="inline-block">
                             <g class="" transform=" translate(0,0)" style="">
@@ -263,10 +251,10 @@
                         </svg>
                         Related Upgrades
                     </div>
-                    <div class="mx-2 mb-2">
+                    <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                         @foreach ($mini->upgrades as $upgrade)
                             <button wire:click="openUpgradeModal({{ $upgrade->id }})"
-                                    class="inline-block text-center p-0.5 border border-black text-white rounded-full focus:outline-none {{ getUpgradeBackground($upgrade) }} px-2 py-1 font-bold mb-1">{{ strtoupper($upgrade->name) }}</button>
+                                    class="inline-block text-center p-0.5 border border-gray-900 text-white rounded-full focus:outline-none {{ getUpgradeBackground($upgrade) }} px-2 py-1 font-bold mb-1">{{ strtoupper($upgrade->name) }}</button>
                             <br/>
                         @endforeach
                     </div>
@@ -275,10 +263,10 @@
         @endif
 
         @if (count($mini->boxes) > 0)
-            <div class="mx-1 mb-2 sm:my-2">
-                <div class="bg-gray-200 border-2 border-black rounded">
+            <div class="mx-1 mb-1">
+                <div class="shadow-lg">
                     <div
-                        class="block p-1 mb-2 text-xl font-medium text-white border-b border-black {{ $background }}">
+                        class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                              class="inline-block">
                             <g class="" transform=" translate(0,0)" style="">
@@ -289,7 +277,7 @@
                         </svg>
                         Boxes
                     </div>
-                    <div class="mx-2 mb-2">
+                    <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                         @foreach ($mini->boxes as $box)
                             <a href="{{ route('box.view', $box->slug) }}">
                                 <img src="/storage/{{ $box->front }}"
@@ -301,10 +289,10 @@
         @endif
 
         @if (count($mini->instructions) > 0)
-            <div class="mx-1 mb-2 sm:my-2">
-                <div class="bg-gray-200 border-2 border-black rounded">
+            <div class="mx-1 mb-1">
+                <div class="shadow-lg">
                     <div
-                        class="block p-1 mb-2 text-xl font-medium text-white border-b border-black {{ $background }}">
+                        class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                              class="inline-block">
                             <g class="" transform=" translate(0,0)" style="">
@@ -315,7 +303,7 @@
                         </svg>
                         Blueprints
                     </div>
-                    <div class="mx-2 mb-2">
+                    <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                         @foreach ($mini->instructions as $instruction)
                             <a href="{{ route('instruction.view', [$instruction->id, $mini->slug]) }}"><img
                                     src="/storage/{{ $instruction->image }}"
@@ -327,10 +315,10 @@
         @endif
 
         @if (count($mini->summoner) > 0)
-            <div class="mx-1 mb-2 sm:my-2">
-                <div class="bg-gray-200 border-2 border-black rounded">
+            <div class="mx-1 mb-1">
+                <div class="shadow-lg">
                     <div
-                        class="block p-1 mb-2 text-xl font-medium text-white border-b border-black {{ $background }}">
+                        class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                              class="inline-block">
                             <g class="" transform=" translate(0,0)" style="">
@@ -341,7 +329,7 @@
                         </svg>
                         Summoning Chart
                     </div>
-                    <div class="mx-2 mb-2">
+                    <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                         <a href="/summons?summoner={{ $mini->slug }}">
                             <img src="/storage/{{ $mini->summoner[0]->chart }}"
                                  class="w-1/2 mx-auto border border-gray-500 rounded h-1/2"></a>
@@ -352,10 +340,10 @@
         @endif
 
         @if ($areTokens)
-            <div class="mx-1 mb-2 sm:my-2">
-                <div class="bg-gray-200 border-2 border-black rounded">
+            <div class="mx-1 mb-1">
+                <div class="shadow-lg">
                     <div
-                        class="block p-1 mb-2 text-xl font-medium text-white border-b border-black {{ $background }}">
+                        class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                              class="inline-block">
                             <g class="" transform=" translate(0,0)" style="">
@@ -366,7 +354,7 @@
                         </svg>
                         Tokens & Markers
                     </div>
-                    <div class="mx-2 mb-2">
+                    <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2">
                         @if ($this->mini->markers)
                             @foreach ($this->mini->markers as $token)
                                 <button
@@ -388,10 +376,10 @@
         @endif
 
         @if (count($mini->episodes) > 0)
-            <div class="mx-1 mb-2 sm:my-2">
-                <div class="bg-gray-200 border-2 border-black rounded">
+            <div class="mx-1 mb-1">
+                <div class="shadow-lg">
                     <div
-                        class="block p-1 mb-2 text-xl font-medium text-white border-b border-black {{ $background }}">
+                        class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t {{ $background }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 32px; width: 32px;"
                              class="inline-block">
                             <g class="" transform=" translate(0,0)" style="">
@@ -402,7 +390,7 @@
                         </svg>
                         Resources
                     </div>
-                    <div class="mx-2 mb-2 font-semibold text-md">
+                    <div class="p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2 text-md font-semibold">
                         @foreach ($mini->episodes as $episode)
                             <a href="{{ $episode->link }}" class="block mb-2 hover:underline"
                                target="_{{ $mini->slug }}">
@@ -423,18 +411,18 @@
         <div class="fixed top-0 left-0 w-full h-full overflow-y-auto z-101" wire:click.stop="closeUpgradeModal">
             <div class="table px-5 py-6 m-auto w-content" wire:click.stop="">
                 <div class="table-cell text-center align-middle">
-                    <div class="mx-2 bg-gray-200 border-2 border-black rounded md:mx-auto">
+                    <div class="mx-2 bg-gray-200 border-2 border-gray-900 rounded md:mx-auto">
                         <div class="px-5 py-5 mx-auto text-sm card__image">
                             <img src="\storage\{{ $upgradeContent }}" class="w-full h-full rounded-lg"/>
                         </div>
                         <div class="p-2 text-center align-middle">
                             <a href="{{ route('upgrade.view', $upgradeSlug) }}"
-                               class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                               class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-gray-900 rounded active:outline-none"
                                wire:click="closeUpgradeModal">
                                 View Page
                             </a>
                             <button
-                                class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                                class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-gray-900 rounded active:outline-none"
                                 wire:click="closeUpgradeModal">
                                 Close
                             </button>
@@ -450,8 +438,8 @@
         <div class="fixed top-0 left-0 w-full h-full overflow-y-auto z-101" wire:click.stop="closeMarkerModal">
             <div class="table px-5 py-6 m-auto w-content" wire:click.stop="">
                 <div class="table-cell text-center align-middle">
-                    <div class="mx-2 bg-gray-200 border-2 border-black rounded md:mx-auto">
-                        <div class="block p-1 mb-2 text-xl font-medium text-white bg-gray-900 border-b border-black">
+                    <div class="mx-2 bg-gray-200 border-2 border-gray-900 rounded md:mx-auto">
+                        <div class="block p-1 mb-2 text-xl font-medium text-white bg-gray-900 border-b border-gray-900">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                  style="height: 32px; width: 32px;" class="inline-block">
                                 <g class="" transform=" translate(0,0)" style="">
@@ -479,7 +467,7 @@
                         </div>
                         <div class="p-2 text-center align-middle">
                             <button
-                                class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                                class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-gray-900 rounded active:outline-none"
                                 wire:click="closeMarkerModal">
                                 Close
                             </button>
@@ -495,8 +483,8 @@
         <div class="fixed top-0 left-0 w-full h-full overflow-y-auto z-101" wire:click.stop="closeSpoilerModal">
             <div class="table px-5 py-6 m-auto w-content" wire:click.stop="">
                 <div class="table-cell text-center align-middle">
-                    <div class="mx-2 bg-gray-200 border-2 border-black rounded md:mx-auto">
-                        <div class="block p-1 mb-2 text-xl font-medium text-white bg-gray-900 border-b border-black">
+                    <div class="mx-2 bg-gray-200 border-2 border-gray-900 rounded md:mx-auto">
+                        <div class="block p-1 mb-2 text-xl font-medium text-white bg-gray-900 border-b border-gray-900">
                             Make Spoiler
                         </div>
                         <div class="px-5 py-5 mx-auto text-md">
@@ -511,7 +499,7 @@
                             </select>
                             <div class="p-2">
                                 <button
-                                    class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-black rounded active:outline-none"
+                                    class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-gray-900 rounded active:outline-none"
                                     wire:click="addSpoiler()">
                                     Add Spoiler
                                 </button>
@@ -522,9 +510,7 @@
             </div>
         </div>
     @endif
-
 </div>
-
 
 @section('scripts')
     var flipper = document.querySelector('.flipper')
