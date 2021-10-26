@@ -7,7 +7,7 @@
 
         <div class="p-0 md:col-span-2 lg:col-span-3 xl:col-span-4">
             @if ($mini->spoilers->count() > 0)
-                <div class="bg-gray-200 border border-t-4 border-b-4 border-blue-700 rounded shadow-lg mx-1">
+                <div class="bg-gray-200 border border-t-4 border-b-4 border-blue-700 rounded shadow-lg mx-1 mb-1">
                     <div
                         class="text-xl font-medium p-1 text-gray-100 border-b border-blue-700 bg-blue-500">
                         Spoiler
