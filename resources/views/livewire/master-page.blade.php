@@ -26,7 +26,7 @@
 
     <div class="container grid w-full grid-cols-1 gap-0 px-2 mx-auto mt-3 text-center lg:grid-cols-2 auto-cols-fr">
         <div class="p-0 m-0 mb-3">
-            <div class="min-h-0 m-0 mx-auto bg-gray-300 rounded-lg w-min">
+            <div class="min-h-0 m-0 mx-auto bg-gray-400 rounded-lg w-min">
                 <div class="mx-auto card__image">
                     <div class="w-full h-full card__image--front">
                         <img src="\storage\{{ $master->cards->random()->front }}"
