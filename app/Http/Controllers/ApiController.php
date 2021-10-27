@@ -89,7 +89,7 @@ class ApiController extends Controller
     public function fetchSummons(Request $request) {
         $name  = $request->get("summoner");
         if($name == "all") {
-            $summoners = Mini::whereHas("summmoner")->orderBy("name")->get();
+            $summoners = Mini::whereHas("summoner")->orderBy("name")->get();
             return $summoners;
         }
         $summoner  = Mini::whereHas("summoner")->where('name', 'LIKE', "%{$name}%")->with("summoner")->get();
