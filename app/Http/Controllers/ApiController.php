@@ -86,6 +86,16 @@ class ApiController extends Controller
         return $condition;
     }
 
+    public function fetchSummons(Request $request) {
+        $name  = $request->get("summoner");
+        if($name == "all") {
+            $summoners = Mini::whereHas("summmoner")->orderBy("name")->get();
+            return $summoners;
+        }
+        $summoner  = Mini::whereHas("summoner")->where('name', 'LIKE', "%{$name}%")->with("summoner")->get();
+        return $summoner;
+    }
+
     private function stripParse(String $expression): string
     {
         $expression = str_replace(

@@ -44,11 +44,11 @@
         </div>
         <div class="container grid mx-auto mt-15 lg:grid-cols-3 lg:gap-2">
             <div class="mx-1 mb-2 sm:my-2">
-                <div class="bg-gray-200 border-2 border-black rounded">
-                    <div class="block p-1 mb-2 text-xl font-medium text-white bg-gray-900 border-b border-black">
+                <div class="shadow-lg">
+                    <div class="pane-title bg-gray-900">
                         Our Latest Tacticas
                     </div>
-                    <div class="mx-2 mb-2 font-semibold text-md">
+                    <div class="pane-body font-bold">
                         @foreach ($tacticas as $tactica)
                             <a href="{{ route('tactica.view', $tactica->slug) }}" class="block mb-2 hover:underline">
                                 {{ $tactica->name }}

@@ -20,7 +20,7 @@
     <div class="block my-3 border-b border-gray-500 border-dashed"></div>
     <div class="container mx-auto">
         <div class="px-2">
-            <img src="{{ $chart }}" class="mx-auto border-2 border-black rounded-xl">
+            <img src="{{ $chart }}" class="mx-auto">
         </div>
     </div>
     @if ($newSum)

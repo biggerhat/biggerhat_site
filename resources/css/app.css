@@ -1,3 +1,11 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.pane-title {
+    @apply block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t;
+}
+
+.pane-body {
+    @apply p-2 border-b-4 border-gray-900 border-l border-r rounded-b bg-gray-300 mb-2;
+}

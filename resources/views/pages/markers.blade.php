@@ -15,8 +15,8 @@
             <div class="grid px-2 lg:gap-2 lg:grid-cols-4">
                 @foreach ($markers as $marker)
                     <div class="my-1">
-                        <div class="mx-2 bg-gray-200 border-2 border-black rounded md:mx-auto">
-                            <div class="block p-1 mb-2 text-xl font-medium text-white bg-gray-900 border-b border-black">
+                        <div class="mx-2 shadow-lg md:mx-auto">
+                            <div class="pane-title bg-gray-900">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                     style="height: 32px; width: 32px;" class="inline-block">
                                     <g class="" transform="translate(0,0)" style="">
@@ -26,7 +26,7 @@
                                     </g>
                                 </svg>{{ $marker->name }}
                             </div>
-                            <div class="px-5 py-5 mx-auto text-md">
+                            <div class="pane-body mx-auto">
                                 <div class="flex mx-auto bg-gray-900 rounded-full" style=" @if ($marker->size == 50) width: 188px; height: 188px; @endif
                                     @if ($marker->size == 40)width: 151px; height:
                                         151px;@endif @if ($marker->size == 30)width: 113px;
