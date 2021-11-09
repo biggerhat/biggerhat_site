@@ -63,6 +63,7 @@ class CharacterPage extends Component
             'summoner',
             'original',
             'titles',
+            'cultures',
         );
         $this->setBackground();
         $this->setQuestions();
@@ -71,7 +72,6 @@ class CharacterPage extends Component
         $this->setCards();
         $this->titleCheck();
         $this->spoilers = Spoiler::orderBy('created_at', 'DESC')->get()->toArray();
-        //dd($this->spoilers);
     }
 
     public function setCards()
