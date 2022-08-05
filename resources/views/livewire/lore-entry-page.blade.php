@@ -16,7 +16,7 @@
                 </p>
             </div>
         </div>
-        <div class="grid grid-cols-7 w-full mt-6">
+        <div class="grid grid-cols-7 w-full mt-4">
             <div class="shadow-lg grid lg:col-start-2 lg:col-span-5 col-span-7 mx-2">
                 <div
                     class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t bg-gray-900">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-7 w-full mt-6">
+        <div class="grid grid-cols-7 w-full mt-4">
             <div class="shadow-lg grid lg:col-start-2 lg:col-span-5 col-span-7 mx-2">
                 <div
                     class="block p-1 text-xl font-medium text-white border-b border-gray-900 border-t-4 border-l border-r rounded-t bg-gray-900">
