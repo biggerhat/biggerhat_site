@@ -31,6 +31,6 @@ class LoreEntry extends Model {
     }
 
     public function minis(): BelongsToMany {
-        return $this->belongsToMany(Mini::class);
+        return $this->belongsToMany(Mini::class)->orderBy("name", "ASC");
     }
 }
