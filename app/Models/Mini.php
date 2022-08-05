@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Events\MiniSaved;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Laravel\Scout\Searchable;
 
 class Mini extends Model
@@ -287,5 +288,9 @@ class Mini extends Model
     public function scopeHasStation($query, $id)
     {
         return $query->where('station_id', $id);
+    }
+
+    public function loreEntries(): BelongsToMany {
+        return $this->belongsToMany(LoreEntry::class);
     }
 }

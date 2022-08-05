@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\LoreEntryPage;
+use App\Http\Livewire\LorePage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CharacterPage;
 use App\Http\Livewire\FactionPage;
@@ -67,6 +69,9 @@ Route::get('/masters/{mini:slug}', MasterPage::class)->name("master.view");
 Route::get('/resources/types/{resourcetype:slug}', ResourceTypePage::class)->name("resourcetype.view");
 Route::get('/resources/{resource:slug}', ResourcePage::class)->name("resource.view");
 Route::get('/spoilers', [PagesController::class, 'getSpoilers'])->name('spoilers');
+Route::get("/lore/entries/{loreEntry:slug}", LoreEntryPage::class)->name("lore.entry");
+Route::get("/lore", LorePage::class)->name("lore");
+
 
 Route::get('/random', function () {
     $minis = App\Models\Mini::all();
