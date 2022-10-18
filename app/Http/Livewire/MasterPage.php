@@ -127,10 +127,10 @@ class MasterPage extends Component
                 }
             }
         }
-        $this->averageMeleeStat = floor($meleeStatTotal / $meleeTotal);
-        $this->averageMeleeRange = floor($meleeRangeTotal / $meleeTotal);
-        $this->averageGunStat = floor($gunStatTotal / $gunTotal);
-        $this->averageGunRange = floor($gunRangeTotal / $gunTotal);
+        $this->averageMeleeStat = floor($meleeStatTotal / $meleeTotal) ?? 0;
+        $this->averageMeleeRange = floor($meleeRangeTotal / $meleeTotal) ?? 0;
+        $this->averageGunStat = floor($gunStatTotal / $gunTotal) ?? 0;
+        $this->averageGunRange = floor($gunRangeTotal / $gunTotal) ?? 0;
     }
 
     public function setBackground()
