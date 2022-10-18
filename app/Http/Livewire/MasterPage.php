@@ -98,11 +98,11 @@ class MasterPage extends Component
             $totalWd = $totalWd + $mini->wounds;
         }
 
-        $this->averageDf = floor($totalDf / $this->uniqueCharacters) ?? 0;
-        $this->averageWp = floor($totalWp / $this->uniqueCharacters) ?? 0;
-        $this->averageMv = floor($totalMv / $this->uniqueCharacters) ?? 0;
-        $this->averageWounds = floor($totalWd / $this->uniqueCharacters) ?? 0;
-        $this->averageCost = floor($totalCost / $this->uniqueCharacters) ?? 0;
+        $this->averageDf = floor($totalDf / $this->uniqueCharacters);
+        $this->averageWp = floor($totalWp / $this->uniqueCharacters);
+        $this->averageMv = floor($totalMv / $this->uniqueCharacters);
+        $this->averageWounds = floor($totalWd / $this->uniqueCharacters);
+        $this->averageCost = floor($totalCost / $this->uniqueCharacters);
     }
 
     public function getAttackStats()
@@ -127,10 +127,18 @@ class MasterPage extends Component
                 }
             }
         }
-        $this->averageMeleeStat = floor($meleeStatTotal / $meleeTotal) ?? 0;
-        $this->averageMeleeRange = floor($meleeRangeTotal / $meleeTotal) ?? 0;
-        $this->averageGunStat = floor($gunStatTotal / $gunTotal) ?? 0;
-        $this->averageGunRange = floor($gunRangeTotal / $gunTotal) ?? 0;
+        $this->averageMeleeStat = 0;
+        $this->averageMeleeRange = 0;
+        $this->averageGunStat = 0;
+        $this->averageGunRange = 0;
+        if ($meleeTotal > 0) {
+            $this->averageMeleeStat = floor($meleeStatTotal / $meleeTotal);
+            $this->averageMeleeRange = floor($meleeRangeTotal / $meleeTotal);
+        }
+        if ($gunTotal > 0) {
+            $this->averageGunStat = floor($gunStatTotal / $gunTotal);
+            $this->averageGunRange = floor($gunRangeTotal / $gunTotal);
+        }
     }
 
     public function setBackground()
