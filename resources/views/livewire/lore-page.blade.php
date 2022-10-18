@@ -68,9 +68,8 @@
                         <div class="px-2 text-2xl mt-2"><a id="{{ $selection }}">{{ $selection }}</a></div>
                         <div class="block border-b border-gray-400 border-dashed"></div>
                         @foreach($sortedTopics[$selection] ?? [] as $topic)
-    {{--                        <a href="{{ route("lore.entry", $topic["slug"]) }}" class="block hover:bg-gray-500 hover:text-white px-2 py-1">{{ $topic["title"] }}</a>--}}
                             <div>
-                                <span class="block px-2 py-1 w-full hover:bg-gray-500 hover:text-white cursor-pointer" wire:click="getEntryList({{ $topic['id'] }})">{{ $topic["name"] }}</span>
+                                <span class="block px-2 py-1 w-full hover:bg-gray-500 hover:text-white cursor-pointer" wire:click="getEntryList({{ $topic }})">{{ $topic["name"] }}</span>
                             </div>
                         @endforeach
                     @endif
@@ -78,33 +77,4 @@
             </div>
         </div>
     </div>
-
-    @if ($entryModal)
-        <div class="fixed top-0 left-0 w-full h-full bg-gray-500 opacity-75 z-100"></div>
-        <div class="fixed top-0 left-0 w-full h-full overflow-y-auto z-101" wire:click.stop="closeEntryModal">
-            <div class="table px-5 py-6 m-auto w-full lg:w-1/2" wire:click.stop="">
-                <div class="table-cell text-left align-middle ">
-                    <div class="mx-2 bg-gray-200 border border-t-4 border-b-4 border-l-1 border-r-1 border-gray-900 rounded md:mx-auto">
-                        <div class="bg-gray-900 p-1 text-xl font-medium text-white">
-                            Entry List
-                        </div>
-                        @if (count($entryList) < 1)
-                            <div class="block px-2 py-1">No Entries Yet!</div>
-                        @else
-                            @foreach($entryList as $entry)
-                                <a href="{{ route("lore.entry", $entry->slug) }}" class="block hover:bg-gray-500 hover:text-white px-2 py-1">{{ $entry->title }}</a>
-                            @endforeach
-                        @endif
-                        <div class="p-2 text-center align-middle">
-                            <button
-                                class="inline-block px-5 py-2 mx-auto my-2 font-bold text-white bg-gray-900 border-2 border-gray-900 rounded active:outline-none"
-                                wire:click="closeEntryModal">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
 </div>

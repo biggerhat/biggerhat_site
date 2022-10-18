@@ -100,3 +100,39 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::any("/test", function () {
+    $response = Http::get("https://firebasestorage.googleapis.com/v0/b/m3e-crew-builder-22534.appspot.com/o/allmodels-beta.json", [
+        "alt" => "media",
+        "token" => "167f52ae-fefc-409f-8a61-08939afaa1e7"
+    ]);
+    $json = $response->json();
+    $total = 0;
+    foreach ($json["units"] as $unit) {
+        foreach ($unit["fileNames"]["frontJPGs"] ?? [] as $frontJPG) {
+            echo "<img src='https://firebasestorage.googleapis.com/v0/b/m3e-crew-builder-22534.appspot.com/o/" . str_replace("/", "%2F", $frontJPG) . "?alt=media&token=167f52ae-fefc-409f-8a61-08939afaa1e7'>";
+        }
+        echo "<img src='https://firebasestorage.googleapis.com/v0/b/m3e-crew-builder-22534.appspot.com/o/" . str_replace("/", "%2F", $unit["fileNames"]["backJPG"]) . "?alt=media&token=167f52ae-fefc-409f-8a61-08939afaa1e7'>";
+        if (isset($unit["fileNames"]["specialBacks"])) {
+            foreach ($unit["fileNames"]["specialBacks"] as $specialBack) {
+                echo "<img src='https://firebasestorage.googleapis.com/v0/b/m3e-crew-builder-22534.appspot.com/o/" . str_replace("/", "%2F", $specialBack) . "?alt=media&token=167f52ae-fefc-409f-8a61-08939afaa1e7'>";
+            }
+        }
+        $total++;
+        if (isset($unit["alternates"])) {
+            foreach ($unit["alternates"] as $alternate) {
+                foreach ($alternate["fileNames"]["frontJPGs"] ?? [] as $frontJPG) {
+                    echo "<img src='https://firebasestorage.googleapis.com/v0/b/m3e-crew-builder-22534.appspot.com/o/" . str_replace("/", "%2F", $frontJPG) . "?alt=media&token=167f52ae-fefc-409f-8a61-08939afaa1e7'>";
+                }
+                echo "<img src='https://firebasestorage.googleapis.com/v0/b/m3e-crew-builder-22534.appspot.com/o/" . str_replace("/", "%2F", $alternate["fileNames"]["backJPG"]) . "?alt=media&token=167f52ae-fefc-409f-8a61-08939afaa1e7'>";
+                if (isset($alternate["fileNames"]["specialBacks"])) {
+                    foreach ($alternate["fileNames"]["specialBacks"] as $specialBack) {
+                        echo "<img src='https://firebasestorage.googleapis.com/v0/b/m3e-crew-builder-22534.appspot.com/o/" . str_replace("/", "%2F", $specialBack) . "?alt=media&token=167f52ae-fefc-409f-8a61-08939afaa1e7'>";
+                    }
+                }
+                $total++;
+            }
+        }
+    }
+    echo "Total: " . $total;
+});

@@ -98,11 +98,11 @@ class MasterPage extends Component
             $totalWd = $totalWd + $mini->wounds;
         }
 
-        $this->averageDf = floor($totalDf / $this->uniqueCharacters);
-        $this->averageWp = floor($totalWp / $this->uniqueCharacters);
-        $this->averageMv = floor($totalMv / $this->uniqueCharacters);
-        $this->averageWounds = floor($totalWd / $this->uniqueCharacters);
-        $this->averageCost = floor($totalCost / $this->uniqueCharacters);
+        $this->averageDf = floor($totalDf / $this->uniqueCharacters) ?? 0;
+        $this->averageWp = floor($totalWp / $this->uniqueCharacters) ?? 0;
+        $this->averageMv = floor($totalMv / $this->uniqueCharacters) ?? 0;
+        $this->averageWounds = floor($totalWd / $this->uniqueCharacters) ?? 0;
+        $this->averageCost = floor($totalCost / $this->uniqueCharacters) ?? 0;
     }
 
     public function getAttackStats()

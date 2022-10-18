@@ -22,10 +22,6 @@ class LorePage extends Component
 
     public array $sortedTopics;
 
-    public Collection $entryList;
-
-    public bool $entryModal = false;
-
     protected $listeners = ["topicTypeChange" => "selectChangeTab"];
 
     public function mount() {
@@ -38,21 +34,17 @@ class LorePage extends Component
         $this->changeTab($this->activeTab);
     }
 
-    public function getEntryList(int $topicID) {
-        $this->entryList = LoreEntry::whereHas("loreTopics", function ($query) use ($topicID) {
-            $query->where("id", $topicID);
-        })->orderBy("title", "ASC")->get();
-        $this->entryModal = true;
+    public function getEntryList(LoreTopic $topic) {
+        if ($entry = LoreEntry::where("title", $topic->name)->first()) {
+            return redirect()->route("lore.entry", $entry->slug);
+        }
+
+        dd($topic);
     }
 
     public function changeTab(int $newTab) {
         $this->activeTab = $newTab;
         $this->loreTopics = LoreTopic::where("lore_topic_type_id", $newTab)->get();
-//        $this->loreTopics = LoreEntry::whereHas("loreTopics", function ($query) use ($newTab) {
-//            $query->whereHas("loreTopicType", function ($query2) use ($newTab) {
-//               $query2->where("id", $newTab);
-//            });
-//        })->get();
         $this->sortedTopics = [];
     }
 
