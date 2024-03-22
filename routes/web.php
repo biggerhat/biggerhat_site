@@ -136,3 +136,12 @@ Route::any("/test", function () {
     }
     echo "Total: " . $total;
 });
+
+
+Route::any("news", function () {
+    $response = Http::get("https://www.wyrd-games.net/news");
+    $code = $response->body();
+
+    preg_match_all('(<a href=(.*?) class="u-url" rel="bookmark">(.*?)</a>)', $code, $matches);
+    dd($matches);
+});
