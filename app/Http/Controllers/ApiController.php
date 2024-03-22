@@ -9,6 +9,7 @@ use App\Models\Mini;
 use App\Models\Question;
 use App\Models\Terrain;
 use App\Models\Upgrade;
+use App\Models\Uspecial;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -24,11 +25,23 @@ class ApiController extends Controller
         return $minis;
     }
 
-    public function fetchUpgrade(Request $request)
-    {
+    public function fetchUpgrade(Request $request) {
+        $upgradeResults = [
+            "upgrades" => "",
+            "specials" => "",
+        ];
         $name = $request->get("name");
         $upgrades = Upgrade::where('name', 'LIKE', "%{$name}%")->orderBy('name', 'ASC')->get();
-        return $upgrades;
+
+        $upgradeResults["upgrades"] = $upgrades;
+
+        $special = Uspecial::where("name", "LIKE", "%{%name}%")->with("upgrades")->orderBy("name", "ASC")->first();
+
+        if ($special) {
+            $upgradeResults["specials"] = $special->upgrades;
+        }
+
+        return json_encode($upgrades, true);
     }
 
     public function fetchQuestion(Request $request)
