@@ -41,7 +41,7 @@ class ApiController extends Controller
             $upgradeResults["specials"] = $special->upgrades;
         }
 
-        return json_encode($upgrades, true);
+        return json_encode($upgradeResults, true);
     }
 
     public function fetchQuestion(Request $request)
