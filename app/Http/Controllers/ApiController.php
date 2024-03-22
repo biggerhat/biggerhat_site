@@ -35,7 +35,7 @@ class ApiController extends Controller
 
         $upgradeResults["upgrades"] = $upgrades;
 
-        $special = Uspecial::where("name", "LIKE", "%{%name}%")->with("upgrades")->orderBy("name", "ASC")->first();
+        $special = Uspecial::where("name", "LIKE", "%{$name}%")->with("upgrades")->orderBy("name", "ASC")->first();
 
         if ($special) {
             $upgradeResults["specials"] = $special->upgrades;
