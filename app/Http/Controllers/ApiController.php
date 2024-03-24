@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ability;
 use App\Models\Condition;
+use App\Models\Faction;
 use App\Models\Keyword;
 use App\Models\Marker;
 use App\Models\Mini;
@@ -129,6 +130,13 @@ class ApiController extends Controller
 
         $minis = Mini::whereHas("abilities", function ($query) use ($abilities) {
             $query->whereIn("id", $abilities);
+        })->when($request->get("faction"), function ($query) use ($request) {
+            $requestedFaction = $request->get("faction");
+            $faction = Faction::where("name", "LIKE", "%{$requestedFaction}%")->first();
+
+            return $query->whereHas("factions", function ($q) use ($faction) {
+                $q->where("id", $faction->id);
+            });
         })
             ->isAlive()
             ->orderBy("name")
