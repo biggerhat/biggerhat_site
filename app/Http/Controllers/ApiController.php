@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ability;
 use App\Models\Condition;
 use App\Models\Keyword;
 use App\Models\Marker;
@@ -116,6 +117,24 @@ class ApiController extends Controller
         }
         $summoner  = Mini::whereHas("summoner")->where('name', 'LIKE', "%{$name}%")->with("summoner")->get();
         return $summoner;
+    }
+
+    public function fetchAbilities(Request $request) {
+        $name = $request->get("name");
+        $abilities = Ability::where("name", "LIKE", "%{$name}%")->get()->pluck("id");
+
+        if (!$abilities) {
+            return [];
+        }
+
+        $minis = Mini::whereHas("abilities", function ($query) use ($abilities) {
+            $query->whereIn("id", $abilities);
+        })
+            ->isAlive()
+            ->orderBy("name")
+            ->get();
+
+        return $minis;
     }
 
     private function stripParse(String $expression): string

@@ -27,3 +27,4 @@ Route::get('/terrain', [ApiController::class, 'fetchTerrain']);
 Route::get('/condition', [ApiController::class, 'fetchCondition']);
 Route::get('/questions', [ApiController::class, 'fetchQuestion']);
 Route::get('/summons', [ApiController::class, 'fetchSummons']);
+Route::get("/abilities", [ApiController::class, "fetchAbilities"]);
