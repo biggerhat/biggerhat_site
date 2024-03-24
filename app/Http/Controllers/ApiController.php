@@ -7,6 +7,7 @@ use App\Models\Keyword;
 use App\Models\Marker;
 use App\Models\Mini;
 use App\Models\Question;
+use App\Models\Station;
 use App\Models\Terrain;
 use App\Models\Upgrade;
 use App\Models\Uspecial;
@@ -62,11 +63,19 @@ class ApiController extends Controller
         if (!$keyword) {
             return "[ ]";
         }
+
         $minis = Mini::inKeyword($keyword->id)
+            ->when($request->get("station"), function ($query) use ($request) {
+                $requestedStation = $request->get("station");
+                $station = Station::where("name", "LIKE", "%{$requestedStation}%")->first();
+
+                return $query->where("station_id", $station->id);
+            })
             ->isAlive()
             ->orderBy('station_id')
             ->orderBy('name')
             ->get();
+
         return $minis;
     }
 
