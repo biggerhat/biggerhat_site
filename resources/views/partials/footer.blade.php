@@ -17,7 +17,7 @@
                 <li class="text-sm"><a href="/random" class="hover:text-white hover:underline">Random Character</a></li>
                 <li class="text-sm"><a href="{{ route('masters') }}"
                         class="hover:text-white hover:underline">Masters</a></li>
-                <li class="text-sm"><a href="/keywords" class="hover:text-white hover:underline">Keywords</a></li>
+{{--                <li class="text-sm"><a href="/keywords" class="hover:text-white hover:underline">Keywords</a></li>--}}
                 <li class="text-sm"><a href="{{ route('upgrades') }}"
                         class="hover:text-white hover:underline">Upgrades</a></li>
                 <!-- <li class="text-sm"><a href="/promos" class="hover:text-white hover:underline">Alts & Promos</a></li> -->
@@ -93,8 +93,8 @@
             <ul class="font-sans text-center text-gray-300 list-none lg:text-left">
                 <li class="text-sm"><a href="{{ route('about') }}" class="hover:text-white hover:underline">About</a>
                 </li>
-                <li class="text-sm"><a href="https://www.patreon.com/biggerhat" target="_patreon"
-                        class="hover:text-white hover:underline">Patreon</a></li>
+                <li class="text-sm"><a href="https://ko-fi.com/biggerhat" target="_kofi"
+                        class="hover:text-white hover:underline">Donate with Ko-fi</a></li>
                 <li class="text-sm"><a href="https://discord.gg/25cNcmZd9H" class="hover:text-white hover:underline"
                         target="discord">Discord Server</a></li>
                 <li class="text-sm"><a href="https://www.youtube.com/channel/UC095wgLOM_nojBIdzVUtfWg"
