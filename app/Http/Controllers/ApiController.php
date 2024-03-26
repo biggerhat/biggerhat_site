@@ -52,9 +52,11 @@ class ApiController extends Controller
         $query = $request->get("query");
         $category = $request->get("category");
 
-        $questions = Question::where('question', 'LIKE', "%{$query}%")
-            ->orWhere('answer', 'LIKE', "%{$query}%")
-            ->where("category", $category)
+        $questions = Question::where("category", $category)
+            ->where(function ($q) use ($query) {
+                $q->where('question', 'LIKE', "%{$query}%")
+                    ->orWhere('answer', 'LIKE', "%{$query}%");
+            })
             ->with('section')
             ->get();
         foreach ($questions as $question) {
