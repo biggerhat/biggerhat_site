@@ -50,7 +50,13 @@ class ApiController extends Controller
     public function fetchQuestion(Request $request)
     {
         $query = $request->get("query");
-        $questions = Question::where('question', 'LIKE', "%{$query}%")->orWhere('answer', 'LIKE', "%{$query}%")->with('section')->get();
+        $category = $request->get("category");
+
+        $questions = Question::where('question', 'LIKE', "%{$query}%")
+            ->orWhere('answer', 'LIKE', "%{$query}%")
+            ->where("category", $category)
+            ->with('section')
+            ->get();
         foreach ($questions as $question) {
             $question->question = $this->stripParse($question->question);
             $question->answer = $this->stripParse($question->answer);
