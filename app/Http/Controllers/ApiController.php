@@ -92,7 +92,13 @@ class ApiController extends Controller
     public function fetchMarker(Request $request)
     {
         $name = $request->get("name");
-        $marker = Marker::where('name', 'LIKE', "%{$name}%")->get();
+
+        $marker = Marker::where("name", $name)->first();
+
+        if (!$marker) {
+            $marker = Marker::where('name', 'LIKE', "%{$name}%")->get();
+        }
+
         return $marker;
     }
 
