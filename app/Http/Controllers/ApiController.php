@@ -93,7 +93,7 @@ class ApiController extends Controller
     {
         $name = $request->get("name");
 
-        $marker = Marker::where("name", $name)->first();
+        $marker = Marker::where("name", "LIKE", $name)->first();
 
         if (!$marker) {
             $marker = Marker::where('name', 'LIKE', "%{$name}%")->get();
