@@ -9,6 +9,8 @@ use App\Models\Keyword;
 use App\Models\Marker;
 use App\Models\Mini;
 use App\Models\Question;
+use App\Models\Scheme;
+use App\Models\Season;
 use App\Models\Station;
 use App\Models\Terrain;
 use App\Models\Upgrade;
@@ -157,6 +159,23 @@ class ApiController extends Controller
             ->get();
 
         return $minis;
+    }
+
+    public function fetchCampaign(Request $request) {
+        $name = $request->get("name");
+        $season = Season::where("slug", "fractured_futures_campaign")->first();
+
+        if (!$season) {
+            return [];
+        }
+
+        $campaign = Scheme::where("season_id", $season->id)
+            ->where(function ($query) use ($name) {
+                $query->where("name", "LIKE", "%{$name}%")
+                    ->orWhere("description", "LIKE", "%{$name}%");
+            })->first();
+
+        return $campaign;
     }
 
     private function stripParse(String $expression): string
