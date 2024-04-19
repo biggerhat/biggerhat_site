@@ -173,7 +173,7 @@ class ApiController extends Controller
             ->where(function ($query) use ($name) {
                 $query->where("name", "LIKE", "%{$name}%")
                     ->orWhere("description", "LIKE", "%{$name}%");
-            })->first();
+            })->get();
 
         return $campaign;
     }
