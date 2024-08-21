@@ -2,6 +2,8 @@
 
 use App\Http\Livewire\LoreEntryPage;
 use App\Http\Livewire\LorePage;
+use App\Models\Mini;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CharacterPage;
 use App\Http\Livewire\FactionPage;
@@ -144,4 +146,39 @@ Route::any("news", function () {
 
     preg_match_all('(<a href=(.*?) class="u-url" rel="bookmark">(.*?)</a>)', $code, $matches);
     dd($matches);
+});
+
+Route::get("/keyword-count", function () {
+   $masters = Mini::whereHas("factions", function (\Illuminate\Database\Eloquent\Builder $query) {
+       $query->where("name", "Bayou");
+   })->where("station_id", 1)->get();
+
+   foreach($masters as $master) {
+       $keywords = $master->keywords->pluck("id");
+       if ($master->hidden_keyword_id) {
+           $keywords[] = $master->hidden_keyword_id;
+       }
+
+       $minis = Mini::whereHas("keywords", function (Builder $query) use ($keywords) {
+           $query->whereIn("id", $keywords);
+       })->get();
+
+       $bases = [
+           30 => 0,
+           40 => 0,
+           50 => 0,
+       ];
+
+       foreach ($minis as $mini) {
+           $bases[$mini->base]++;
+       }
+       echo $master->name;
+       echo " - ";
+       echo collect($bases);
+       echo " - ";
+       echo "Total: ";
+       $total = 30*$bases[30] + 40*$bases[40] + 50*$bases[50];
+       echo $total;
+       echo "<br />";
+   }
 });
