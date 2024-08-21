@@ -170,7 +170,7 @@ Route::get("/keyword-count", function () {
        ];
 
        foreach ($minis as $mini) {
-           $bases[$mini->base]++;
+           $bases[$mini->base] = $bases[$mini->base] + $mini->quantity;
        }
        echo $master->name;
        echo " - ";
