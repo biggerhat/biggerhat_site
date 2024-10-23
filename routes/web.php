@@ -182,3 +182,11 @@ Route::get("/keyword-count", function () {
        echo "<br />";
    }
 });
+
+Route::get("/model-hp", function () {
+    $minis = Mini::orderBy("name", "ASC")->get();
+
+    foreach ($minis as $mini) {
+        echo sprintf("%s :: %s hp <br />", $mini->name, $mini->wounds);
+    }
+});
