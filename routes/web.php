@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\DamageCheckPage;
 use App\Http\Livewire\LoreEntryPage;
 use App\Http\Livewire\LorePage;
 use App\Models\Mini;
@@ -62,6 +63,7 @@ Route::get('/boxes/{box:slug}', BoxPage::class)->name("box.view");
 Route::get('/tacticas/{tactica:slug}', [TacticaController::class, 'getTactica'])->name('tactica.view');
 Route::get('/tacticas', TacticaPage::class)->name('tacticas');
 Route::get('/advanced', AdvancedPage::class)->name('advanced');
+Route::get('/damage-check', DamageCheckPage::class)->name('damage-check');
 Route::get('/keywords/{keyword:slug}', KeywordPage::class)->name("keyword.view");
 Route::get('/characters/{mini:slug}', CharacterPage::class)->name("character.view");
 Route::get('/upgrades', UpgradesPage::class)->name('upgrades');
