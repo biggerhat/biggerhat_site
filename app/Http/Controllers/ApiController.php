@@ -181,7 +181,7 @@ class ApiController extends Controller
     private function stripParse(String $expression): string
     {
         $expression = str_replace(
-            array(
+            [
                 '{{aura}}',
                 '{{blast}}',
                 '{{crow}}',
@@ -198,8 +198,8 @@ class ApiController extends Controller
                 '{{/b}}',
                 '{{i}}',
                 '{{/i}}',
-            ),
-            array(
+            ],
+            [
                 '**(AURA)**',
                 '**(BLAST)**',
                 '**(CROW)**',
@@ -216,7 +216,7 @@ class ApiController extends Controller
                 '**',
                 '*',
                 '*',
-            ),
+            ],
             $expression
         );
         return $expression;
